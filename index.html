@@ -914,6 +914,56 @@ a:focus-visible, button:focus-visible{
 .principle strong{ color: var(--ink); display:block; margin-bottom:6px; font-family: var(--font-display); font-size:1.02rem; }
 
 /* ---- associe ---- */
+/* ============ LEGISLAÇÃO (marco legal, filtrável por eixo estatutário) ============ */
+.leg-intro{ font-size:1.02rem; color: var(--ink-soft); max-width: 68ch; margin: 18px 0 36px; line-height:1.7; }
+.leg-filtros{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom: 38px; }
+.leg-filtro{
+  display:inline-flex; align-items:center; gap:8px;
+  background: var(--paper); border:1px solid rgba(36,28,19,.12); border-radius: 30px;
+  padding: 9px 18px 9px 10px; font-size:.86rem; font-weight:600; color: var(--ink-soft);
+  cursor:pointer; transition: all .3s cubic-bezier(.2,.7,.2,1);
+}
+.leg-filtro-dot{ width:20px; height:20px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center; background: var(--dot-accent, var(--forest-deep)); color:#fff; }
+.leg-filtro-dot svg{ width:12px; height:12px; }
+.leg-filtro:hover{ border-color: var(--dot-accent, var(--forest-deep)); transform: translateY(-2px); }
+.leg-filtro.on{ background: var(--forest-deep); color: var(--cream); border-color: var(--forest-deep); box-shadow: 0 8px 18px rgba(15,51,18,.25); }
+.leg-filtro.on .leg-filtro-dot{ background: rgba(255,255,255,.25); }
+
+.leg-grid{ display:grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 22px; }
+.leg-card{
+  display:flex; flex-direction:column; gap:12px;
+  background: var(--paper); border-radius: var(--radius); padding: 26px 24px;
+  border:1px solid rgba(36,28,19,.08); text-decoration:none; color:inherit;
+  transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, border-color .35s ease;
+  position:relative; overflow:hidden;
+}
+.leg-card:hover{ transform: translateY(-6px); box-shadow: 0 18px 36px rgba(36,28,19,.14); border-color: var(--accent); }
+.leg-icon-mini{
+  width:44px; height:44px; border-radius:50%; flex:none;
+  display:flex; align-items:center; justify-content:center;
+  background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.9), rgba(255,253,248,.2) 60%), var(--accent);
+  box-shadow: 0 0 0 2px rgba(245,197,66,.5), 0 6px 14px rgba(36,28,19,.14);
+  color:#fff; transition: transform .35s cubic-bezier(.2,.7,.2,1);
+}
+.leg-icon-mini svg{ width:20px; height:20px; }
+.leg-card:hover .leg-icon-mini{ animation: icon-vibrate-soft .5s ease forwards; }
+.leg-card h3{ font-family: var(--font-display); font-size:1.05rem; color: var(--forest-deep); line-height:1.3; }
+.leg-card p{ font-size:.88rem; color: var(--ink-soft); line-height:1.6; flex:1; }
+.leg-card-link{ font-size:.8rem; font-weight:700; color: var(--accent); display:inline-flex; align-items:center; gap:5px; }
+.leg-card-link svg{ width:13px; height:13px; transition: transform .25s ease; }
+.leg-card:hover .leg-card-link svg{ transform: translate(3px,-3px); }
+.leg-card.destaque{ border:1px solid rgba(154,58,15,.35); background: linear-gradient(160deg, var(--paper), #FBF0E9); }
+.leg-card.destaque::before{
+  content:"Tema em disputa"; position:absolute; top:14px; right:-34px; transform:rotate(40deg);
+  background: var(--clay-deep); color:#fff; font-size:.62rem; font-weight:700; letter-spacing:.04em;
+  padding:3px 38px; text-transform:uppercase;
+}
+.leg-hidden{ display:none !important; }
+@media (max-width:640px){
+  .leg-filtro span.leg-filtro-label{ display:none; }
+  .leg-filtro{ padding:9px; }
+}
+
 .member-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin: 44px 0 60px; }
 .member-card{
   background: rgba(251,246,236,.06); border: 1px solid rgba(251,246,236,.16);
@@ -1137,6 +1187,7 @@ a:focus-visible, button:focus-visible{
       <a href="#estrutura">Estrutura</a>
       <a href="#fundacao">Fundação</a>
       <a href="#associe">Associe-se</a>
+      <a href="#legislacao">Legislação</a>
       <a href="#contato">Contato</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
@@ -1542,6 +1593,117 @@ a:focus-visible, button:focus-visible{
     <div class="cta-block reveal">
       <p>O ingresso de pessoas físicas e jurídicas é processado pela Diretoria Executiva, segundo as condições fixadas em Assembleia Geral e no Regimento Interno.</p>
       <a href="#contato" class="btn btn-primary">Solicitar associação</a>
+    </div>
+  </div>
+</section>
+
+<div class="zigzag-divider zigzag-to-cream" aria-hidden="true"><svg viewBox="0 0 640 26" preserveAspectRatio="none"><path d="M0,26 L0.0,0 L20.0,26 L40.0,0 L60.0,26 L80.0,0 L100.0,26 L120.0,0 L140.0,26 L160.0,0 L180.0,26 L200.0,0 L220.0,26 L240.0,0 L260.0,26 L280.0,0 L300.0,26 L320.0,0 L340.0,26 L360.0,0 L380.0,26 L400.0,0 L420.0,26 L440.0,0 L460.0,26 L480.0,0 L500.0,26 L520.0,0 L540.0,26 L560.0,0 L580.0,26 L600.0,0 L620.0,26 L640.0,0 L640,26 Z"/></svg></div>
+
+<section class="section" id="legislacao">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">Legislação e articulação nacional</p>
+    <h2 class="section-title reveal">O marco legal que sustenta a UNIPBRAS</h2>
+    <p class="leg-intro reveal">A UNIPBRAS atua na confluência entre o direito à terra, a representação institucional e o desenvolvimento produtivo dos povos indígenas. Filtre por eixo estatutário e acesse cada norma diretamente na fonte oficial.</p>
+
+    <div class="leg-filtros reveal" role="tablist" id="legFiltros">
+      <button class="leg-filtro on" data-filtro="todos" type="button"><span class="leg-filtro-dot" style="background:var(--forest-deep)">●</span><span class="leg-filtro-label">Todos</span></button>
+      <button class="leg-filtro" data-filtro="territorio" type="button" style="--dot-accent: var(--forest)">
+        <span class="leg-filtro-dot" style="background:var(--forest)"><svg viewBox="0 0 32 32" fill="none"><path d="M4 24 L11 13 L16 19 L21 10 L28 24 Z" fill="currentColor"/></svg></span>
+        <span class="leg-filtro-label">Território e autonomia</span>
+      </button>
+      <button class="leg-filtro" data-filtro="direitos" type="button" style="--dot-accent: var(--river)">
+        <span class="leg-filtro-dot" style="background:var(--river)"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4 V27" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M9 27 H23" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+        <span class="leg-filtro-label">Direitos e representação</span>
+      </button>
+      <button class="leg-filtro" data-filtro="capacitacao" type="button" style="--dot-accent: var(--clay)">
+        <span class="leg-filtro-dot" style="background:var(--clay)"><svg viewBox="0 0 32 32" fill="none"><path d="M16 27 V15" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M16 16 C16 10 10 9 6 10 C6 15 10 19 16 16 Z" fill="currentColor"/></svg></span>
+        <span class="leg-filtro-label">Capacitação e desenvolvimento</span>
+      </button>
+      <button class="leg-filtro" data-filtro="dialogo" type="button" style="--dot-accent: var(--gold-deep)">
+        <span class="leg-filtro-dot" style="background:var(--gold-deep)"><svg viewBox="0 0 32 32" fill="none"><path d="M4 8 H20 A2 2 0 0 1 22 10 V17 A2 2 0 0 1 20 19 H10 L5 23 V19 H4 A2 2 0 0 1 2 17 V10 A2 2 0 0 1 4 8 Z" fill="currentColor"/></svg></span>
+        <span class="leg-filtro-label">Diálogo e cooperação</span>
+      </button>
+    </div>
+
+    <div class="leg-grid reveal" id="legGrid">
+
+      <a class="leg-card destaque" data-cat="territorio" style="--accent:var(--forest)" href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14701.htm" target="_blank" rel="noopener">
+        <div class="leg-icon-mini" style="background:var(--forest)"><svg viewBox="0 0 32 32" fill="none"><path d="M4 24 L11 13 L16 19 L21 10 L28 24 Z" fill="currentColor"/></svg></div>
+        <h3>Lei nº 14.701/2023 — Marco Temporal</h3>
+        <p>Tese que buscava limitar o direito às terras indígenas a áreas ocupadas em 1988, declarada inconstitucional pelo STF, mas reafirmada em lei pelo Congresso. Disputa direta com a autonomia territorial defendida pela UNIPBRAS.</p>
+        <span class="leg-card-link">Acompanhar a norma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 L17 7 M9 7 h8 v8"/></svg></span>
+      </a>
+
+      <a class="leg-card" data-cat="territorio" style="--accent:var(--forest)" href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm" target="_blank" rel="noopener">
+        <div class="leg-icon-mini" style="background:var(--forest)"><svg viewBox="0 0 32 32" fill="none"><path d="M4 24 L11 13 L16 19 L21 10 L28 24 Z" fill="currentColor"/></svg></div>
+        <h3>Constituição Federal — arts. 231 e 232</h3>
+        <p>Reconhece a organização social, os costumes e as terras tradicionalmente ocupadas pelos povos indígenas, e sua legitimidade para agir em juízo em defesa desses direitos.</p>
+        <span class="leg-card-link">Acessar a norma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 L17 7 M9 7 h8 v8"/></svg></span>
+      </a>
+
+      <a class="leg-card" data-cat="direitos" style="--accent:var(--river)" href="https://www.planalto.gov.br/ccivil_03/leis/l6001.htm" target="_blank" rel="noopener">
+        <div class="leg-icon-mini" style="background:var(--river)"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4 V27" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M9 27 H23" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+        <h3>Lei nº 6.001/1973 — Estatuto do Índio</h3>
+        <p>Regula a situação jurídica dos povos indígenas no Brasil e a atuação do Estado na proteção de suas comunidades, culturas e direitos individuais e coletivos.</p>
+        <span class="leg-card-link">Acessar a norma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 L17 7 M9 7 h8 v8"/></svg></span>
+      </a>
+
+      <a class="leg-card" data-cat="direitos" style="--accent:var(--river)" href="https://www.planalto.gov.br/ccivil_03/leis/l5371.htm" target="_blank" rel="noopener">
+        <div class="leg-icon-mini" style="background:var(--river)"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4 V27" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M9 27 H23" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+        <h3>Lei nº 5.371/1967 — Criação da FUNAI</h3>
+        <p>Cria a Fundação Nacional do Índio, órgão federal com quem a UNIPBRAS dialoga diretamente na representação institucional dos povos associados.</p>
+        <span class="leg-card-link">Acessar a norma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 L17 7 M9 7 h8 v8"/></svg></span>
+      </a>
+
+      <a class="leg-card" data-cat="direitos" style="--accent:var(--river)" href="https://www.un.org/esa/socdev/unpfii/documents/DRIPS_pt.pdf" target="_blank" rel="noopener">
+        <div class="leg-icon-mini" style="background:var(--river)"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4 V27" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M9 27 H23" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+        <h3>Declaração da ONU sobre os Direitos dos Povos Indígenas</h3>
+        <p>Documento internacional que fundamenta a autodeterminação e a livre disposição dos povos indígenas sobre o próprio desenvolvimento econômico e social.</p>
+        <span class="leg-card-link">Acessar o texto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 L17 7 M9 7 h8 v8"/></svg></span>
+      </a>
+
+      <a class="leg-card" data-cat="capacitacao" style="--accent:var(--clay)" href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm" target="_blank" rel="noopener">
+        <div class="leg-icon-mini" style="background:var(--clay)"><svg viewBox="0 0 32 32" fill="none"><path d="M16 27 V15" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M16 16 C16 10 10 9 6 10 C6 15 10 19 16 16 Z" fill="currentColor"/></svg></div>
+        <h3>Lei nº 12.651/2012 — Código Florestal</h3>
+        <p>Estabelece o Cadastro Ambiental Rural (CAR), referência para o manejo florestal e agrossilvipastoril nos territórios dos povos associados.</p>
+        <span class="leg-card-link">Acessar a norma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 L17 7 M9 7 h8 v8"/></svg></span>
+      </a>
+
+      <a class="leg-card" data-cat="capacitacao" style="--accent:var(--clay)" href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13123.htm" target="_blank" rel="noopener">
+        <div class="leg-icon-mini" style="background:var(--clay)"><svg viewBox="0 0 32 32" fill="none"><path d="M16 27 V15" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M16 16 C16 10 10 9 6 10 C6 15 10 19 16 16 Z" fill="currentColor"/></svg></div>
+        <h3>Lei nº 13.123/2015 — Marco Legal da Biodiversidade</h3>
+        <p>Disciplina o acesso ao patrimônio genético e ao conhecimento tradicional associado, sempre condicionado ao consentimento prévio das comunidades.</p>
+        <span class="leg-card-link">Acessar a norma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 L17 7 M9 7 h8 v8"/></svg></span>
+      </a>
+
+      <a class="leg-card" data-cat="capacitacao" style="--accent:var(--clay)" href="https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/lei/l11947.htm" target="_blank" rel="noopener">
+        <div class="leg-icon-mini" style="background:var(--clay)"><svg viewBox="0 0 32 32" fill="none"><path d="M16 27 V15" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M16 16 C16 10 10 9 6 10 C6 15 10 19 16 16 Z" fill="currentColor"/></svg></div>
+        <h3>Lei nº 11.947/2009 — PNAE</h3>
+        <p>Garante prioridade legal de compra da produção da agricultura familiar e dos povos indígenas para a merenda escolar em todo o país.</p>
+        <span class="leg-card-link">Acessar a norma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 L17 7 M9 7 h8 v8"/></svg></span>
+      </a>
+
+      <a class="leg-card" data-cat="capacitacao" style="--accent:var(--clay)" href="https://www.planalto.gov.br/ccivil_03/leis/2003/l10.696.htm" target="_blank" rel="noopener">
+        <div class="leg-icon-mini" style="background:var(--clay)"><svg viewBox="0 0 32 32" fill="none"><path d="M16 27 V15" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M16 16 C16 10 10 9 6 10 C6 15 10 19 16 16 Z" fill="currentColor"/></svg></div>
+        <h3>Lei nº 10.696/2003 — PAA</h3>
+        <p>Institui o Programa de Aquisição de Alimentos, com regras próprias de acesso para comunidades indígenas produtoras.</p>
+        <span class="leg-card-link">Acessar a norma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 L17 7 M9 7 h8 v8"/></svg></span>
+      </a>
+
+      <a class="leg-card" data-cat="dialogo" style="--accent:var(--gold-deep)" href="https://www.ilo.org/brasilia/convencoes/WCMS_236247/lang--pt/index.htm" target="_blank" rel="noopener">
+        <div class="leg-icon-mini" style="background:var(--gold-deep)"><svg viewBox="0 0 32 32" fill="none"><path d="M4 8 H20 A2 2 0 0 1 22 10 V17 A2 2 0 0 1 20 19 H10 L5 23 V19 H4 A2 2 0 0 1 2 17 V10 A2 2 0 0 1 4 8 Z" fill="currentColor"/></svg></div>
+        <h3>Convenção 169 da OIT</h3>
+        <p>Base do direito à consulta prévia, livre e informada — o instrumento central do diálogo entre a UNIPBRAS, o Estado e organismos internacionais.</p>
+        <span class="leg-card-link">Acessar a norma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 L17 7 M9 7 h8 v8"/></svg></span>
+      </a>
+
+      <a class="leg-card" data-cat="dialogo" style="--accent:var(--gold-deep)" href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener">
+        <div class="leg-icon-mini" style="background:var(--gold-deep)"><svg viewBox="0 0 32 32" fill="none"><path d="M4 8 H20 A2 2 0 0 1 22 10 V17 A2 2 0 0 1 20 19 H10 L5 23 V19 H4 A2 2 0 0 1 2 17 V10 A2 2 0 0 1 4 8 Z" fill="currentColor"/></svg></div>
+        <h3>Lei nº 13.709/2018 — LGPD</h3>
+        <p>Protege os dados pessoais dos povos e lideranças que compõem a articulação nacional da UNIPBRAS, em toda comunicação e cadastro da rede.</p>
+        <span class="leg-card-link">Acessar a norma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 L17 7 M9 7 h8 v8"/></svg></span>
+      </a>
+
     </div>
   </div>
 </section>
@@ -2122,6 +2284,26 @@ a:focus-visible, button:focus-visible{
       if (!ticking){ requestAnimationFrame(update); ticking = true; }
     }, { passive: true });
     update();
+  });
+
+  // ---- Legislacao: filtro por eixo estatutario ----
+  safe('legislacao-filtro', function(){
+    var wrap = document.getElementById('legFiltros');
+    var grid = document.getElementById('legGrid');
+    if (!wrap || !grid) return;
+    var botoes = toArray(wrap.querySelectorAll('.leg-filtro'));
+    var cartoes = toArray(grid.querySelectorAll('.leg-card'));
+    botoes.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        botoes.forEach(function(b){ b.classList.remove('on'); });
+        btn.classList.add('on');
+        var alvo = btn.getAttribute('data-filtro');
+        cartoes.forEach(function(card){
+          var mostra = (alvo === 'todos') || (card.getAttribute('data-cat') === alvo);
+          card.classList.toggle('leg-hidden', !mostra);
+        });
+      });
+    });
   });
 
   // ---- Nossa marca: modais de ampliar (simbolo animado + logomarca oficial) ----
