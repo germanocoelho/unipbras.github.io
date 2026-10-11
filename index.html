@@ -561,6 +561,11 @@ a:focus-visible, button:focus-visible{
 .map-info-people li:first-child{ border-top:none; padding-top:0; }
 .map-info-people b{ color: var(--ink); font-weight:600; }
 
+.map-info-default[hidden],.map-info-content[hidden]{ display:none !important; }
+.map-info-panel{ flex-direction: column; align-items: stretch; justify-content: center; }
+.map-chips{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; max-width:620px; margin:18px auto 0; }
+.map-chip{ font:inherit; font-size:.8rem; color:var(--ink-soft); background:rgba(255,253,248,.7); border:1px solid rgba(36,28,19,.14); border-radius:999px; padding:6px 12px; cursor:pointer; transition:background .2s ease,color .2s ease,border-color .2s ease; }
+.map-chip:hover,.map-chip:focus-visible,.map-chip.is-active{ background:var(--forest-deep); color:#fff; border-color:var(--forest-deep); }
 .founding-legend{
   display:flex; justify-content:center; gap: 30px; flex-wrap:wrap; margin-top: 30px;
 }
@@ -1526,20 +1531,20 @@ a:focus-visible, button:focus-visible{
           <text x="0" y="24" class="brasilia-label">BRASÍLIA · sede</text>
         </g>
         <g class="map-markers">
-<g class="map-marker" data-idx="0" data-city="Chapecó/SC" data-people='[{"ethnicity": "Wapichana"}]' transform="translate(434.6,647.4)"><circle class="marker-hitarea" r="20"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
-<g class="map-marker" data-idx="1" data-city="Campo Grande/MS" data-people='[{"ethnicity": "Terena"}]' transform="translate(395.2,518.3)"><circle class="marker-hitarea" r="20"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
-<g class="map-marker" data-idx="2" data-city="Porto Murtinho/MS" data-people='[{"ethnicity": "Kadiweu"}, {"ethnicity": "Kadiwéu"}]' transform="translate(332.6,542.7)"><circle class="marker-hitarea" r="20"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
-<g class="map-marker" data-idx="3" data-city="Recife/PE" data-people='[{"ethnicity": "Xucuru"}]' transform="translate(778.2,278.0)"><circle class="marker-hitarea" r="20"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
-<g class="map-marker" data-idx="4" data-city="Águas Belas/PE" data-people='[{"ethnicity": "Fulni-ô"}]' transform="translate(735.0,298.6)"><circle class="marker-hitarea" r="20"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
-<g class="map-marker" data-idx="5" data-city="Inajá/PE" data-people='[{"ethnicity": "Kambiwá"}]' transform="translate(721.6,294.5)"><circle class="marker-hitarea" r="20"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
-<g class="map-marker" data-idx="6" data-city="Ronda Alta/RS" data-people='[{"ethnicity": "Kaingáng"}]' transform="translate(427.4,660.6)"><circle class="marker-hitarea" r="20"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
-<g class="map-marker" data-idx="7" data-city="Porto Real do Colégio/AL" data-people='[{"ethnicity": "Cariri Xocó"}]' transform="translate(740.6,315.5)"><circle class="marker-hitarea" r="20"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
-<g class="map-marker" data-idx="8" data-city="São Gabriel da Cachoeira/AM" data-people='[{"ethnicity": "Baniwa"}]' transform="translate(154.0,124.5)"><circle class="marker-hitarea" r="20"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
-<g class="map-marker" data-idx="9" data-city="Cacoal/RO" data-people='[{"ethnicity": "Suruí (Paiter)"}]' transform="translate(263.4,343.8)"><circle class="marker-hitarea" r="20"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
-<g class="map-marker" data-idx="10" data-city="Canarana/MT" data-people='[{"ethnicity": "Kamaiurá"}]' transform="translate(441.4,384.7)"><circle class="marker-hitarea" r="20"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
-<g class="map-marker" data-idx="11" data-city="Altamira/PA" data-people='[{"ethnicity": "Kayapó"}]' transform="translate(442.5,184.0)"><circle class="marker-hitarea" r="20"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
-<g class="map-marker" data-idx="12" data-city="Alto Tapajós/PA" data-people='[{"ethnicity": "Munduruku"}]' transform="translate(335.1,242.2)"><circle class="marker-hitarea" r="20"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
-<g class="map-marker" data-idx="13" data-city="Pacaraima/RR" data-people='[{"ethnicity": "Macuxi"}]' transform="translate(269.4,36.0)"><circle class="marker-hitarea" r="20"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
+<g class="map-marker" data-idx="0" data-city="Chapecó/SC" data-people='[{"ethnicity": "Wapichana"}]' transform="translate(434.6,647.4)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
+<g class="map-marker" data-idx="1" data-city="Campo Grande/MS" data-people='[{"ethnicity": "Terena"}]' transform="translate(395.2,518.3)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
+<g class="map-marker" data-idx="2" data-city="Porto Murtinho/MS" data-people='[{"ethnicity": "Kadiweu"}, {"ethnicity": "Kadiwéu"}]' transform="translate(332.6,542.7)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
+<g class="map-marker" data-idx="3" data-city="Recife/PE" data-people='[{"ethnicity": "Xucuru"}]' transform="translate(778.2,278.0)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
+<g class="map-marker" data-idx="4" data-city="Águas Belas/PE" data-people='[{"ethnicity": "Fulni-ô"}]' transform="translate(735.0,298.6)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
+<g class="map-marker" data-idx="5" data-city="Inajá/PE" data-people='[{"ethnicity": "Kambiwá"}]' transform="translate(721.6,294.5)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
+<g class="map-marker" data-idx="6" data-city="Ronda Alta/RS" data-people='[{"ethnicity": "Kaingáng"}]' transform="translate(427.4,660.6)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
+<g class="map-marker" data-idx="7" data-city="Porto Real do Colégio/AL" data-people='[{"ethnicity": "Cariri Xocó"}]' transform="translate(740.6,315.5)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
+<g class="map-marker" data-idx="8" data-city="São Gabriel da Cachoeira/AM" data-people='[{"ethnicity": "Baniwa"}]' transform="translate(154.0,124.5)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
+<g class="map-marker" data-idx="9" data-city="Cacoal/RO" data-people='[{"ethnicity": "Suruí (Paiter)"}]' transform="translate(263.4,343.8)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
+<g class="map-marker" data-idx="10" data-city="Canarana/MT" data-people='[{"ethnicity": "Kamaiurá"}]' transform="translate(441.4,384.7)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
+<g class="map-marker" data-idx="11" data-city="Altamira/PA" data-people='[{"ethnicity": "Kayapó"}]' transform="translate(442.5,184.0)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
+<g class="map-marker" data-idx="12" data-city="Alto Tapajós/PA" data-people='[{"ethnicity": "Munduruku"}]' transform="translate(335.1,242.2)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
+<g class="map-marker" data-idx="13" data-city="Pacaraima/RR" data-people='[{"ethnicity": "Macuxi"}]' transform="translate(269.4,36.0)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
         </g>
       </svg>
     </div>
@@ -1565,10 +1570,10 @@ a:focus-visible, button:focus-visible{
       <h3>Diretoria Executiva <span>composição atual</span></h3>
       <div class="roster-grid">
         <div class="roster-card"><span class="roster-role">Presidente</span><strong>Aguinaldo Arruda Areco</strong><span class="roster-eth">Terena &middot; MS</span></div>
-        <div class="roster-card"><span class="roster-role">Vice-Presidente</span><strong>Ronaldo Zokezomaiake</strong></div>
+        <div class="roster-card"><span class="roster-role">Vice-Presidente</span><strong>Ronaldo Zokezomaiake</strong><span class="roster-eth">Pareci &middot; MT</span></div>
         <div class="roster-card"><span class="roster-role">Secretário Geral</span><strong>Joccelio Leite Paulino</strong><span class="roster-eth">Xucuru &middot; PE</span></div>
         <div class="roster-card"><span class="roster-role">Secretário Adjunto</span><strong>Paulo Pontes Lúcio</strong><span class="roster-eth">Fulni-ô &middot; PE</span></div>
-        <div class="roster-card"><span class="roster-role">Tesoureiro</span><strong>Lisio Lili</strong></div>
+        <div class="roster-card"><span class="roster-role">Tesoureiro</span><strong>Lisio Lili</strong><span class="roster-eth">Terena &middot; MS</span></div>
         <div class="roster-card"><span class="roster-role">2&ordm; Tesoureiro</span><strong>Antonio Matias da Silva</strong><span class="roster-eth">Cariri Xocó &middot; AL</span></div>
       </div>
     </div>
@@ -2081,7 +2086,33 @@ a:focus-visible, button:focus-visible{
       defaultMsg.hidden = true;
       content.hidden = false;
       panel.classList.add('has-selection');
+      var chips = document.querySelectorAll('.map-chip');
+      for (var c = 0; c < chips.length; c++){
+        chips[c].classList.toggle('is-active', chips[c].getAttribute('data-idx') === marker.getAttribute('data-idx'));
+      }
+      try{
+        var pr = panel.getBoundingClientRect();
+        if (pr.top < 80 || pr.bottom > (window.innerHeight || 700) - 20){
+          panel.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+        }
+      } catch(e){}
     }
+
+    var chipBox = document.createElement('div');
+    chipBox.className = 'map-chips';
+    chipBox.setAttribute('aria-label', 'Municípios das lideranças fundadoras');
+    for (var k = 0; k < markers.length; k++){
+      (function(marker){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'map-chip';
+        b.setAttribute('data-idx', marker.getAttribute('data-idx'));
+        b.textContent = marker.getAttribute('data-city');
+        b.addEventListener('click', function(){ selectMarker(marker); });
+        chipBox.appendChild(b);
+      })(markers[k]);
+    }
+    panel.parentNode.insertBefore(chipBox, panel.nextSibling);
 
     for (var i = 0; i < markers.length; i++){
       (function(marker){
