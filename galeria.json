@@ -1,32 +1,32 @@
 {
  "versao": 1,
  "itens": {
-  "k1791737462724_0": {
+  "k1791740942094_0": {
    "src": "imgs/galeria/convenio-ifms-01-grupo.jpg",
    "leg": "Reitora e pró-reitores do IFMS e presidentes das instituições no encontro para o convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS.",
    "album": "reunioes",
    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS",
    "tipo": "foto",
    "visib": "publico",
-   "ts": 1791737462724
+   "ts": 1791740942094
   },
-  "k1791737462725_1": {
+  "k1791740942095_1": {
    "src": "imgs/galeria/convenio-ifms-02-reuniao.jpg",
    "leg": "Reunião de trabalho sobre o convênio, realizada no IFMS.",
    "album": "reunioes",
    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS",
    "tipo": "foto",
    "visib": "publico",
-   "ts": 1791737462725
+   "ts": 1791740942095
   },
-  "k1791737462726_2": {
+  "k1791740942096_2": {
    "src": "imgs/galeria/convenio-ifms-03-documento.jpg",
    "leg": "Entrega de documento durante o encontro para o convênio.",
    "album": "reunioes",
    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS",
    "tipo": "foto",
    "visib": "publico",
-   "ts": 1791737462726
+   "ts": 1791740942096
   }
  }
 }

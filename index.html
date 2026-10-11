@@ -1870,9 +1870,12 @@ a:focus-visible, button:focus-visible{
 <div id="vg-login" class="vg-root vg-modal" hidden role="dialog" aria-modal="true">
   <div class="vg-modal-caixa">
     <h3 data-t="login_titulo">Acesso administrativo</h3>
-    <p class="vg-dica" data-t="login_dica">Cole o token do GitHub com permissão de escrita neste repositório. Ele fica guardado apenas neste navegador.</p>
+    <p class="vg-dica" data-t="login_dica">Digite a senha de administrador. Na primeira vez em cada navegador, informe também o token do GitHub com permissão de escrita neste repositório. Ele fica guardado apenas neste navegador.</p>
+    <label class="vg-rot" for="vg-login-senha" data-t="senha_rot">Senha de administrador</label>
+    <input id="vg-login-senha" type="password" class="vg-in" autocomplete="off" spellcheck="false">
+    <label class="vg-rot" for="vg-login-token" data-t="token_rot">Token do GitHub (só na primeira vez neste navegador)</label>
     <input id="vg-login-token" type="password" class="vg-in" autocomplete="off" spellcheck="false" placeholder="github_pat_...">
-    <p id="vg-login-erro" class="vg-erro" hidden data-t="token_invalido">Token inválido ou sem permissão de escrita.</p>
+    <p id="vg-login-erro" class="vg-erro" hidden></p>
     <div class="vg-linha-btn">
       <button type="button" class="vg-btn vg-btn-ghost" data-vg="fechar-login" data-t="cancelar">Cancelar</button>
       <button type="button" class="vg-btn" id="vg-login-ok" data-vg="login-ok" data-t="entrar">Entrar</button>
@@ -2765,36 +2768,36 @@ a:focus-visible, button:focus-visible{
 <script type="application/json" id="vg-dados-iniciais">{
  "versao": 1,
  "itens": {
-  "k1791737462724_0": {
+  "k1791740942094_0": {
    "src": "imgs/galeria/convenio-ifms-01-grupo.jpg",
    "leg": "Reitora e pró-reitores do IFMS e presidentes das instituições no encontro para o convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS.",
    "album": "reunioes",
    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS",
    "tipo": "foto",
    "visib": "publico",
-   "ts": 1791737462724
+   "ts": 1791740942094
   },
-  "k1791737462725_1": {
+  "k1791740942095_1": {
    "src": "imgs/galeria/convenio-ifms-02-reuniao.jpg",
    "leg": "Reunião de trabalho sobre o convênio, realizada no IFMS.",
    "album": "reunioes",
    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS",
    "tipo": "foto",
    "visib": "publico",
-   "ts": 1791737462725
+   "ts": 1791740942095
   },
-  "k1791737462726_2": {
+  "k1791740942096_2": {
    "src": "imgs/galeria/convenio-ifms-03-documento.jpg",
    "leg": "Entrega de documento durante o encontro para o convênio.",
    "album": "reunioes",
    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS",
    "tipo": "foto",
    "visib": "publico",
-   "ts": 1791737462726
+   "ts": 1791740942096
   }
  }
 }</script>
-<script>window.VG_CFG={"cloud": {"nome": "dn1ubybc0", "preset": "cmddi_galeria"}, "repo": "germanocoelho/unipbras.github.io", "arquivo": "galeria.json", "chaveCache": "unipbras_galeria_cache", "chaveToken": "unipbras_gh_token", "idiomas": ["pt"], "legPadrao": "UNIPBRAS", "textos": {"pt": {"todos": "Todos", "vazio": "Nenhuma foto nesta categoria ainda.", "indice": "Índice de registros", "indice_cab": "{n} registro(s) em {a}", "abrir": "Abrir ›", "album_rotulo": "Álbum", "n_fotos": "{n} foto(s)", "e_videos": " e {n} vídeo(s)", "abrir_album": "clique para abrir", "clique_ampliar": "clique para ampliar", "lb_orig": "Abrir original", "restrito": "Restrito", "video": "Vídeo", "capa": "Capa", "adm_link": "Administrar galeria", "adm_titulo": "Adicionar fotos e vídeos à galeria", "backup": "Baixar cópia de segurança", "sair": "Sair do modo administrador", "dica_arrastar": "Arraste os cartões para reordenar. Clique duas vezes na legenda para editá-la.", "f_leg": "Legenda padrão (usada quando o arquivo não tem legenda própria)", "f_data": "Data ou evento", "ph_data": "Ex.: 15 de jun. de 2026", "f_album": "Álbum", "f_visib": "Visibilidade", "v_pub": "Público", "v_res": "Somente administradores", "f_ocasiao": "Nome do evento ou reunião (agrupa as fotos em um álbum, opcional)", "f_ocasiao_dica": "Com o nome preenchido, todas as fotos do lote formam um álbum com capa e contador. Sem o nome, entram soltas na galeria.", "f_arquivos": "Selecionar várias fotos ou vídeos de uma vez (Ctrl ou Shift)", "lote_titulo": "{n} arquivo(s) selecionado(s). Escreva a legenda de cada um:", "ph_leg": "Legenda do arquivo {n}", "publicar_n": "Publicar {n} arquivo(s)", "cancelar": "Cancelar", "ou_link": "ou informe o link direto de uma imagem", "f_href": "Link externo ao clicar (opcional)", "add_link": "Adicionar pelo link", "enviando": "Enviando {i} de {n}...", "publicado": "{n} item(ns) publicado(s) e salvo(s).", "nenhum": "Nenhum arquivo foi enviado. Verifique a conexão.", "falha_envio": "Falha no envio ({m}).", "login_titulo": "Acesso administrativo", "login_dica": "Cole o token do GitHub com permissão de escrita neste repositório. Ele fica guardado apenas neste navegador.", "entrar": "Entrar", "token_invalido": "Token inválido ou sem permissão de escrita.", "conectado": "Conectado: tudo que você publicar é salvo permanentemente.", "verificando": "Verificando a conexão...", "falha_salvar": "Falha ao salvar ({m}). Nada foi gravado permanentemente.", "falha_rede": "Falha de rede ao salvar.", "salvo": "Salvo na nuvem.", "ed_titulo": "Editar legenda", "ed_pt": "Legenda (Português)", "ed_en": "Legenda (English)", "ed_es": "Legenda (Español)", "ed_fr": "Legenda (Français)", "ed_dica": "Idiomas em branco usam a legenda em português.", "salvar": "Salvar", "t_editar": "Editar legenda", "t_substituir": "Substituir foto", "t_atras": "Mover para trás", "t_frente": "Mover para frente", "t_capa": "Definir como capa do álbum", "t_excluir": "Excluir", "t_renomear": "Renomear álbum", "conf_excluir": "Remover este item da galeria?", "ren_prompt": "Novo nome do álbum (corrige em todas as fotos do grupo):", "add_fotos": "Adicionar fotos ao álbum", "add_video": "Adicionar vídeo ao álbum", "na_ponta": "O item já está na ponta.", "ordem_ok": "Ordem atualizada e salva.", "capa_ok": "Foto definida como capa do álbum.", "leg_ok": "Legenda atualizada.", "subst_ok": "Foto substituída e salva.", "excl_ok": "Item removido.", "ren_ok": "Álbum renomeado.", "alert_selecione": "Selecione os arquivos primeiro.", "alert_link": "Informe o link da imagem."}}, "albuns": [{"id": "eventos", "nome": {"pt": "Eventos"}}, {"id": "reunioes", "nome": {"pt": "Reuniões"}}, {"id": "liderancas", "nome": {"pt": "Lideranças"}}, {"id": "institucional", "nome": {"pt": "Institucional"}}], "idioma": function(){return 'pt';}};</script>
+<script>window.VG_CFG={"cloud": {"nome": "dn1ubybc0", "preset": "cmddi_galeria"}, "repo": "germanocoelho/unipbras.github.io", "arquivo": "galeria.json", "chaveCache": "unipbras_galeria_cache", "chaveToken": "unipbras_gh_token", "senhaSal": "unipbras-vg-1", "senhaHash": "64074fa852d691d8fd943e18702bc4dbe43a07557748eff89eaa448eb8949369", "idiomas": ["pt"], "legPadrao": "UNIPBRAS", "textos": {"pt": {"todos": "Todos", "vazio": "Nenhuma foto nesta categoria ainda.", "indice": "Índice de registros", "indice_cab": "{n} registro(s) em {a}", "abrir": "Abrir ›", "album_rotulo": "Álbum", "n_fotos": "{n} foto(s)", "e_videos": " e {n} vídeo(s)", "abrir_album": "clique para abrir", "clique_ampliar": "clique para ampliar", "lb_orig": "Abrir original", "restrito": "Restrito", "video": "Vídeo", "capa": "Capa", "adm_link": "Administrar galeria", "adm_titulo": "Adicionar fotos e vídeos à galeria", "backup": "Baixar cópia de segurança", "sair": "Sair do modo administrador", "dica_arrastar": "Arraste os cartões para reordenar. Clique duas vezes na legenda para editá-la.", "f_leg": "Legenda padrão (usada quando o arquivo não tem legenda própria)", "f_data": "Data ou evento", "ph_data": "Ex.: 15 de jun. de 2026", "f_album": "Álbum", "f_visib": "Visibilidade", "v_pub": "Público", "v_res": "Somente administradores", "f_ocasiao": "Nome do evento ou reunião (agrupa as fotos em um álbum, opcional)", "f_ocasiao_dica": "Com o nome preenchido, todas as fotos do lote formam um álbum com capa e contador. Sem o nome, entram soltas na galeria.", "f_arquivos": "Selecionar várias fotos ou vídeos de uma vez (Ctrl ou Shift)", "lote_titulo": "{n} arquivo(s) selecionado(s). Escreva a legenda de cada um:", "ph_leg": "Legenda do arquivo {n}", "publicar_n": "Publicar {n} arquivo(s)", "cancelar": "Cancelar", "ou_link": "ou informe o link direto de uma imagem", "f_href": "Link externo ao clicar (opcional)", "add_link": "Adicionar pelo link", "enviando": "Enviando {i} de {n}...", "publicado": "{n} item(ns) publicado(s) e salvo(s).", "nenhum": "Nenhum arquivo foi enviado. Verifique a conexão.", "falha_envio": "Falha no envio ({m}).", "login_titulo": "Acesso administrativo", "login_dica": "Digite a senha de administrador. Na primeira vez em cada navegador, informe também o token do GitHub com permissão de escrita neste repositório. Ele fica guardado apenas neste navegador.", "senha_rot": "Senha de administrador", "token_rot": "Token do GitHub (só na primeira vez neste navegador)", "senha_errada": "Senha incorreta.", "token_falta": "Informe também o token do GitHub (primeira vez neste navegador).", "entrar": "Entrar", "token_invalido": "Token inválido ou sem permissão de escrita.", "conectado": "Conectado: tudo que você publicar é salvo permanentemente.", "verificando": "Verificando a conexão...", "falha_salvar": "Falha ao salvar ({m}). Nada foi gravado permanentemente.", "falha_rede": "Falha de rede ao salvar.", "salvo": "Salvo na nuvem.", "ed_titulo": "Editar legenda", "ed_pt": "Legenda (Português)", "ed_en": "Legenda (English)", "ed_es": "Legenda (Español)", "ed_fr": "Legenda (Français)", "ed_dica": "Idiomas em branco usam a legenda em português.", "salvar": "Salvar", "t_editar": "Editar legenda", "t_substituir": "Substituir foto", "t_atras": "Mover para trás", "t_frente": "Mover para frente", "t_capa": "Definir como capa do álbum", "t_excluir": "Excluir", "t_renomear": "Renomear álbum", "conf_excluir": "Remover este item da galeria?", "ren_prompt": "Novo nome do álbum (corrige em todas as fotos do grupo):", "add_fotos": "Adicionar fotos ao álbum", "add_video": "Adicionar vídeo ao álbum", "na_ponta": "O item já está na ponta.", "ordem_ok": "Ordem atualizada e salva.", "capa_ok": "Foto definida como capa do álbum.", "leg_ok": "Legenda atualizada.", "subst_ok": "Foto substituída e salva.", "excl_ok": "Item removido.", "ren_ok": "Álbum renomeado.", "alert_selecione": "Selecione os arquivos primeiro.", "alert_link": "Informe o link da imagem."}}, "albuns": [{"id": "eventos", "nome": {"pt": "Eventos"}}, {"id": "reunioes", "nome": {"pt": "Reuniões"}}, {"id": "liderancas", "nome": {"pt": "Lideranças"}}, {"id": "institucional", "nome": {"pt": "Institucional"}}], "idioma": function(){return 'pt';}};</script>
 <script>
 /* VG: galeria de fotos e videos com albuns, edicao e publicacao (GitHub + Cloudinary).
    Recursos reunidos dos sites do CMDDI e do ICET. Configuracao em window.VG_CFG. */
@@ -3405,17 +3408,30 @@ function ativarAdm(on){
   document.querySelectorAll('.vg-modal').forEach(function(m){ m.classList.toggle('vg-adm', on); });
   render();
 }
+function hashSenha(sn){
+  if (!(window.crypto && crypto.subtle && window.TextEncoder)) return Promise.resolve(null);
+  return crypto.subtle.digest('SHA-256', new TextEncoder().encode((CFG.senhaSal || '') + sn)).then(function(buf){
+    return Array.prototype.map.call(new Uint8Array(buf), function(x){ return ('0' + x.toString(16)).slice(-2); }).join('');
+  });
+}
 function entrar(){
-  var tok = valor('vg-login-token'); if (!tok) return;
+  var sn = valor('vg-login-senha'); if (!sn) return;
   var err = $('vg-login-erro'); err.hidden = true;
-  $('vg-login-ok').disabled = true;
-  verificarToken(tok).then(function(ok){
-    $('vg-login-ok').disabled = false;
-    if (!ok){ err.hidden = false; return; }
-    S.token = tok;
-    try{ localStorage.setItem(CFG.chaveToken, tok); }catch(e){}
-    $('vg-login-token').value = ''; fecharModal('vg-login');
-    iniciarAdm();
+  var btn = $('vg-login-ok'); btn.disabled = true;
+  function falha(chave){ btn.disabled = false; err.textContent = t(chave); err.hidden = false; }
+  hashSenha(sn).then(function(h){
+    if (CFG.senhaHash && h !== CFG.senhaHash){ falha('senha_errada'); return; }
+    var tok = valor('vg-login-token');
+    if (!tok){ try{ tok = localStorage.getItem(CFG.chaveToken) || ''; }catch(e){ tok = ''; } }
+    if (!tok){ falha('token_falta'); $('vg-login-token').focus(); return; }
+    verificarToken(tok).then(function(ok){
+      if (!ok){ try{ localStorage.removeItem(CFG.chaveToken); }catch(e){} falha('token_invalido'); return; }
+      btn.disabled = false;
+      S.token = tok;
+      try{ localStorage.setItem(CFG.chaveToken, tok); }catch(e){}
+      $('vg-login-token').value = ''; $('vg-login-senha').value = ''; fecharModal('vg-login');
+      iniciarAdm();
+    });
   });
 }
 function iniciarAdm(){
@@ -3472,7 +3488,7 @@ document.addEventListener('click', function(e){
   else if (a === 'lb-ant') navLB(-1);
   else if (a === 'lb-prox') navLB(1);
   else if (a === 'lb-original'){ var cur = S.lb.lista[S.lb.i]; if (cur) window.open(cur.src, '_blank', 'noopener'); }
-  else if (a === 'login'){ if (S.adm) sair(); else { abrirModal('vg-login'); setTimeout(function(){ $('vg-login-token').focus(); }, 60); } }
+  else if (a === 'login'){ if (S.adm) sair(); else { abrirModal('vg-login'); setTimeout(function(){ $('vg-login-senha').focus(); }, 60); } }
   else if (a === 'login-ok') entrar();
   else if (a === 'fechar-login') fecharModal('vg-login');
   else if (a === 'sair') sair();
