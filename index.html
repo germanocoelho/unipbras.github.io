@@ -1099,6 +1099,167 @@ a:focus-visible, button:focus-visible{
 }
 .marca-legenda,.roster-note,.founding-parceiros .roster-note,.org-top p{ text-align-last: center; }
 </style>
+<style id="vg-css">
+.vg-root{--vg-texto:var(--ink);--vg-suave:var(--ink-soft);--vg-acento:var(--clay);--vg-destaque:var(--gold);--vg-azul:var(--river);--vg-cartao:var(--paper);--vg-linha:rgba(36,28,19,.16);}
+.vg-tab,.vg-btn,.vg-in,.vg-adm-link{font-family:var(--font-body);}
+#galeria .vg-album-nome{font-family:var(--font-display);}
+/* ===== Galeria (VG) ===== */
+.vg-root{ --vg-radius:14px; }
+.vg-root [hidden], .vg-root[hidden]{ display:none !important; }
+.vg-so-adm{ display:none !important; }
+.vg-adm .vg-so-adm{ display:block !important; }
+.vg-adm .vg-ctls.vg-so-adm{ display:flex !important; }
+.vg-adm .vg-selo-r.vg-so-adm{ display:inline-block !important; }
+.vg-adm .vg-linha-btn.vg-so-adm{ display:flex !important; }
+
+.vg-tabs{ display:flex; flex-wrap:wrap; gap:10px; margin:26px 0 26px; }
+.vg-tab{
+  font:inherit; font-size:.88rem; font-weight:700; cursor:pointer;
+  color:var(--vg-texto); background:var(--vg-cartao); border:1px solid var(--vg-linha);
+  padding:9px 16px; border-radius:999px; display:inline-flex; gap:9px; align-items:center;
+  transition:background .25s, color .25s, border-color .25s, transform .25s;
+}
+.vg-tab:hover{ border-color:var(--vg-acento); transform:translateY(-1px); }
+.vg-tab.on{ background:var(--vg-acento); color:#fff; border-color:var(--vg-acento); }
+.vg-cont{ font-size:.72rem; min-width:22px; text-align:center; padding:1px 7px; border-radius:999px; background:rgba(0,0,0,.09); }
+.vg-tab.on .vg-cont{ background:rgba(255,255,255,.25); }
+
+.vg-grid{ column-count:3; column-gap:16px; }
+.vg-grid-album{ column-count:3; }
+@media (max-width:900px){ .vg-grid,.vg-grid-album{ column-count:2; } }
+@media (max-width:520px){ .vg-grid,.vg-grid-album{ column-count:1; } }
+
+.vg-card{
+  position:relative; break-inside:avoid; margin:0 0 16px; overflow:hidden;
+  border-radius:var(--vg-radius); background:var(--vg-cartao);
+  border:1px solid var(--vg-linha); box-shadow:0 6px 18px rgba(0,0,0,.08);
+  transition:transform .35s ease, box-shadow .35s ease;
+  animation:vgRespira 7s ease-in-out infinite;
+}
+.vg-card:nth-child(odd){ animation-delay:3.2s; }
+@keyframes vgRespira{ 0%,100%{ box-shadow:0 6px 18px rgba(0,0,0,.08); } 50%{ box-shadow:0 10px 26px rgba(0,0,0,.16); } }
+.vg-card:hover{ transform:translateY(-3px); box-shadow:0 16px 32px rgba(0,0,0,.2); }
+.vg-card.arrastando{ opacity:.4; }
+.vg-card.alvo{ outline:2px dashed var(--vg-destaque); outline-offset:-2px; }
+.vg-abrir{ display:block; width:100%; padding:0; margin:0; border:0; background:none; cursor:pointer; position:relative; font:inherit; color:inherit; text-align:left; }
+.vg-midia{ display:block; width:100%; height:auto; transition:transform .5s ease; }
+.vg-card:hover .vg-midia{ transform:scale(1.03); }
+.vg-video{ aspect-ratio:16/10; background:#111 center/cover no-repeat; display:flex !important; align-items:center; justify-content:center; }
+.vg-play{ width:52px; height:52px; border-radius:50%; background:var(--vg-destaque); color:#1b1b1b; display:flex; align-items:center; justify-content:center; font-size:1.2rem; box-shadow:0 4px 14px rgba(0,0,0,.45); padding-left:4px; }
+
+.vg-over{
+  position:absolute; left:0; right:0; bottom:0; padding:34px 14px 12px; margin:0;
+  background:linear-gradient(to top, rgba(10,10,10,.82), transparent);
+  opacity:0; transition:opacity .3s ease; pointer-events:none;
+}
+.vg-card:hover .vg-over, .vg-card:focus-within .vg-over{ opacity:1; }
+@media (hover:none){ .vg-over{ opacity:1; } }
+.vg-leg{ display:block; color:#fff; font-size:.84rem; line-height:1.4; }
+.vg-adm .vg-leg{ pointer-events:auto; cursor:text; }
+.vg-leg.editando{ outline:2px solid var(--vg-destaque); background:rgba(0,0,0,.55); padding:2px 6px; border-radius:4px; }
+
+.vg-selo{ position:absolute; top:10px; left:50%; transform:translateX(-50%); z-index:2; font-size:.62rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; padding:3px 10px; border-radius:999px; color:#fff; }
+.vg-selo-v{ background:rgba(170,30,30,.92); }
+.vg-selo-r{ background:rgba(40,40,40,.88); }
+.vg-selo-c{ background:var(--vg-destaque); color:#1b1b1b; }
+
+.vg-ctls{ position:absolute; inset:0; pointer-events:none; z-index:3; }
+.vg-ctl{
+  pointer-events:auto; position:absolute; width:28px; height:28px; border-radius:50%; border:0; cursor:pointer;
+  color:#fff; font-size:.78rem; line-height:1; display:flex; align-items:center; justify-content:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.4);
+}
+.vg-ctl[data-vg="editar"]{ top:8px; left:8px; background:rgba(30,90,50,.92); }
+.vg-ctl[data-vg="substituir"]{ top:8px; left:42px; background:rgba(25,70,120,.92); }
+.vg-ctl[data-vg="excluir"]{ top:8px; right:8px; background:rgba(180,30,30,.92); }
+.vg-ctl[data-vg="mover"][data-dir="-1"]{ bottom:8px; left:8px; background:var(--vg-destaque); color:#1b1b1b; }
+.vg-ctl[data-vg="mover"][data-dir="1"]{ bottom:8px; left:42px; background:var(--vg-destaque); color:#1b1b1b; }
+.vg-ctl[data-vg="capa"]{ bottom:8px; right:8px; background:var(--vg-destaque); color:#1b1b1b; }
+.vg-ctl[data-vg="renomear"]{ top:10px; left:10px; background:rgba(30,90,50,.92); }
+.vg-album-card .vg-ctls{ inset:0; }
+
+.vg-album-card .vg-midia{ min-height:170px; object-fit:cover; }
+.vg-album-info{ position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:16px; background:linear-gradient(to top, rgba(10,10,10,.9), rgba(10,10,10,.22) 55%, transparent); }
+.vg-album-tag{ font-size:.66rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--vg-destaque); }
+.vg-album-nome{ font-size:.95rem; font-weight:700; color:#fff; line-height:1.3; margin-top:3px; }
+.vg-album-sub{ font-size:.74rem; color:rgba(255,255,255,.88); margin-top:4px; }
+.vg-badge{ position:absolute; top:10px; right:10px; z-index:2; background:var(--vg-destaque); color:#1b1b1b; font-size:.72rem; font-weight:800; padding:3px 10px; border-radius:999px; }
+.vg-adm .vg-album-card .vg-badge{ right:10px; top:44px; }
+
+.vg-vazio{ text-align:center; padding:40px 0; color:var(--vg-suave); }
+
+.vg-indice{ margin-top:30px; border:1px solid var(--vg-linha); border-radius:var(--vg-radius); background:var(--vg-cartao); overflow:hidden; }
+.vg-indice summary{ cursor:pointer; padding:14px 18px; font-weight:700; color:var(--vg-texto); }
+.vg-ind-cab{ padding:6px 18px 10px; font-size:.82rem; color:var(--vg-suave); }
+#vg-indice-lista{ max-height:420px; overflow:auto; border-top:1px solid var(--vg-linha); }
+.vg-ind-linha{ display:flex; gap:14px; align-items:center; width:100%; text-align:left; font:inherit; background:none; border:0; border-bottom:1px solid var(--vg-linha); padding:10px 18px; cursor:pointer; color:var(--vg-texto); }
+.vg-ind-linha:hover{ background:rgba(0,0,0,.04); }
+.vg-ind-linha img, .vg-ind-sem{ width:64px; height:48px; object-fit:cover; border-radius:6px; flex:none; background:#ddd; }
+.vg-ind-txt{ flex:1; display:flex; flex-direction:column; min-width:0; }
+.vg-ind-leg{ font-size:.88rem; }
+.vg-ind-alb{ font-size:.72rem; color:var(--vg-suave); margin-top:2px; }
+.vg-ind-ir{ font-size:.8rem; font-weight:700; color:var(--vg-acento); flex:none; }
+
+.vg-adm-rodape{ margin-top:26px; text-align:right; }
+.vg-adm-link{ font:inherit; font-size:.76rem; background:none; border:0; cursor:pointer; color:var(--vg-suave); text-decoration:underline; opacity:.75; }
+.vg-adm-link:hover{ opacity:1; }
+
+.vg-painel{ margin-top:22px; padding:24px; border-radius:var(--vg-radius); border:1px dashed var(--vg-acento); background:var(--vg-cartao); color:var(--vg-texto); }
+.vg-painel h3{ font-size:1.05rem; margin:0; }
+.vg-painel-topo{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin-bottom:12px; }
+.vg-form-2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:10px; }
+@media (max-width:640px){ .vg-form-2{ grid-template-columns:1fr; } }
+.vg-rot{ display:block; font-size:.78rem; font-weight:700; margin:12px 0 5px; color:var(--vg-texto); }
+.vg-in{ width:100%; font:inherit; font-size:.9rem; padding:9px 11px; border-radius:8px; border:1px solid var(--vg-linha); background:#fff; color:#241c13; }
+.vg-dica{ font-size:.76rem; color:var(--vg-suave); margin:6px 0 0; line-height:1.5; }
+.vg-erro{ color:#b3261e; font-size:.82rem; margin:8px 0 0; }
+.vg-status{ font-size:.82rem; margin:8px 0 0; color:var(--vg-acento); font-weight:600; }
+.vg-banner{ margin:8px 0; padding:10px 14px; border-radius:8px; font-size:.84rem; font-weight:600; }
+.vg-b-ok{ background:#e3f3e5; color:#1d5a26; }
+.vg-b-erro{ background:#fbe3e1; color:#8a1c14; }
+.vg-b-espera{ background:#fff0d6; color:#7a4a00; }
+.vg-lote{ margin:14px 0; padding:14px; border:1px dashed var(--vg-linha); border-radius:10px; }
+.vg-lote-titulo{ font-size:.84rem; font-weight:700; margin:0 0 10px; }
+.vg-lote-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }
+.vg-lote-item{ border:1px solid var(--vg-linha); border-radius:8px; overflow:hidden; background:#fff; }
+.vg-lote-item img, .vg-lote-item video{ width:100%; height:96px; object-fit:cover; display:block; }
+.vg-lote-item input{ width:100%; border:0; border-top:1px solid var(--vg-linha); padding:8px; font:inherit; font-size:.76rem; }
+.vg-link-box{ margin-top:14px; }
+.vg-link-box summary{ cursor:pointer; font-size:.82rem; font-weight:700; }
+.vg-linha-btn{ display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+
+.vg-btn{ font:inherit; font-size:.8rem; font-weight:700; cursor:pointer; padding:9px 16px; border-radius:8px; border:1px solid var(--vg-acento); background:var(--vg-acento); color:#fff; transition:filter .2s, transform .2s; }
+.vg-btn:hover{ filter:brightness(1.1); transform:translateY(-1px); }
+.vg-btn:disabled{ opacity:.55; cursor:wait; }
+.vg-btn-ghost{ background:transparent; color:var(--vg-texto); border-color:var(--vg-linha); }
+.vg-btn-azul{ background:var(--vg-azul); border-color:var(--vg-azul); }
+
+/* janelas */
+.vg-modal{ position:fixed; inset:0; z-index:99990; background:rgba(8,12,8,.9); display:flex; align-items:flex-start; justify-content:center; overflow:auto; padding:24px 14px; }
+.vg-modal-caixa{ position:relative; width:100%; max-width:440px; margin:auto; background:var(--vg-cartao); color:var(--vg-texto); border-radius:16px; padding:24px; box-shadow:0 20px 60px rgba(0,0,0,.5); }
+.vg-modal-larga{ max-width:1080px; margin:0 auto; }
+.vg-modal-caixa h3{ margin:0 0 6px; font-size:1.15rem; }
+.vg-album-tag{ margin:0; }
+.vg-album-subt{ font-size:.8rem; color:var(--vg-suave); margin:0 0 16px; }
+.vg-album-add{ margin-top:16px; }
+.vg-modal-larga .vg-lb-x{ color:var(--vg-texto); }
+#vg-ed, #vg-login{ z-index:99995; align-items:center; }
+
+.vg-lbx{ position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,.95); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; padding:20px; }
+.vg-lbx img, .vg-lbx video{ max-width:92vw; max-height:78vh; object-fit:contain; border-radius:6px; }
+.vg-lb-leg{ color:rgba(255,255,255,.92); font-size:.95rem; text-align:center; max-width:720px; }
+.vg-lb-cont{ color:rgba(255,255,255,.7); font-size:.78rem; }
+.vg-lb-x{ position:absolute; top:12px; right:16px; z-index:5; background:none; border:0; color:#fff; font-size:1.7rem; cursor:pointer; line-height:1; }
+.vg-lb-nav{ position:absolute; top:50%; transform:translateY(-50%); z-index:5; width:46px; height:46px; border-radius:50%; border:0; background:rgba(255,255,255,.16); color:#fff; font-size:1.4rem; cursor:pointer; }
+.vg-lb-nav:hover{ background:rgba(255,255,255,.3); }
+.vg-lb-ant{ left:14px; } .vg-lb-prox{ right:14px; }
+.vg-lbx .vg-btn-ghost{ color:#fff; border-color:rgba(255,255,255,.4); }
+
+#vg-toast{ position:fixed; left:50%; bottom:26px; transform:translate(-50%,20px); z-index:100000; background:#1d1d1d; color:#fff; font-size:.85rem; padding:11px 18px; border-radius:10px; opacity:0; pointer-events:none; transition:opacity .3s, transform .3s; max-width:90vw; }
+#vg-toast.on{ opacity:1; transform:translate(-50%,0); }
+
+@media (prefers-reduced-motion:reduce){ .vg-card{ animation:none; } .vg-card:hover{ transform:none; } .vg-midia{ transition:none; } }
+</style>
 </head>
 <body>
 <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
@@ -1186,6 +1347,7 @@ a:focus-visible, button:focus-visible{
   <a href="#objetivos" class="rail-dot" data-section="objetivos" aria-label="Objetivos"><span class="rail-diamond"></span></a>
   <a href="#estrutura" class="rail-dot" data-section="estrutura" aria-label="Estrutura"><span class="rail-diamond"></span></a>
   <a href="#fundacao" class="rail-dot" data-section="fundacao" aria-label="Fundação"><span class="rail-diamond"></span></a>
+  <a href="#galeria" class="rail-dot" data-section="galeria" aria-label="Galeria"><span class="rail-diamond"></span></a>
   <a href="#associe" class="rail-dot" data-section="associe" aria-label="Associe-se"><span class="rail-diamond"></span></a>
   <a href="#contato" class="rail-dot" data-section="contato" aria-label="Contato"><span class="rail-diamond"></span></a>
 </nav>
@@ -1216,6 +1378,7 @@ a:focus-visible, button:focus-visible{
       <a href="#objetivos">Objetivos</a>
       <a href="#estrutura">Estrutura</a>
       <a href="#fundacao">Fundação</a>
+      <a href="#galeria">Galeria</a>
       <a href="#associe">Associe-se</a>
       <a href="#legislacao">Legislação</a>
       <a href="#contato">Contato</a>
@@ -1600,6 +1763,123 @@ a:focus-visible, button:focus-visible{
 </section>
 
 <div class="zigzag-divider zigzag-to-river" aria-hidden="true"><svg viewBox="0 0 640 26" preserveAspectRatio="none"><path d="M0,26 L0.0,0 L20.0,26 L40.0,0 L60.0,26 L80.0,0 L100.0,26 L120.0,0 L140.0,26 L160.0,0 L180.0,26 L200.0,0 L220.0,26 L240.0,0 L260.0,26 L280.0,0 L300.0,26 L320.0,0 L340.0,26 L360.0,0 L380.0,26 L400.0,0 L420.0,26 L440.0,0 L460.0,26 L480.0,0 L500.0,26 L520.0,0 L540.0,26 L560.0,0 L580.0,26 L600.0,0 L620.0,26 L640.0,0 L640,26 Z"/></svg></div>
+<section class="section section-alt" id="galeria">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">Memória visual</p>
+    <h2 class="section-title reveal">Galeria de fotos</h2>
+    <p class="section-sub reveal">Registros de encontros, reuniões e articulações da UNIPBRAS. Escolha um álbum para ver as fotos e abra cada imagem para ampliar.</p>
+<div class="vg vg-root" id="vg-raiz">
+  <div class="vg-tabs" id="vg-tabs" role="tablist"></div>
+  <div class="vg-grid" id="vg-grid"></div>
+  <p class="vg-vazio" id="vg-vazio" hidden data-t="vazio">Nenhuma foto nesta categoria ainda.</p>
+
+  <details class="vg-indice" id="vg-indice" hidden>
+    <summary data-t="indice">Índice de registros</summary>
+    <div id="vg-indice-lista"></div>
+  </details>
+
+  <div class="vg-adm-rodape">
+    <button type="button" class="vg-adm-link" data-vg="login" data-t="adm_link">Administrar galeria</button>
+  </div>
+
+  <div class="vg-painel vg-so-adm" id="vg-painel">
+    <div class="vg-painel-topo">
+      <h3 data-t="adm_titulo">Adicionar fotos e vídeos à galeria</h3>
+      <div class="vg-linha-btn">
+        <button type="button" class="vg-btn vg-btn-ghost" data-vg="backup" data-t="backup">Baixar cópia de segurança</button>
+        <button type="button" class="vg-btn vg-btn-ghost" data-vg="sair" data-t="sair">Sair do modo administrador</button>
+      </div>
+    </div>
+    <p class="vg-banner" id="vg-banner" hidden></p>
+    <p class="vg-dica" data-t="dica_arrastar">Arraste os cartões para reordenar. Clique duas vezes na legenda para editá-la.</p>
+    <div class="vg-form-2">
+      <div><label class="vg-rot" for="vg-f-leg" data-t="f_leg">Legenda padrão</label><input id="vg-f-leg" class="vg-in" type="text"></div>
+      <div><label class="vg-rot" for="vg-f-data" data-t="f_data">Data ou evento</label><input id="vg-f-data" class="vg-in" type="text" data-tp="ph_data" placeholder="Ex.: 15 de jun. de 2026"></div>
+      <div><label class="vg-rot" for="vg-f-album" data-t="f_album">Álbum</label><select id="vg-f-album" class="vg-in"></select></div>
+      <div><label class="vg-rot" for="vg-f-visib" data-t="f_visib">Visibilidade</label>
+        <select id="vg-f-visib" class="vg-in"><option value="publico" data-t="v_pub">Público</option><option value="restrito" data-t="v_res">Somente administradores</option></select></div>
+    </div>
+    <label class="vg-rot" for="vg-f-ocasiao" data-t="f_ocasiao">Nome do evento ou reunião (agrupa as fotos em um álbum, opcional)</label>
+    <input id="vg-f-ocasiao" class="vg-in" type="text">
+    <p class="vg-dica" data-t="f_ocasiao_dica">Com o nome preenchido, todas as fotos do lote formam um álbum com capa e contador. Sem o nome, entram soltas na galeria.</p>
+    <label class="vg-rot" for="vg-f-arq" data-t="f_arquivos">Selecionar várias fotos ou vídeos de uma vez (Ctrl ou Shift)</label>
+    <input id="vg-f-arq" class="vg-in" type="file" accept="image/*,video/*" multiple>
+    <div class="vg-lote" id="vg-lote" hidden>
+      <p class="vg-lote-titulo" id="vg-lote-titulo"></p>
+      <div class="vg-lote-grid" id="vg-lote-grid"></div>
+      <p class="vg-status" id="vg-lote-prog" hidden></p>
+      <div class="vg-linha-btn">
+        <button type="button" class="vg-btn" id="vg-lote-pub" data-vg="lote-pub"></button>
+        <button type="button" class="vg-btn vg-btn-ghost" data-vg="lote-cancelar" data-t="cancelar">Cancelar</button>
+      </div>
+    </div>
+    <details class="vg-link-box">
+      <summary data-t="ou_link">ou informe o link direto de uma imagem</summary>
+      <input id="vg-f-link" class="vg-in" type="url" placeholder="https://...">
+      <label class="vg-rot" for="vg-f-href" data-t="f_href">Link externo ao clicar (opcional)</label>
+      <input id="vg-f-href" class="vg-in" type="url" placeholder="https://...">
+      <button type="button" class="vg-btn" data-vg="add-link" data-t="add_link">Adicionar pelo link</button>
+    </details>
+  </div>
+</div>
+  </div>
+</section>
+<!-- Galeria: janelas (ampliar, album, legenda, acesso) -->
+<div id="vg-lb" class="vg-root vg-lbx" hidden role="dialog" aria-modal="true" aria-label="Galeria">
+  <button type="button" class="vg-lb-x" data-vg="lb-fechar" aria-label="Fechar">&#10005;</button>
+  <button type="button" class="vg-lb-nav vg-lb-ant" id="vg-lb-ant" data-vg="lb-ant" aria-label="Anterior">&#10094;</button>
+  <button type="button" class="vg-lb-nav vg-lb-prox" id="vg-lb-prox" data-vg="lb-prox" aria-label="Próxima">&#10095;</button>
+  <img id="vg-lb-img" alt="">
+  <video id="vg-lb-video" controls playsinline hidden></video>
+  <div class="vg-lb-leg" id="vg-lb-leg"></div>
+  <div class="vg-lb-cont" id="vg-lb-cont"></div>
+  <button type="button" class="vg-btn vg-btn-ghost" data-vg="lb-original" data-t="lb_orig">Abrir original</button>
+</div>
+
+<div id="vg-album" class="vg-root vg-modal" hidden role="dialog" aria-modal="true">
+  <div class="vg-modal-caixa vg-modal-larga">
+    <button type="button" class="vg-lb-x" data-vg="fechar-album" aria-label="Fechar">&#10005;</button>
+    <p class="vg-album-tag">&#128193; <span data-t="album_rotulo">Álbum</span></p>
+    <h3 id="vg-album-titulo"></h3>
+    <p class="vg-album-subt" id="vg-album-sub"></p>
+    <div class="vg-grid vg-grid-album" id="vg-album-grid"></div>
+    <div class="vg-so-adm vg-album-add">
+      <button type="button" class="vg-btn" data-vg="add-fotos" data-t="add_fotos">Adicionar fotos ao álbum</button>
+      <button type="button" class="vg-btn vg-btn-azul" data-vg="add-video" data-t="add_video">Adicionar vídeo ao álbum</button>
+      <p id="vg-album-status" class="vg-status"></p>
+    </div>
+  </div>
+</div>
+
+<div id="vg-ed" class="vg-root vg-modal" hidden role="dialog" aria-modal="true">
+  <div class="vg-modal-caixa">
+    <h3 data-t="ed_titulo">Editar legenda</h3>
+    <label class="vg-rot" for="vg-ed-pt" data-t="ed_pt">Legenda (Português)</label>
+    <input id="vg-ed-pt" type="text" class="vg-in">
+    <div class="vg-ed-lang" data-l="en"><label class="vg-rot" for="vg-ed-en" data-t="ed_en">Legenda (English)</label><input id="vg-ed-en" type="text" class="vg-in"></div>
+    <div class="vg-ed-lang" data-l="es"><label class="vg-rot" for="vg-ed-es" data-t="ed_es">Legenda (Español)</label><input id="vg-ed-es" type="text" class="vg-in"></div>
+    <div class="vg-ed-lang" data-l="fr"><label class="vg-rot" for="vg-ed-fr" data-t="ed_fr">Legenda (Français)</label><input id="vg-ed-fr" type="text" class="vg-in"></div>
+    <p class="vg-dica vg-ed-lang" data-l="en" data-t="ed_dica">Idiomas em branco usam a legenda em português.</p>
+    <div class="vg-linha-btn">
+      <button type="button" class="vg-btn vg-btn-ghost" data-vg="fechar-leg" data-t="cancelar">Cancelar</button>
+      <button type="button" class="vg-btn" data-vg="salvar-leg" data-t="salvar">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<div id="vg-login" class="vg-root vg-modal" hidden role="dialog" aria-modal="true">
+  <div class="vg-modal-caixa">
+    <h3 data-t="login_titulo">Acesso administrativo</h3>
+    <p class="vg-dica" data-t="login_dica">Cole o token do GitHub com permissão de escrita neste repositório. Ele fica guardado apenas neste navegador.</p>
+    <input id="vg-login-token" type="password" class="vg-in" autocomplete="off" spellcheck="false" placeholder="github_pat_...">
+    <p id="vg-login-erro" class="vg-erro" hidden data-t="token_invalido">Token inválido ou sem permissão de escrita.</p>
+    <div class="vg-linha-btn">
+      <button type="button" class="vg-btn vg-btn-ghost" data-vg="fechar-login" data-t="cancelar">Cancelar</button>
+      <button type="button" class="vg-btn" id="vg-login-ok" data-vg="login-ok" data-t="entrar">Entrar</button>
+    </div>
+  </div>
+</div>
+<div id="vg-toast" role="status" aria-live="polite"></div>
 <section class="section section-dark" id="associe">
   <div class="section-inner">
     <p class="section-eyebrow reveal">Quadro social · Artigos 22 e 27 a 30</p>
@@ -1918,7 +2198,7 @@ a:focus-visible, button:focus-visible{
   safe('progress-rail', function(){
     var railDots = toArray(document.querySelectorAll('.rail-dot'));
     if (!railDots.length) return;
-    var sectionIds = ['top','marca','sobre','objetivos','estrutura','fundacao','associe','contato'];
+    var sectionIds = ['top','marca','sobre','objetivos','estrutura','fundacao','galeria','associe','contato'];
     var sectionEls = [];
     for (var i = 0; i < sectionIds.length; i++){
       var el = document.getElementById(sectionIds[i]);
@@ -2481,5 +2761,784 @@ a:focus-visible, button:focus-visible{
 })();
 
 </script>
+<!-- GALERIA-VG:INICIO -->
+<script type="application/json" id="vg-dados-iniciais">{
+ "versao": 1,
+ "itens": {
+  "k1791737462724_0": {
+   "src": "imgs/galeria/convenio-ifms-01-grupo.jpg",
+   "leg": "Reitora e pró-reitores do IFMS e presidentes das instituições no encontro para o convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS.",
+   "album": "reunioes",
+   "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS",
+   "tipo": "foto",
+   "visib": "publico",
+   "ts": 1791737462724
+  },
+  "k1791737462725_1": {
+   "src": "imgs/galeria/convenio-ifms-02-reuniao.jpg",
+   "leg": "Reunião de trabalho sobre o convênio, realizada no IFMS.",
+   "album": "reunioes",
+   "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS",
+   "tipo": "foto",
+   "visib": "publico",
+   "ts": 1791737462725
+  },
+  "k1791737462726_2": {
+   "src": "imgs/galeria/convenio-ifms-03-documento.jpg",
+   "leg": "Entrega de documento durante o encontro para o convênio.",
+   "album": "reunioes",
+   "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS",
+   "tipo": "foto",
+   "visib": "publico",
+   "ts": 1791737462726
+  }
+ }
+}</script>
+<script>window.VG_CFG={"cloud": {"nome": "dn1ubybc0", "preset": "cmddi_galeria"}, "repo": "germanocoelho/unipbras.github.io", "arquivo": "galeria.json", "chaveCache": "unipbras_galeria_cache", "chaveToken": "unipbras_gh_token", "idiomas": ["pt"], "legPadrao": "UNIPBRAS", "textos": {"pt": {"todos": "Todos", "vazio": "Nenhuma foto nesta categoria ainda.", "indice": "Índice de registros", "indice_cab": "{n} registro(s) em {a}", "abrir": "Abrir ›", "album_rotulo": "Álbum", "n_fotos": "{n} foto(s)", "e_videos": " e {n} vídeo(s)", "abrir_album": "clique para abrir", "clique_ampliar": "clique para ampliar", "lb_orig": "Abrir original", "restrito": "Restrito", "video": "Vídeo", "capa": "Capa", "adm_link": "Administrar galeria", "adm_titulo": "Adicionar fotos e vídeos à galeria", "backup": "Baixar cópia de segurança", "sair": "Sair do modo administrador", "dica_arrastar": "Arraste os cartões para reordenar. Clique duas vezes na legenda para editá-la.", "f_leg": "Legenda padrão (usada quando o arquivo não tem legenda própria)", "f_data": "Data ou evento", "ph_data": "Ex.: 15 de jun. de 2026", "f_album": "Álbum", "f_visib": "Visibilidade", "v_pub": "Público", "v_res": "Somente administradores", "f_ocasiao": "Nome do evento ou reunião (agrupa as fotos em um álbum, opcional)", "f_ocasiao_dica": "Com o nome preenchido, todas as fotos do lote formam um álbum com capa e contador. Sem o nome, entram soltas na galeria.", "f_arquivos": "Selecionar várias fotos ou vídeos de uma vez (Ctrl ou Shift)", "lote_titulo": "{n} arquivo(s) selecionado(s). Escreva a legenda de cada um:", "ph_leg": "Legenda do arquivo {n}", "publicar_n": "Publicar {n} arquivo(s)", "cancelar": "Cancelar", "ou_link": "ou informe o link direto de uma imagem", "f_href": "Link externo ao clicar (opcional)", "add_link": "Adicionar pelo link", "enviando": "Enviando {i} de {n}...", "publicado": "{n} item(ns) publicado(s) e salvo(s).", "nenhum": "Nenhum arquivo foi enviado. Verifique a conexão.", "falha_envio": "Falha no envio ({m}).", "login_titulo": "Acesso administrativo", "login_dica": "Cole o token do GitHub com permissão de escrita neste repositório. Ele fica guardado apenas neste navegador.", "entrar": "Entrar", "token_invalido": "Token inválido ou sem permissão de escrita.", "conectado": "Conectado: tudo que você publicar é salvo permanentemente.", "verificando": "Verificando a conexão...", "falha_salvar": "Falha ao salvar ({m}). Nada foi gravado permanentemente.", "falha_rede": "Falha de rede ao salvar.", "salvo": "Salvo na nuvem.", "ed_titulo": "Editar legenda", "ed_pt": "Legenda (Português)", "ed_en": "Legenda (English)", "ed_es": "Legenda (Español)", "ed_fr": "Legenda (Français)", "ed_dica": "Idiomas em branco usam a legenda em português.", "salvar": "Salvar", "t_editar": "Editar legenda", "t_substituir": "Substituir foto", "t_atras": "Mover para trás", "t_frente": "Mover para frente", "t_capa": "Definir como capa do álbum", "t_excluir": "Excluir", "t_renomear": "Renomear álbum", "conf_excluir": "Remover este item da galeria?", "ren_prompt": "Novo nome do álbum (corrige em todas as fotos do grupo):", "add_fotos": "Adicionar fotos ao álbum", "add_video": "Adicionar vídeo ao álbum", "na_ponta": "O item já está na ponta.", "ordem_ok": "Ordem atualizada e salva.", "capa_ok": "Foto definida como capa do álbum.", "leg_ok": "Legenda atualizada.", "subst_ok": "Foto substituída e salva.", "excl_ok": "Item removido.", "ren_ok": "Álbum renomeado.", "alert_selecione": "Selecione os arquivos primeiro.", "alert_link": "Informe o link da imagem."}}, "albuns": [{"id": "eventos", "nome": {"pt": "Eventos"}}, {"id": "reunioes", "nome": {"pt": "Reuniões"}}, {"id": "liderancas", "nome": {"pt": "Lideranças"}}, {"id": "institucional", "nome": {"pt": "Institucional"}}], "idioma": function(){return 'pt';}};</script>
+<script>
+/* VG: galeria de fotos e videos com albuns, edicao e publicacao (GitHub + Cloudinary).
+   Recursos reunidos dos sites do CMDDI e do ICET. Configuracao em window.VG_CFG. */
+(function(){
+'use strict';
+var CFG = window.VG_CFG;
+var SEC = document.getElementById('galeria');
+if (!CFG || !SEC) return;
+
+/* ---------- textos ---------- */
+var L = CFG.textos || { pt:{} };
+function lang(){ try{ return (CFG.idioma && CFG.idioma()) || 'pt'; }catch(e){ return 'pt'; } }
+function t(k, v){
+  var d = L[lang()] || {};
+  var s = d[k] != null ? d[k] : (L.pt && L.pt[k] != null ? L.pt[k] : k);
+  if (v){ for (var x in v){ s = s.split('{' + x + '}').join(v[x]); } }
+  return s;
+}
+function esc(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+    return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+  });
+}
+function $(id){ return document.getElementById(id); }
+function nomeAlbum(id){
+  for (var i = 0; i < CFG.albuns.length; i++){
+    if (CFG.albuns[i].id === id){ var n = CFG.albuns[i].nome; return n[lang()] || n.pt; }
+  }
+  return id || '';
+}
+
+/* ---------- estado ---------- */
+var S = {
+  dados: { versao: 1, itens: {} },
+  token: null, adm: false, filtro: 'todos',
+  lote: null, albumAberto: null,
+  lb: { lista: [], i: 0 },
+  fila: Promise.resolve(), drag: null, scrollTravado: 0
+};
+
+function normalizar(j){
+  var d = (j && typeof j === 'object') ? j : {};
+  if (!d.itens || typeof d.itens !== 'object') d.itens = {};
+  d.versao = 1;
+  return d;
+}
+function lerEmbutido(){
+  try{
+    var el = $('vg-dados-iniciais');
+    if (el) return normalizar(JSON.parse(el.textContent));
+  }catch(e){}
+  return normalizar({});
+}
+
+/* ---------- GitHub ---------- */
+function apiUrl(c){ return 'https://api.github.com/repos/' + CFG.repo + '/contents/' + (c || CFG.arquivo); }
+function ghH(){ return { 'Authorization': 'token ' + S.token, 'Accept': 'application/vnd.github+json' }; }
+function b64dec(c){ return decodeURIComponent(escape(atob(String(c).replace(/\n/g, '')))); }
+function b64enc(s){ return btoa(unescape(encodeURIComponent(s))); }
+
+function verificarToken(tok){
+  return fetch('https://api.github.com/repos/' + CFG.repo, {
+    cache: 'no-store',
+    headers: { 'Authorization': 'token ' + tok, 'Accept': 'application/vnd.github+json' }
+  }).then(function(r){ return r.json().then(function(j){ return { ok: r.ok, j: j }; }); })
+    .then(function(x){ return !!(x.ok && x.j && x.j.permissions && x.j.permissions.push); })
+    .catch(function(){ return false; });
+}
+function lerRemoto(){
+  return fetch(apiUrl() + '?t=' + Date.now(), { cache: 'no-store', headers: ghH() })
+    .then(function(r){
+      if (r.status === 404) return null;
+      return r.json().then(function(j){ return j; });
+    })
+    .then(function(j){
+      if (j && j.content){ S.dados = normalizar(JSON.parse(b64dec(j.content))); }
+    });
+}
+function salvar(msg){
+  S.fila = S.fila.then(function(){ return _salvar(msg); });
+  return S.fila;
+}
+function _salvar(msg){
+  try{ localStorage.setItem(CFG.chaveCache, JSON.stringify(S.dados)); }catch(e){}
+  var corpo = b64enc(JSON.stringify(S.dados, null, 1));
+  function tentar(n){
+    return fetch(apiUrl() + '?t=' + Date.now(), { cache: 'no-store', headers: ghH() })
+      .then(function(r){ return r.status === 404 ? {} : r.json(); })
+      .then(function(cur){
+        var b = { message: msg || 'Atualizar galeria', content: corpo };
+        if (cur && cur.sha) b.sha = cur.sha;
+        var h = ghH(); h['Content-Type'] = 'application/json';
+        return fetch(apiUrl(), { method: 'PUT', headers: h, body: JSON.stringify(b) });
+      })
+      .then(function(r){ return r.json().then(function(j){ return { ok: r.ok, st: r.status, j: j }; }); })
+      .then(function(x){
+        if (!x.ok && (x.st === 409 || x.st === 422) && n < 2) return tentar(n + 1);
+        return x;
+      });
+  }
+  return tentar(0).then(function(x){
+    if (x.ok && x.j && x.j.content){ banner('ok', t('salvo')); toast(t('salvo')); return true; }
+    banner('erro', t('falha_salvar', { m: (x.j && x.j.message) || x.st }));
+    return false;
+  }).catch(function(){ banner('erro', t('falha_rede')); return false; });
+}
+
+/* ---------- Cloudinary e envio ---------- */
+function enviarCloud(file, tipo, onProg){
+  return new Promise(function(res, rej){
+    var fd = new FormData();
+    fd.append('file', file);
+    fd.append('upload_preset', CFG.cloud.preset);
+    var x = new XMLHttpRequest();
+    x.open('POST', 'https://api.cloudinary.com/v1_1/' + CFG.cloud.nome + '/' + (tipo === 'video' ? 'video' : 'image') + '/upload', true);
+    if (x.upload && onProg) x.upload.onprogress = function(e){ if (e.lengthComputable) onProg(e.loaded / e.total); };
+    x.onload = function(){
+      try{
+        var d = JSON.parse(x.responseText);
+        if (d.secure_url) res(d.secure_url); else rej(new Error((d.error && d.error.message) || 'erro'));
+      }catch(e){ rej(e); }
+    };
+    x.onerror = function(){ rej(new Error('rede')); };
+    x.send(fd);
+  });
+}
+function reduzirImagem(file, max, q){
+  return new Promise(function(res, rej){
+    var url = URL.createObjectURL(file);
+    var img = new Image();
+    img.onload = function(){
+      var w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, max / Math.max(w, h));
+      var c = document.createElement('canvas');
+      c.width = Math.round(w * k); c.height = Math.round(h * k);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url);
+      res(c.toDataURL('image/jpeg', q).split(',')[1]);
+    };
+    img.onerror = function(){ URL.revokeObjectURL(url); rej(new Error('imagem')); };
+    img.src = url;
+  });
+}
+function enviarRepo(file){
+  return reduzirImagem(file, 1800, 0.86).then(function(b64){
+    var slug = String(file.name || 'foto').toLowerCase().replace(/\.[a-z0-9]+$/, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'foto';
+    var caminho = 'imgs/galeria/' + Date.now() + '-' + slug + '.jpg';
+    var h = ghH(); h['Content-Type'] = 'application/json';
+    return fetch(apiUrl(caminho), { method: 'PUT', headers: h, body: JSON.stringify({ message: 'Foto da galeria', content: b64 }) })
+      .then(function(r){ return r.json().then(function(j){ if (!r.ok) throw new Error(j.message || 'erro'); return caminho; }); });
+  });
+}
+function enviarArquivo(file, tipo, onProg){
+  return enviarCloud(file, tipo, onProg).catch(function(err){
+    if (tipo === 'video' || !S.token) throw err;
+    return enviarRepo(file);
+  });
+}
+function miniatura(src, w){
+  if (src && src.indexOf('/upload/') > -1 && /^https?:/.test(src)) return src.replace('/upload/', '/upload/w_' + w + ',q_auto,f_auto/');
+  return src;
+}
+function posterVideo(src){
+  if (src && src.indexOf('/upload/') > -1) return src.replace('/upload/', '/upload/w_800,so_0,q_auto/').replace(/\.(mp4|mov|webm|ogg)$/i, '.jpg');
+  return '';
+}
+
+/* ---------- utilidades de dados ---------- */
+function legDe(it){ var l = lang(); return (l !== 'pt' && it['leg_' + l]) ? it['leg_' + l] : (it.leg || ''); }
+function lista(){
+  var o = [];
+  Object.keys(S.dados.itens).forEach(function(k){
+    var it = S.dados.itens[k];
+    if (!it || !it.src) return;
+    if (it.visib === 'restrito' && !S.adm) return;
+    o.push({ key: k, it: it });
+  });
+  return o;
+}
+function porAsc(a, b){ return (a.it.ts || 0) - (b.it.ts || 0); }
+function porDesc(a, b){ return (b.it.ts || 0) - (a.it.ts || 0); }
+function itensDoAlbum(oc){
+  return lista().filter(function(x){ return x.it.ocasiao === oc; }).sort(porAsc);
+}
+function capaDe(itens){
+  for (var i = 0; i < itens.length; i++){ if (itens[i].it.tipo !== 'video') return itens[i]; }
+  return itens[0];
+}
+
+/* ---------- interface auxiliar ---------- */
+function toast(m){
+  var el = $('vg-toast'); if (!el) return;
+  el.textContent = m; el.classList.add('on');
+  clearTimeout(toast._t); toast._t = setTimeout(function(){ el.classList.remove('on'); }, 3200);
+}
+function banner(tipo, m){
+  var b = $('vg-banner'); if (!b) return;
+  b.hidden = false; b.className = 'vg-banner vg-b-' + tipo; b.textContent = m;
+  if (tipo === 'ok'){ clearTimeout(banner._t); banner._t = setTimeout(function(){ b.hidden = true; }, 5000); }
+}
+function travar(on){
+  S.scrollTravado += on ? 1 : -1;
+  if (S.scrollTravado < 0) S.scrollTravado = 0;
+  document.body.style.overflow = S.scrollTravado ? 'hidden' : '';
+}
+function abrirModal(id){ var m = $(id); if (m && m.hidden){ m.hidden = false; travar(true); } }
+function fecharModal(id){ var m = $(id); if (m && !m.hidden){ m.hidden = true; travar(false); } }
+
+function aplicarTextos(){
+  SEC.querySelectorAll('[data-t]').forEach(function(el){ el.textContent = t(el.getAttribute('data-t')); });
+  SEC.querySelectorAll('[data-tp]').forEach(function(el){ el.setAttribute('placeholder', t(el.getAttribute('data-tp'))); });
+  document.querySelectorAll('.vg-root[data-t],.vg-root [data-t]').forEach(function(el){
+    if (!SEC.contains(el)) el.textContent = t(el.getAttribute('data-t'));
+  });
+  document.querySelectorAll('.vg-root [data-tp]').forEach(function(el){
+    if (!SEC.contains(el)) el.setAttribute('placeholder', t(el.getAttribute('data-tp')));
+  });
+  var sel = $('vg-f-album');
+  if (sel){
+    var cur = sel.value;
+    sel.innerHTML = CFG.albuns.map(function(a){ return '<option value="' + esc(a.id) + '">' + esc(nomeAlbum(a.id)) + '</option>'; }).join('');
+    if (cur) sel.value = cur;
+  }
+  var ed = document.querySelectorAll('.vg-ed-lang');
+  ed.forEach(function(el){ el.hidden = CFG.idiomas.indexOf(el.getAttribute('data-l')) < 0; });
+}
+
+/* ---------- renderizacao ---------- */
+function btnCtl(acao, key, rot, txt, extra){
+  return '<button type="button" class="vg-ctl" data-vg="' + acao + '" data-key="' + esc(key) + '" title="' + esc(t(rot)) + '" aria-label="' + esc(t(rot)) + '"' + (extra || '') + '>' + txt + '</button>';
+}
+function cartao(x, opc){
+  var it = x.it, k = x.key, leg = legDe(it), ehVideo = it.tipo === 'video';
+  var midia;
+  if (ehVideo){
+    var p = it.poster || posterVideo(it.src);
+    midia = '<span class="vg-midia vg-video"' + (p ? ' style="background-image:url(\'' + esc(p) + '\')"' : '') + '><span class="vg-play" aria-hidden="true">&#9654;</span></span>';
+  } else {
+    midia = '<img class="vg-midia" loading="lazy" src="' + esc(miniatura(it.src, 800)) + '" alt="' + esc(leg) + '">';
+  }
+  var selos = '';
+  if (ehVideo) selos += '<span class="vg-selo vg-selo-v">' + esc(t('video')) + '</span>';
+  if (it.visib === 'restrito') selos += '<span class="vg-selo vg-selo-r vg-so-adm">' + esc(t('restrito')) + '</span>';
+  if (opc && opc.capa) selos += '<span class="vg-selo vg-selo-c">' + esc(t('capa')) + '</span>';
+  var ctl = btnCtl('editar', k, 't_editar', '&#9998;') + btnCtl('substituir', k, 't_substituir', '&#10227;') +
+            btnCtl('mover', k, 't_atras', '&#9664;', ' data-dir="-1"') + btnCtl('mover', k, 't_frente', '&#9654;', ' data-dir="1"');
+  if (opc && opc.album && !ehVideo && !opc.capa) ctl += btnCtl('capa', k, 't_capa', '&#9733;');
+  ctl += btnCtl('excluir', k, 't_excluir', '&#10005;');
+  return '<figure class="vg-card' + (ehVideo ? ' is-video' : '') + '" data-key="' + esc(k) + '">' +
+    '<button type="button" class="vg-abrir" data-vg="abrir" data-key="' + esc(k) + '" aria-label="' + esc(leg || t('abrir')) + '">' + midia + '</button>' +
+    selos +
+    '<figcaption class="vg-over"><span class="vg-leg" data-key="' + esc(k) + '">' + esc(leg) + '</span></figcaption>' +
+    '<div class="vg-ctls vg-so-adm">' + ctl + '</div></figure>';
+}
+function cartaoAlbum(oc, itens){
+  var capa = capaDe(itens), ehV = capa.it.tipo === 'video';
+  var src = ehV ? posterVideo(capa.it.src) : miniatura(capa.it.src, 700);
+  var nF = itens.filter(function(x){ return x.it.tipo !== 'video'; }).length, nV = itens.length - nF;
+  var sub = t('n_fotos', { n: nF }) + (nV ? t('e_videos', { n: nV }) : '');
+  return '<div class="vg-card vg-album-card" data-oc="' + esc(oc) + '">' +
+    '<button type="button" class="vg-abrir" data-vg="abrir-album" data-oc="' + esc(oc) + '" aria-label="' + esc(t('album_rotulo') + ': ' + oc) + '">' +
+      (src ? '<img class="vg-midia" loading="lazy" src="' + esc(src) + '" alt="">' : '<span class="vg-midia vg-video"></span>') +
+      '<span class="vg-album-info"><span class="vg-album-tag">' + esc(t('album_rotulo')) + '</span>' +
+      '<span class="vg-album-nome">' + esc(oc) + '</span>' +
+      '<span class="vg-album-sub">' + esc(sub) + ' · ' + esc(t('abrir_album')) + '</span></span>' +
+    '</button>' +
+    '<span class="vg-badge">' + itens.length + '</span>' +
+    '<div class="vg-ctls vg-so-adm"><button type="button" class="vg-ctl" data-vg="renomear" data-oc="' + esc(oc) + '" title="' + esc(t('t_renomear')) + '" aria-label="' + esc(t('t_renomear')) + '">&#9998;</button></div></div>';
+}
+function render(){
+  /* abas com contadores */
+  var vis = lista();
+  var cont = { todos: vis.length };
+  CFG.albuns.forEach(function(a){ cont[a.id] = 0; });
+  vis.forEach(function(x){ if (cont[x.it.album] !== undefined) cont[x.it.album]++; });
+  var tabs = [{ id: 'todos', n: t('todos') }].concat(CFG.albuns.map(function(a){ return { id: a.id, n: nomeAlbum(a.id) }; }));
+  $('vg-tabs').innerHTML = tabs.map(function(a){
+    return '<button type="button" role="tab" class="vg-tab' + (S.filtro === a.id ? ' on' : '') + '" aria-selected="' + (S.filtro === a.id) + '" data-vg="aba" data-id="' + esc(a.id) + '">' +
+      esc(a.n) + '<span class="vg-cont">' + (cont[a.id] || 0) + '</span></button>';
+  }).join('');
+
+  /* grade: fotos soltas e albuns */
+  var filt = vis.filter(function(x){ return S.filtro === 'todos' || x.it.album === S.filtro; });
+  var soltos = [], grupos = {};
+  filt.forEach(function(x){
+    if (x.it.ocasiao){ (grupos[x.it.ocasiao] = grupos[x.it.ocasiao] || []).push(x); } else soltos.push(x);
+  });
+  var blocos = soltos.map(function(x){ return { ts: x.it.ts || 0, html: cartao(x), x: x }; });
+  Object.keys(grupos).forEach(function(oc){
+    var todos = itensDoAlbum(oc), ts = 0;
+    todos.forEach(function(x){ ts = Math.max(ts, x.it.ts || 0); });
+    blocos.push({ ts: ts, html: cartaoAlbum(oc, todos) });
+  });
+  blocos.sort(function(a, b){ return b.ts - a.ts; });
+  $('vg-grid').innerHTML = blocos.map(function(b){ return b.html; }).join('');
+  $('vg-vazio').hidden = blocos.length > 0;
+  prepararDrag($('vg-grid'));
+
+  /* indice de registros */
+  var ind = filt.slice().sort(porDesc);
+  $('vg-indice').hidden = !ind.length;
+  $('vg-indice-lista').innerHTML = '<p class="vg-ind-cab">' + esc(t('indice_cab', { n: ind.length, a: S.filtro === 'todos' ? t('todos') : nomeAlbum(S.filtro) })) + '</p>' +
+    ind.map(function(x){
+      var l = legDe(x.it) || '';
+      var r = l.length > 100 ? l.slice(0, 100) + '…' : l;
+      var th = x.it.tipo === 'video' ? posterVideo(x.it.src) : miniatura(x.it.src, 160);
+      return '<button type="button" class="vg-ind-linha" data-vg="abrir-indice" data-key="' + esc(x.key) + '">' +
+        (th ? '<img src="' + esc(th) + '" alt="" loading="lazy">' : '<span class="vg-ind-sem"></span>') +
+        '<span class="vg-ind-txt"><span class="vg-ind-leg">' + esc(r || '-') + '</span>' +
+        '<span class="vg-ind-alb">' + esc(x.it.ocasiao ? x.it.ocasiao : nomeAlbum(x.it.album)) + '</span></span>' +
+        '<span class="vg-ind-ir">' + esc(t('abrir')) + '</span></button>';
+    }).join('');
+
+  if (S.albumAberto) renderAlbum(S.albumAberto);
+}
+function renderAlbum(oc){
+  var itens = itensDoAlbum(oc);
+  if (!itens.length){ S.albumAberto = null; fecharModal('vg-album'); return; }
+  var capa = capaDe(itens);
+  var nF = itens.filter(function(x){ return x.it.tipo !== 'video'; }).length, nV = itens.length - nF;
+  $('vg-album-titulo').textContent = oc;
+  $('vg-album-sub').textContent = t('n_fotos', { n: nF }) + (nV ? t('e_videos', { n: nV }) : '') + ' · ' + t('clique_ampliar');
+  $('vg-album-grid').innerHTML = itens.map(function(x){
+    return cartao(x, { album: true, capa: capa && x.key === capa.key });
+  }).join('');
+  prepararDrag($('vg-album-grid'));
+}
+
+/* ---------- arrastar e soltar (reordena e grava) ---------- */
+function prepararDrag(grid){
+  if (!grid) return;
+  grid.querySelectorAll('.vg-card[data-key]').forEach(function(c){ c.draggable = !!S.adm; });
+}
+function chavesDoContainer(grid){
+  return Array.prototype.map.call(grid.querySelectorAll(':scope > .vg-card[data-key]'), function(c){ return c.getAttribute('data-key'); });
+}
+function reordenar(grid, novasChaves){
+  var asc = grid.id === 'vg-album-grid';
+  var vals = novasChaves.map(function(k){ return (S.dados.itens[k] || {}).ts || 0; }).sort(function(a, b){ return asc ? a - b : b - a; });
+  novasChaves.forEach(function(k, i){ if (S.dados.itens[k]) S.dados.itens[k].ts = vals[i]; });
+}
+document.addEventListener('dragstart', function(e){
+  var c = e.target.closest && e.target.closest('.vg-card[data-key]');
+  if (!S.adm || !c){ return; }
+  S.drag = c.getAttribute('data-key');
+  c.classList.add('arrastando');
+  try{ e.dataTransfer.effectAllowed = 'move'; e.dataTransfer.setData('text/plain', S.drag); }catch(x){}
+});
+document.addEventListener('dragend', function(e){
+  var c = e.target.closest && e.target.closest('.vg-card');
+  if (c) c.classList.remove('arrastando');
+  document.querySelectorAll('.vg-card.alvo').forEach(function(x){ x.classList.remove('alvo'); });
+  S.drag = null;
+});
+document.addEventListener('dragover', function(e){
+  var c = e.target.closest && e.target.closest('.vg-card[data-key]');
+  if (!S.adm || !S.drag || !c) return;
+  e.preventDefault();
+  document.querySelectorAll('.vg-card.alvo').forEach(function(x){ x.classList.remove('alvo'); });
+  if (c.getAttribute('data-key') !== S.drag) c.classList.add('alvo');
+});
+document.addEventListener('drop', function(e){
+  var c = e.target.closest && e.target.closest('.vg-card[data-key]');
+  if (!S.adm || !S.drag || !c) return;
+  e.preventDefault();
+  var alvo = c.getAttribute('data-key');
+  var grid = c.parentNode;
+  if (alvo === S.drag || !grid || !grid.querySelector('[data-key="' + S.drag + '"]')) { S.drag = null; return; }
+  var ks = chavesDoContainer(grid).filter(function(k){ return k !== S.drag; });
+  var r = c.getBoundingClientRect();
+  var depois = (e.clientX - r.left) > r.width / 2 && (e.clientY - r.top) > r.height / 2 * 0.2;
+  var pos = ks.indexOf(alvo) + (depois ? 1 : 0);
+  ks.splice(pos, 0, S.drag);
+  reordenar(grid, ks);
+  S.drag = null;
+  render();
+  salvar('Reordenar galeria').then(function(ok){ if (ok) toast(t('ordem_ok')); });
+});
+
+/* ---------- lightbox ---------- */
+function abrirLB(lst, i){
+  S.lb.lista = lst; S.lb.i = Math.max(0, i);
+  desenharLB(); abrirModal('vg-lb');
+}
+function desenharLB(){
+  var it = S.lb.lista[S.lb.i]; if (!it) return;
+  var img = $('vg-lb-img'), vid = $('vg-lb-video');
+  if (it.tipo === 'video'){
+    img.hidden = true; vid.hidden = false; vid.src = it.src;
+  } else {
+    try{ vid.pause(); }catch(e){}
+    vid.removeAttribute('src'); vid.hidden = true; img.hidden = false; img.src = it.src; img.alt = it.leg || '';
+  }
+  $('vg-lb-leg').textContent = it.leg || '';
+  $('vg-lb-cont').textContent = (S.lb.i + 1) + ' / ' + S.lb.lista.length;
+  var uni = S.lb.lista.length < 2;
+  $('vg-lb-ant').hidden = uni; $('vg-lb-prox').hidden = uni;
+}
+function navLB(d){
+  var n = S.lb.lista.length; if (!n) return;
+  S.lb.i = (S.lb.i + d + n) % n; desenharLB();
+}
+function fecharLB(){
+  var vid = $('vg-lb-video'); try{ vid.pause(); }catch(e){}
+  fecharModal('vg-lb');
+}
+function itemLB(x){ return { src: x.it.src, leg: legDe(x.it), tipo: x.it.tipo === 'video' ? 'video' : 'foto' }; }
+(function(){
+  var x0 = null;
+  var lb = $('vg-lb');
+  if (!lb) return;
+  lb.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function(e){
+    if (x0 == null) return;
+    var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 50) navLB(dx < 0 ? 1 : -1);
+  }, { passive: true });
+})();
+
+/* ---------- acoes de administracao ---------- */
+function acharItem(k){ return S.dados.itens[k] ? { key: k, it: S.dados.itens[k] } : null; }
+
+function editarLegenda(k){
+  var x = acharItem(k); if (!x) return;
+  S.editando = k;
+  $('vg-ed-pt').value = x.it.leg || '';
+  ['en', 'es', 'fr'].forEach(function(l){ var el = $('vg-ed-' + l); if (el) el.value = x.it['leg_' + l] || ''; });
+  abrirModal('vg-ed'); setTimeout(function(){ $('vg-ed-pt').focus(); $('vg-ed-pt').select(); }, 60);
+}
+function salvarLegenda(){
+  var x = acharItem(S.editando); if (!x) return;
+  var pt = $('vg-ed-pt').value.trim();
+  if (!pt){ $('vg-ed-pt').focus(); return; }
+  x.it.leg = pt;
+  ['en', 'es', 'fr'].forEach(function(l){
+    var el = $('vg-ed-' + l), v = el ? el.value.trim() : '';
+    if (v) x.it['leg_' + l] = v; else delete x.it['leg_' + l];
+  });
+  fecharModal('vg-ed'); render();
+  salvar('Legenda da galeria').then(function(ok){ if (ok) toast(t('leg_ok')); });
+}
+function legendaInline(span){
+  if (!S.adm || span.isContentEditable) return;
+  var k = span.getAttribute('data-key'), x = acharItem(k); if (!x) return;
+  var l = lang(), campo = (l !== 'pt' && CFG.idiomas.indexOf(l) > -1) ? 'leg_' + l : 'leg';
+  var antes = span.textContent;
+  span.contentEditable = 'true'; span.classList.add('editando'); span.focus();
+  var rg = document.createRange(); rg.selectNodeContents(span);
+  var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(rg);
+  function fim(salva){
+    span.removeEventListener('blur', onBlur); span.removeEventListener('keydown', onKey);
+    span.contentEditable = 'false'; span.classList.remove('editando');
+    var novo = span.textContent.trim();
+    if (salva && novo && novo !== antes){
+      x.it[campo] = novo; render();
+      salvar('Legenda da galeria').then(function(ok){ if (ok) toast(t('leg_ok')); });
+    } else { span.textContent = antes; }
+  }
+  function onBlur(){ fim(true); }
+  function onKey(e){
+    if (e.key === 'Enter'){ e.preventDefault(); span.blur(); }
+    if (e.key === 'Escape'){ e.preventDefault(); span.removeEventListener('blur', onBlur); fim(false); }
+  }
+  span.addEventListener('blur', onBlur); span.addEventListener('keydown', onKey);
+}
+function moverItem(k, dir){
+  var card = document.querySelector('.vg-card[data-key="' + k + '"]'); if (!card) return;
+  var grid = card.parentNode;
+  var ks = chavesDoContainer(grid), i = ks.indexOf(k), j = i + dir;
+  if (j < 0 || j >= ks.length){ toast(t('na_ponta')); return; }
+  var a = S.dados.itens[ks[i]], b = S.dados.itens[ks[j]];
+  var tmp = a.ts; a.ts = b.ts; b.ts = tmp;
+  render();
+  salvar('Reordenar galeria').then(function(ok){ if (ok) toast(t('ordem_ok')); });
+}
+function definirCapa(k){
+  var x = acharItem(k); if (!x || !x.it.ocasiao) return;
+  var min = Infinity;
+  itensDoAlbum(x.it.ocasiao).forEach(function(y){ min = Math.min(min, y.it.ts || 0); });
+  x.it.ts = (min === Infinity ? Date.now() : min) - 1;
+  render();
+  salvar('Capa do album').then(function(ok){ if (ok) toast(t('capa_ok')); });
+}
+function excluirItem(k){
+  if (!acharItem(k) || !confirm(t('conf_excluir'))) return;
+  delete S.dados.itens[k]; render();
+  salvar('Remover da galeria').then(function(ok){ if (ok) toast(t('excl_ok')); });
+}
+function substituirItem(k){
+  var x = acharItem(k); if (!x) return;
+  var inp = document.createElement('input');
+  inp.type = 'file'; inp.accept = x.it.tipo === 'video' ? 'video/*' : 'image/*';
+  inp.onchange = function(){
+    if (!inp.files || !inp.files[0]) return;
+    toast(t('enviando', { i: 1, n: 1 }));
+    enviarArquivo(inp.files[0], x.it.tipo === 'video' ? 'video' : 'foto').then(function(url){
+      x.it.src = url; if (x.it.tipo === 'video') delete x.it.poster;
+      render();
+      return salvar('Substituir foto').then(function(ok){ if (ok) toast(t('subst_ok')); });
+    }).catch(function(err){ banner('erro', t('falha_envio', { m: err.message })); });
+  };
+  inp.click();
+}
+function renomearAlbum(oc){
+  var novo = prompt(t('ren_prompt'), oc);
+  if (novo === null) return; novo = novo.trim();
+  if (!novo || novo === oc) return;
+  var n = 0;
+  Object.keys(S.dados.itens).forEach(function(k){ if (S.dados.itens[k].ocasiao === oc){ S.dados.itens[k].ocasiao = novo; n++; } });
+  if (!n) return;
+  if (S.albumAberto === oc) S.albumAberto = novo;
+  render();
+  salvar('Renomear album').then(function(ok){ if (ok) toast(t('ren_ok')); });
+}
+function addAoAlbum(tipo){
+  var oc = S.albumAberto; if (!oc) return;
+  var inp = document.createElement('input');
+  inp.type = 'file'; inp.accept = tipo === 'video' ? 'video/*' : 'image/*'; if (tipo !== 'video') inp.multiple = true;
+  inp.onchange = function(){
+    if (!inp.files || !inp.files.length) return;
+    var arqs = Array.prototype.slice.call(inp.files);
+    var alb = 'eventos';
+    itensDoAlbum(oc).forEach(function(x){ if (x.it.album) alb = x.it.album; });
+    var st = $('vg-album-status'), novos = [], i = 0;
+    (function prox(){
+      if (i >= arqs.length){
+        if (!novos.length){ st.textContent = t('nenhum'); return; }
+        novos.forEach(function(n, j){ S.dados.itens['k' + n.ts + '_' + j] = n; });
+        render();
+        salvar('Adicionar ao album').then(function(ok){ st.textContent = ok ? t('publicado', { n: novos.length }) : ''; });
+        return;
+      }
+      st.textContent = t('enviando', { i: i + 1, n: arqs.length });
+      enviarArquivo(arqs[i], tipo === 'video' ? 'video' : 'foto').then(function(url){
+        novos.push({ src: url, leg: oc, album: alb, ocasiao: oc, tipo: tipo === 'video' ? 'video' : 'foto', visib: 'publico', ts: Date.now() + i });
+      }).catch(function(err){ st.textContent = t('falha_envio', { m: err.message }); }).then(function(){ i++; prox(); });
+    })();
+  };
+  inp.click();
+}
+
+/* ---------- lote de publicacao ---------- */
+function prepararLote(files){
+  var arr = Array.prototype.slice.call(files || []);
+  if (!arr.length){ limparLote(); return; }
+  S.lote = arr.map(function(f){ return { file: f, leg: '' }; });
+  var grid = $('vg-lote-grid'); grid.innerHTML = '';
+  S.lote.forEach(function(it, i){
+    var card = document.createElement('div'); card.className = 'vg-lote-item';
+    var ehV = (it.file.type || '').indexOf('video') === 0;
+    var m = document.createElement(ehV ? 'video' : 'img');
+    m.src = URL.createObjectURL(it.file); if (ehV) m.muted = true;
+    var inp = document.createElement('input'); inp.type = 'text';
+    inp.placeholder = t('ph_leg', { n: i + 1 });
+    inp.addEventListener('input', function(){ S.lote[i].leg = inp.value; });
+    card.appendChild(m); card.appendChild(inp); grid.appendChild(card);
+  });
+  $('vg-lote-titulo').textContent = t('lote_titulo', { n: S.lote.length });
+  $('vg-lote-pub').textContent = t('publicar_n', { n: S.lote.length });
+  $('vg-lote-prog').hidden = true; $('vg-lote').hidden = false;
+}
+function limparLote(){
+  S.lote = null; $('vg-lote').hidden = true; $('vg-lote-grid').innerHTML = '';
+  $('vg-f-arq').value = '';
+}
+function valor(id){ var e = $(id); return e ? e.value.trim() : ''; }
+function publicarLote(){
+  if (!S.lote || !S.lote.length){ alert(t('alert_selecione')); return; }
+  var album = valor('vg-f-album') || CFG.albuns[0].id, ocasiao = valor('vg-f-ocasiao'),
+      data = valor('vg-f-data'), padrao = valor('vg-f-leg'), visib = valor('vg-f-visib') || 'publico';
+  var btn = $('vg-lote-pub'), prog = $('vg-lote-prog'), novos = [], i = 0;
+  btn.disabled = true; prog.hidden = false;
+  (function prox(){
+    if (i >= S.lote.length) return fim();
+    var it = S.lote[i], tipo = (it.file.type || '').indexOf('video') === 0 ? 'video' : 'foto';
+    prog.textContent = t('enviando', { i: i + 1, n: S.lote.length });
+    enviarArquivo(it.file, tipo, function(p){ prog.textContent = t('enviando', { i: i + 1, n: S.lote.length }) + ' ' + Math.round(p * 100) + '%'; })
+      .then(function(url){
+        var leg = it.leg || padrao || ocasiao || CFG.legPadrao;
+        if (data && !it.leg) leg += ' · ' + data;
+        novos.push({ src: url, leg: leg, album: album, ocasiao: ocasiao, tipo: tipo, visib: visib, ts: Date.now() + i });
+      }).catch(function(err){ prog.textContent = t('falha_envio', { m: err.message }); })
+      .then(function(){ i++; prox(); });
+  })();
+  function fim(){
+    if (!novos.length){ prog.textContent = t('nenhum'); btn.disabled = false; return; }
+    novos.forEach(function(n, j){ S.dados.itens['k' + n.ts + '_' + j] = n; });
+    render();
+    salvar('Adicionar a galeria').then(function(ok){
+      prog.textContent = ok ? t('publicado', { n: novos.length }) : t('falha_salvar', { m: '' });
+      btn.disabled = false;
+      if (ok){ setTimeout(limparLote, 2500); ['vg-f-leg', 'vg-f-data', 'vg-f-ocasiao'].forEach(function(id){ $(id).value = ''; }); }
+    });
+  }
+}
+function adicionarPorLink(){
+  var link = valor('vg-f-link'); if (!link){ alert(t('alert_link')); return; }
+  var album = valor('vg-f-album') || CFG.albuns[0].id, ts = Date.now();
+  var it = { src: link, leg: valor('vg-f-leg') || valor('vg-f-ocasiao') || CFG.legPadrao, album: album, ocasiao: valor('vg-f-ocasiao'), tipo: 'foto', visib: valor('vg-f-visib') || 'publico', ts: ts };
+  var d = valor('vg-f-data'); if (d) it.leg += ' · ' + d;
+  var h = valor('vg-f-href'); if (h) it.href = h;
+  S.dados.itens['k' + ts] = it; render();
+  salvar('Adicionar a galeria').then(function(ok){ if (ok){ toast(t('publicado', { n: 1 })); $('vg-f-link').value = ''; $('vg-f-href').value = ''; } });
+}
+
+/* ---------- modo administrador ---------- */
+function ativarAdm(on){
+  S.adm = on; SEC.classList.toggle('vg-adm', on);
+  document.querySelectorAll('.vg-modal').forEach(function(m){ m.classList.toggle('vg-adm', on); });
+  render();
+}
+function entrar(){
+  var tok = valor('vg-login-token'); if (!tok) return;
+  var err = $('vg-login-erro'); err.hidden = true;
+  $('vg-login-ok').disabled = true;
+  verificarToken(tok).then(function(ok){
+    $('vg-login-ok').disabled = false;
+    if (!ok){ err.hidden = false; return; }
+    S.token = tok;
+    try{ localStorage.setItem(CFG.chaveToken, tok); }catch(e){}
+    $('vg-login-token').value = ''; fecharModal('vg-login');
+    iniciarAdm();
+  });
+}
+function iniciarAdm(){
+  banner('espera', t('verificando'));
+  lerRemoto().then(function(){
+    ativarAdm(true); banner('ok', t('conectado'));
+    SEC.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }).catch(function(){ ativarAdm(true); banner('erro', t('falha_rede')); });
+}
+function sair(){
+  S.token = null;
+  try{ localStorage.removeItem(CFG.chaveToken); }catch(e){}
+  ativarAdm(false); $('vg-banner').hidden = true;
+}
+function baixarBackup(){
+  var blob = new Blob([JSON.stringify(S.dados, null, 2)], { type: 'application/json' });
+  var a = document.createElement('a'), u = URL.createObjectURL(blob);
+  a.href = u; a.download = 'backup_galeria_' + new Date().toISOString().slice(0, 10) + '.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(u); }, 2000);
+}
+
+/* ---------- eventos ---------- */
+document.addEventListener('click', function(e){
+  var b = e.target.closest && e.target.closest('[data-vg]');
+  var raiz = e.target.closest && e.target.closest('.vg-root');
+  if (!raiz) return;
+  if (!b){
+    if (e.target.classList && e.target.classList.contains('vg-modal') ) { /* clique no fundo */
+      if (e.target.id === 'vg-album'){ S.albumAberto = null; fecharModal('vg-album'); }
+      else fecharModal(e.target.id);
+    }
+    if (e.target.id === 'vg-lb') fecharLB();
+    return;
+  }
+  var a = b.getAttribute('data-vg'), k = b.getAttribute('data-key'), oc = b.getAttribute('data-oc');
+  if (a === 'aba'){ S.filtro = b.getAttribute('data-id'); render(); }
+  else if (a === 'abrir'){
+    var x = acharItem(k); if (!x) return;
+    if (x.it.href){ window.open(x.it.href, '_blank', 'noopener'); return; }
+    var cont = b.closest('.vg-card').parentNode;
+    var ks = chavesDoContainer(cont).map(function(kk){ return { key: kk, it: S.dados.itens[kk] }; }).filter(function(y){ return y.it; });
+    var i = 0; ks.forEach(function(y, n){ if (y.key === k) i = n; });
+    abrirLB(ks.map(itemLB), i);
+  }
+  else if (a === 'abrir-album'){ S.albumAberto = oc; renderAlbum(oc); abrirModal('vg-album'); }
+  else if (a === 'abrir-indice'){
+    var vis = lista().filter(function(y){ return S.filtro === 'todos' || y.it.album === S.filtro; }).sort(porDesc);
+    var j = 0; vis.forEach(function(y, n){ if (y.key === k) j = n; });
+    abrirLB(vis.map(itemLB), j);
+  }
+  else if (a === 'fechar-album'){ S.albumAberto = null; fecharModal('vg-album'); }
+  else if (a === 'lb-fechar') fecharLB();
+  else if (a === 'lb-ant') navLB(-1);
+  else if (a === 'lb-prox') navLB(1);
+  else if (a === 'lb-original'){ var cur = S.lb.lista[S.lb.i]; if (cur) window.open(cur.src, '_blank', 'noopener'); }
+  else if (a === 'login'){ if (S.adm) sair(); else { abrirModal('vg-login'); setTimeout(function(){ $('vg-login-token').focus(); }, 60); } }
+  else if (a === 'login-ok') entrar();
+  else if (a === 'fechar-login') fecharModal('vg-login');
+  else if (a === 'sair') sair();
+  else if (a === 'backup') baixarBackup();
+  else if (a === 'editar') editarLegenda(k);
+  else if (a === 'salvar-leg') salvarLegenda();
+  else if (a === 'fechar-leg') fecharModal('vg-ed');
+  else if (a === 'substituir') substituirItem(k);
+  else if (a === 'mover') moverItem(k, parseInt(b.getAttribute('data-dir'), 10));
+  else if (a === 'capa') definirCapa(k);
+  else if (a === 'excluir') excluirItem(k);
+  else if (a === 'renomear') renomearAlbum(oc);
+  else if (a === 'add-fotos') addAoAlbum('foto');
+  else if (a === 'add-video') addAoAlbum('video');
+  else if (a === 'lote-pub') publicarLote();
+  else if (a === 'lote-cancelar') limparLote();
+  else if (a === 'add-link') adicionarPorLink();
+});
+document.addEventListener('dblclick', function(e){
+  var s = e.target.closest && e.target.closest('.vg-leg');
+  if (s && S.adm) legendaInline(s);
+});
+document.addEventListener('change', function(e){
+  if (e.target && e.target.id === 'vg-f-arq') prepararLote(e.target.files);
+});
+document.addEventListener('keydown', function(e){
+  var ed = $('vg-ed'), lg = $('vg-login'), lb = $('vg-lb'), al = $('vg-album');
+  if (ed && !ed.hidden){
+    if (e.key === 'Escape') fecharModal('vg-ed');
+    if (e.key === 'Enter' && e.target && e.target.tagName === 'INPUT') salvarLegenda();
+    return;
+  }
+  if (lg && !lg.hidden){
+    if (e.key === 'Escape') fecharModal('vg-login');
+    if (e.key === 'Enter') entrar();
+    return;
+  }
+  if (lb && !lb.hidden){
+    if (e.key === 'Escape') fecharLB();
+    else if (e.key === 'ArrowRight') navLB(1);
+    else if (e.key === 'ArrowLeft') navLB(-1);
+    return;
+  }
+  if (al && !al.hidden && e.key === 'Escape'){ S.albumAberto = null; fecharModal('vg-album'); }
+});
+
+/* idioma do site */
+window.VG_idioma = function(){ aplicarTextos(); render(); if (!$('vg-lb').hidden) desenharLB(); };
+window.VG_estado = function(){ return S; };
+
+/* ---------- inicio ---------- */
+aplicarTextos();
+S.dados = lerEmbutido();
+render();
+fetch(CFG.arquivo + '?t=' + Date.now(), { cache: 'no-store' })
+  .then(function(r){ if (!r.ok) throw new Error('sem arquivo'); return r.json(); })
+  .then(function(j){ S.dados = normalizar(j); })
+  .catch(function(){})
+  .then(function(){
+    render();
+    var tok = null; try{ tok = localStorage.getItem(CFG.chaveToken); }catch(e){}
+    if (tok) verificarToken(tok).then(function(ok){ if (ok){ S.token = tok; iniciarAdm(); } else { try{ localStorage.removeItem(CFG.chaveToken); }catch(e){} } });
+  });
+})();
+
+</script>
+<!-- GALERIA-VG:FIM -->
 </body>
 </html>
