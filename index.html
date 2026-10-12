@@ -4413,22 +4413,63 @@ function varrer(raiz){
   return novas;
 }
 
+/* ---------- datas: meses e dias da semana em português -> idioma escolhido ---------- */
+var MESES = {
+  pt: ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'],
+  en: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+  es: ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
+  fr: ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre']
+};
+var MESES_ABR = {
+  pt: ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'],
+  en: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+  es: ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'],
+  fr: ['janv','févr','mars','avr','mai','juin','juil','août','sept','oct','nov','déc']
+};
+var DIAS_ABR = {
+  pt: ['dom','seg','ter','qua','qui','sex','sáb'],
+  en: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+  es: ['dom','lun','mar','mié','jue','vie','sáb'],
+  fr: ['dim','lun','mar','mer','jeu','ven','sam']
+};
+function semAcento(s){ return s.normalize ? s.normalize('NFD').replace(/[̀-ͯ]/g, '') : s; }
+function capitalizar(modelo, s){ return /^[A-ZÀ-Ý]/.test(modelo) ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+function traduzirData(t, l){
+  if (l === 'pt' || t.length > 80 || /[<>]/.test(t)) return null;
+  var partes = t.split(/(\s+|[·,\/()\-–])/), achou = false, out = [];
+  for (var i = 0; i < partes.length; i++){
+    var p = partes[i]; if (!p) continue;
+    if (/^(\s+|[·,\/()\-–])$/.test(p) || /^\d+(º|ª)?\.?$/.test(p)){ out.push(p); continue; }
+    var base = semAcento(p.toLowerCase()), ponto = /\.$/.test(base); base = base.replace(/\.$/, '');
+    var m = MESES.pt.map(semAcento).indexOf(base), a = MESES_ABR.pt.indexOf(base), d = DIAS_ABR.pt.map(semAcento).indexOf(base);
+    if (m > -1){ out.push(capitalizar(p, MESES[l][m])); achou = true; }
+    else if (a > -1){ var ab = MESES_ABR[l][a]; out.push(capitalizar(p, (ponto && MESES[l][a] !== ab ? ab + '.' : ab))); achou = true; }
+    else if (d > -1){ out.push(capitalizar(p, DIAS_ABR[l][d]) + (ponto ? '.' : '')); achou = true; }
+    else if (base === 'de'){ if (l === 'es') out.push(p); else { if (out.length && /^\s+$/.test(out[out.length - 1])) out.pop(); } }
+    else return null;                                   // não é uma data
+  }
+  return achou ? out.join('').replace(/\s{2,}/g, ' ').trim() : null;
+}
+
 /* ---------- aplicar um idioma ---------- */
-function traduzirChave(ch, l){ var e = DIC[ch]; return (e && e[l]) || null; }
+function traduzirChave(ch, l){
+  var e = DIC[ch]; if (e && e[l]) return e[l];
+  return CFG.datas === false ? null : traduzirData(ch, l);
+}
 function aplicarUnidade(u, l){
   if (!u.no.isConnected || u.estado === l) return;
   u.estado = l;
+  // sem tradução no dicionário: só desfaz o que o próprio motor traduziu (o site pode ter traduzido por conta própria)
   if (u.tipo === 'txt'){
     var t = l === 'pt' ? null : traduzirChave(u.chave, l);
     var base = u.orig, ini = base.match(/^\s*/)[0], fim = base.match(/\s*$/)[0];
-    var novo = t ? ini + t + fim : base;
-    if (u.no.nodeValue !== novo) u.no.nodeValue = novo;
+    if (t){ var novo = ini + t + fim; if (u.no.nodeValue !== novo) u.no.nodeValue = novo; u.aplicado = true; }
+    else if (u.aplicado){ u.no.nodeValue = base; u.aplicado = false; }
     return;
   }
   var el = u.no, tr = l === 'pt' ? null : traduzirChave(u.chave, l), frag = tr ? montar(tr, u.els) : null;
-  while (el.firstChild) el.removeChild(el.firstChild);
-  if (frag) el.appendChild(frag);
-  else u.orig.forEach(function(n){ el.appendChild(n); });
+  if (frag){ while (el.firstChild) el.removeChild(el.firstChild); el.appendChild(frag); u.aplicado = true; }
+  else if (u.aplicado){ while (el.firstChild) el.removeChild(el.firstChild); u.orig.forEach(function(n){ el.appendChild(n); }); u.aplicado = false; }
 }
 function aplicarAtrs(el, l){
   var r = regAtr.get(el); if (!r) return;
@@ -4445,6 +4486,7 @@ function aplicarMeta(l){
   if (og) og.setAttribute('content', {pt: 'pt_BR', en: 'en_US', es: 'es_ES', fr: 'fr_FR'}[l]);
 }
 function aplicarTudo(l){
+  tratar(obs.takeRecords()); if (pendente.length) processarPendentes();
   aplicando = true;
   try{
     unidades = unidades.filter(function(u){ return u.no.isConnected; });
@@ -4463,7 +4505,7 @@ function processarPendentes(){
     lista.forEach(function(item){
       if (item.tipo === 'reg'){                       // uma frase registrada mudou por fora
         var u = item.u; if (!u.no.isConnected) return;
-        u.estado = null;
+        u.estado = null; u.aplicado = false;
         if (u.tipo === 'txt'){ u.orig = u.no.nodeValue; u.chave = norm(u.orig); }
         else { var els = []; u.chave = norm(molde(u.no, els)); u.els = els; u.orig = Array.prototype.slice.call(u.no.childNodes); }
         if (atual !== 'pt') aplicarUnidade(u, atual);
@@ -4484,8 +4526,8 @@ function unidadeDe(no){
   }
   return null;
 }
-var obs = new MutationObserver(function(muts){
-  if (aplicando) return;
+function tratar(muts){
+  if (aplicando || !muts) return;
   muts.forEach(function(m){
     if (m.type === 'attributes'){
       var r = regAtr.get(m.target) || {}, v = m.target.getAttribute(m.attributeName);
@@ -4498,7 +4540,8 @@ var obs = new MutationObserver(function(muts){
     if (u){ agendar({tipo: 'reg', u: u}); return; }
     if (m.type === 'childList') m.addedNodes.forEach(function(n){ if (n.nodeType === 1 || n.nodeType === 3) agendar({tipo: 'novo', no: n}); });
   });
-});
+}
+var obs = new MutationObserver(tratar);
 
 /* ---------- escolha do idioma ---------- */
 function idiomaInicial(){
@@ -4512,17 +4555,20 @@ function definir(l, opcoes){
   if (IDIOMAS.indexOf(l) < 0) l = 'pt';
   atual = l;
   try{ localStorage.setItem(CHAVE, l); }catch(e){}
-  document.documentElement.setAttribute('lang', HTML_LANG[l]);
+  sincronizando = true;
+  if (!(opcoes && opcoes.doSite) && idiomaDoHtml() !== l) document.documentElement.setAttribute('lang', HTML_LANG[l]);
+  setTimeout(function(){ sincronizando = false; }, 0);
   aplicarTudo(l);
   document.querySelectorAll('.i18n-seletor button').forEach(function(b){ var on = b.getAttribute('data-lang') === l; b.setAttribute('aria-pressed', on); b.classList.toggle('on', on); });
   if (!(opcoes && opcoes.inicial)){
     try{ var u = new URL(location.href); if (l === 'pt') u.searchParams.delete('lang'); else u.searchParams.set('lang', l); history.replaceState(history.state, '', u); }catch(e){}
   }
+  if (CFG.seletorProprio && !(opcoes && (opcoes.doSite || opcoes.inicial))) pedirAoSite(l);
   if (typeof CFG.aoTrocar === 'function'){ try{ CFG.aoTrocar(l); }catch(e){ console.warn(e); } }
   try{ document.dispatchEvent(new CustomEvent('i18n:idioma', {detail: {idioma: l}})); }catch(e){}
 }
 function montarSeletor(){
-  if (document.querySelector('.i18n-seletor')) return;
+  if (CFG.seletorProprio || document.querySelector('.i18n-seletor')) return;
   var box = document.createElement('div');
   box.className = 'i18n-seletor' + (CFG.seletorFixo === false ? '' : ' i18n-fixo');
   box.setAttribute('role', 'group'); box.setAttribute('aria-label', 'Idioma · Language · Idioma · Langue');
@@ -4536,11 +4582,29 @@ function montarSeletor(){
   (alvo || document.body).appendChild(box);
 }
 
+/* o seletor do próprio site muda o atributo lang do <html>: o motor acompanha */
+function idiomaDoHtml(){ var v = String(document.documentElement.getAttribute('lang') || 'pt').slice(0, 2).toLowerCase(); return IDIOMAS.indexOf(v) > -1 ? v : 'pt'; }
+var sincronizando = false;
+function acompanharSite(){
+  new MutationObserver(function(){
+    if (sincronizando) return;
+    var l = idiomaDoHtml(); if (l !== atual) definir(l, {doSite: true});
+  }).observe(document.documentElement, {attributes: true, attributeFilter: ['lang']});
+}
+function pedirAoSite(l, tentativas){
+  if (typeof CFG.definirNoSite !== 'function') return;
+  try{ CFG.definirNoSite(l); }catch(e){ if ((tentativas || 0) < 10) setTimeout(function(){ pedirAoSite(l, (tentativas || 0) + 1); }, 300); }
+}
 function iniciar(){
   montarSeletor();
   varrer(document.body);
   obs.observe(document.body, {subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATRS});
-  definir(idiomaInicial(), {inicial: true});
+  var l = idiomaInicial();
+  if (CFG.seletorProprio){
+    acompanharSite();
+    if (l !== idiomaDoHtml()) pedirAoSite(l);          // ?lang= ou idioma do navegador: o site troca e o motor acompanha
+  }
+  definir(l, {inicial: true});
 }
 
 window.I18N_SITE = {
