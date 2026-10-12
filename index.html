@@ -1359,6 +1359,28 @@ textarea.nt-in{resize:vertical;line-height:1.55}
 .nt-form[data-tipo="midia"] .nt-so-release{display:none}
 .nt-form[data-tipo="release"] .nt-so-midia{display:none}
 </style>
+<meta name="description" content="Uma organização nacional dos povos indígenas do Brasil para decidir, com autonomia, o destino de seus territórios, de sua produção e de seu futuro.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.unipbras.com.br/">
+<meta property="og:title" content="UNIPBRAS: União Nacional dos Produtores e Agricultores Indígenas do Brasil">
+<meta property="og:description" content="Uma organização nacional dos povos indígenas do Brasil para decidir, com autonomia, o destino de seus territórios, de sua produção e de seu futuro.">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="en_US"><meta property="og:locale:alternate" content="es_ES"><meta property="og:locale:alternate" content="fr_FR">
+<link rel="alternate" hreflang="pt-BR" href="https://www.unipbras.com.br/">
+<link rel="alternate" hreflang="en" href="https://www.unipbras.com.br/?lang=en">
+<link rel="alternate" hreflang="es" href="https://www.unipbras.com.br/?lang=es">
+<link rel="alternate" hreflang="fr" href="https://www.unipbras.com.br/?lang=fr">
+<link rel="alternate" hreflang="x-default" href="https://www.unipbras.com.br/">
+<style id="i18n-estilo">
+.i18n-seletor{display:flex;gap:2px;padding:4px;border-radius:999px;background:rgba(15,51,18,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 6px 22px rgba(0,0,0,.28)}
+.i18n-seletor.i18n-fixo{position:fixed;left:14px;bottom:14px;z-index:9990}
+.i18n-seletor button{font:700 .74rem/1 var(--font-body,system-ui),sans-serif;letter-spacing:.06em;color:#FBF6EC;background:transparent;border:0;border-radius:999px;padding:8px 10px;min-width:40px;min-height:34px;cursor:pointer;transition:background .2s,color .2s}
+.i18n-seletor button:hover{background:rgba(255,255,255,.12)}
+.i18n-seletor button.on{background:var(--gold,#E8A317);color:#241C13}
+.i18n-seletor button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media (max-width:900px){.i18n-seletor.i18n-fixo{bottom:76px;left:10px}}
+@media print{.i18n-seletor{display:none}}
+</style>
 </head>
 <body>
 <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
@@ -1796,7 +1818,7 @@ textarea.nt-in{resize:vertical;line-height:1.55}
         <g class="map-markers">
 <g class="map-marker" data-idx="0" data-city="Chapecó/SC" data-people='[{"ethnicity": "Wapichana"}]' transform="translate(434.6,647.4)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
 <g class="map-marker" data-idx="1" data-city="Campo Grande/MS" data-people='[{"ethnicity": "Terena"}]' transform="translate(395.2,518.3)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
-<g class="map-marker" data-idx="2" data-city="Porto Murtinho/MS" data-people='[{"ethnicity": "Kadiweu"}, {"ethnicity": "Kadiwéu"}]' transform="translate(332.6,542.7)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
+<g class="map-marker" data-idx="2" data-city="Porto Murtinho/MS" data-people='[{"ethnicity": "Kadiwéu"}, {"ethnicity": "Kadiwéu"}]' transform="translate(332.6,542.7)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
 <g class="map-marker" data-idx="3" data-city="Recife/PE" data-people='[{"ethnicity": "Xucuru"}]' transform="translate(778.2,278.0)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
 <g class="map-marker" data-idx="4" data-city="Águas Belas/PE" data-people='[{"ethnicity": "Fulni-ô"}]' transform="translate(735.0,298.6)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
 <g class="map-marker" data-idx="5" data-city="Inajá/PE" data-people='[{"ethnicity": "Kambiwá"}]' transform="translate(721.6,294.5)"><circle class="marker-hitarea" r="8"/><circle class="marker-halo" r="16"/><path class="marker-diamond" d="M0,-7 L7,0 L0,7 L-7,0 Z"/></g>
@@ -2534,7 +2556,8 @@ textarea.nt-in{resize:vertical;line-height:1.55}
       peopleEl.innerHTML = '';
       for (var i = 0; i < people.length; i++){
         var li = document.createElement('li');
-        li.innerHTML = '<b>Etnia:</b> ' + people[i].ethnicity;
+        var rot = document.createElement('b'); rot.textContent = 'Etnia:'; li.appendChild(rot);
+        var nomePovo = document.createElement('span'); nomePovo.setAttribute('translate', 'no'); nomePovo.textContent = ' ' + people[i].ethnicity; li.appendChild(nomePovo);
         peopleEl.appendChild(li);
       }
       defaultMsg.hidden = true;
@@ -2946,7 +2969,17 @@ textarea.nt-in{resize:vertical;line-height:1.55}
    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS",
    "tipo": "foto",
    "visib": "publico",
-   "ts": 1791740942094
+   "ts": 1791740942094,
+   "leg_en": "The IFMS rector and pro-rectors with the presidents of the institutions at the meeting on the agreement among CMDDI, ICET, FOCAMS, IFMS and MPE/MS.",
+   "leg_es": "La rectora y los prorrectores del IFMS con los presidentes de las instituciones en el encuentro para el convenio entre CMDDI, ICET, FOCAMS, IFMS y MPE/MS.",
+   "leg_fr": "La rectrice et les pro-recteurs de l’IFMS avec les présidents des institutions lors de la rencontre pour la convention entre CMDDI, ICET, FOCAMS, IFMS et MPE/MS.",
+   "ocasiao_en": "Meeting on the Agreement among CMDDI, ICET, FOCAMS, IFMS and MPE/MS",
+   "ocasiao_es": "Encuentro para el Convenio entre CMDDI, ICET, FOCAMS, IFMS y MPE/MS",
+   "ocasiao_fr": "Rencontre pour la convention entre le CMDDI, l’ICET, le FOCAMS, l’IFMS et le MPE/MS",
+   "trad_src": {
+    "leg": "Reitora e pró-reitores do IFMS e presidentes das instituições no encontro para o convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS.",
+    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS"
+   }
   },
   "k1791740942095_1": {
    "src": "imgs/galeria/convenio-ifms-02-reuniao.jpg",
@@ -2955,7 +2988,17 @@ textarea.nt-in{resize:vertical;line-height:1.55}
    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS",
    "tipo": "foto",
    "visib": "publico",
-   "ts": 1791740942095
+   "ts": 1791740942095,
+   "leg_en": "Working meeting on the agreement, held at IFMS.",
+   "leg_es": "Reunión de trabajo sobre el convenio, realizada en el IFMS.",
+   "leg_fr": "Réunion de travail sur la convention, tenue à l’IFMS.",
+   "ocasiao_en": "Meeting on the Agreement among CMDDI, ICET, FOCAMS, IFMS and MPE/MS",
+   "ocasiao_es": "Encuentro para el Convenio entre CMDDI, ICET, FOCAMS, IFMS y MPE/MS",
+   "ocasiao_fr": "Rencontre pour la convention entre le CMDDI, l’ICET, le FOCAMS, l’IFMS et le MPE/MS",
+   "trad_src": {
+    "leg": "Reunião de trabalho sobre o convênio, realizada no IFMS.",
+    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS"
+   }
   },
   "k1791740942096_2": {
    "src": "imgs/galeria/convenio-ifms-03-documento.jpg",
@@ -2964,11 +3007,158 @@ textarea.nt-in{resize:vertical;line-height:1.55}
    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS",
    "tipo": "foto",
    "visib": "publico",
-   "ts": 1791740942096
+   "ts": 1791740942096,
+   "leg_en": "Handing over of a document during the meeting on the agreement.",
+   "leg_es": "Entrega de un documento durante el encuentro para el convenio.",
+   "leg_fr": "Remise d’un document lors de la rencontre pour la convention.",
+   "ocasiao_en": "Meeting on the Agreement among CMDDI, ICET, FOCAMS, IFMS and MPE/MS",
+   "ocasiao_es": "Encuentro para el Convenio entre CMDDI, ICET, FOCAMS, IFMS y MPE/MS",
+   "ocasiao_fr": "Rencontre pour la convention entre le CMDDI, l’ICET, le FOCAMS, l’IFMS et le MPE/MS",
+   "trad_src": {
+    "leg": "Entrega de documento durante o encontro para o convênio.",
+    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS"
+   }
   }
  }
 }</script>
-<script>window.VG_CFG={"cloud": {"nome": "dn1ubybc0", "preset": "cmddi_galeria"}, "repo": "germanocoelho/unipbras.github.io", "arquivo": "galeria.json", "chaveCache": "unipbras_galeria_cache", "chaveToken": "unipbras_gh_token", "senhaSal": "unipbras-vg-1", "senhaHash": "64074fa852d691d8fd943e18702bc4dbe43a07557748eff89eaa448eb8949369", "idiomas": ["pt"], "legPadrao": "UNIPBRAS", "textos": {"pt": {"todos": "Todos", "vazio": "Nenhuma foto nesta categoria ainda.", "indice": "Índice de registros", "indice_cab": "{n} registro(s) em {a}", "abrir": "Abrir ›", "album_rotulo": "Álbum", "n_fotos": "{n} foto(s)", "e_videos": " e {n} vídeo(s)", "abrir_album": "clique para abrir", "clique_ampliar": "clique para ampliar", "lb_orig": "Abrir original", "restrito": "Restrito", "video": "Vídeo", "capa": "Capa", "adm_link": "Administrar galeria", "adm_titulo": "Adicionar fotos e vídeos à galeria", "backup": "Baixar cópia de segurança", "sair": "Sair do modo administrador", "dica_arrastar": "Arraste os cartões para reordenar. Clique duas vezes na legenda para editá-la.", "f_leg": "Legenda padrão (usada quando o arquivo não tem legenda própria)", "f_data": "Data ou evento", "ph_data": "Ex.: 15 de jun. de 2026", "f_album": "Álbum", "f_visib": "Visibilidade", "v_pub": "Público", "v_res": "Somente administradores", "f_ocasiao": "Nome do evento ou reunião (agrupa as fotos em um álbum, opcional)", "f_ocasiao_dica": "Com o nome preenchido, todas as fotos do lote formam um álbum com capa e contador. Sem o nome, entram soltas na galeria.", "f_arquivos": "Selecionar várias fotos ou vídeos de uma vez (Ctrl ou Shift)", "lote_titulo": "{n} arquivo(s) selecionado(s). Escreva a legenda de cada um:", "ph_leg": "Legenda do arquivo {n}", "publicar_n": "Publicar {n} arquivo(s)", "cancelar": "Cancelar", "ou_link": "ou informe o link direto de uma imagem", "f_href": "Link externo ao clicar (opcional)", "add_link": "Adicionar pelo link", "enviando": "Enviando {i} de {n}...", "publicado": "{n} item(ns) publicado(s) e salvo(s).", "nenhum": "Nenhum arquivo foi enviado. Verifique a conexão.", "falha_envio": "Falha no envio ({m}).", "login_titulo": "Acesso administrativo", "login_dica": "Digite a senha de administrador. Na primeira vez em cada navegador, informe também o token do GitHub com permissão de escrita neste repositório. Ele fica guardado apenas neste navegador.", "senha_rot": "Senha de administrador", "token_rot": "Token do GitHub (só na primeira vez neste navegador)", "senha_errada": "Senha incorreta.", "token_falta": "Informe também o token do GitHub (primeira vez neste navegador).", "entrar": "Entrar", "token_invalido": "Token inválido ou sem permissão de escrita.", "conectado": "Conectado: tudo que você publicar é salvo permanentemente.", "verificando": "Verificando a conexão...", "falha_salvar": "Falha ao salvar ({m}). Nada foi gravado permanentemente.", "falha_rede": "Falha de rede ao salvar.", "salvo": "Salvo na nuvem.", "ed_titulo": "Editar legenda", "ed_pt": "Legenda (Português)", "ed_en": "Legenda (English)", "ed_es": "Legenda (Español)", "ed_fr": "Legenda (Français)", "ed_dica": "Idiomas em branco usam a legenda em português.", "salvar": "Salvar", "t_editar": "Editar legenda", "t_substituir": "Substituir foto", "t_atras": "Mover para trás", "t_frente": "Mover para frente", "t_capa": "Definir como capa do álbum", "t_excluir": "Excluir", "t_renomear": "Renomear álbum", "conf_excluir": "Remover este item da galeria?", "ren_prompt": "Novo nome do álbum (corrige em todas as fotos do grupo):", "add_fotos": "Adicionar fotos ao álbum", "add_video": "Adicionar vídeo ao álbum", "na_ponta": "O item já está na ponta.", "ordem_ok": "Ordem atualizada e salva.", "capa_ok": "Foto definida como capa do álbum.", "leg_ok": "Legenda atualizada.", "subst_ok": "Foto substituída e salva.", "excl_ok": "Item removido.", "ren_ok": "Álbum renomeado.", "alert_selecione": "Selecione os arquivos primeiro.", "alert_link": "Informe o link da imagem."}}, "albuns": [{"id": "eventos", "nome": {"pt": "Eventos"}}, {"id": "reunioes", "nome": {"pt": "Reuniões"}}, {"id": "liderancas", "nome": {"pt": "Lideranças"}}, {"id": "institucional", "nome": {"pt": "Institucional"}}], "idioma": function(){return 'pt';}};</script>
+<script>
+/* ===== Tradução automática (português -> inglês, espanhol e francês) =====
+   Usada quando o ADM insere ou altera um texto no site.
+   1) Se este navegador tiver a chave do Claude configurada (Sala de Imprensa ->
+      Configurações), traduz pelo Claude.
+   2) Sem chave, ou se o Claude falhar, usa o serviço gratuito MyMemory.
+   Se nenhum dos dois responder, devolve null e o texto fica em português. */
+(function(){
+if (window.TRAD_AUTO) return;
+var LINGUAS = ['en', 'es', 'fr'];
+var MM_LANG = {en:'en-GB', es:'es-ES', fr:'fr-FR'};
+
+function chaveClaude(){
+  try{
+    var direta = localStorage.getItem('trad_claude_key'); if (direta) return direta.trim();
+    var cfgs = ['cmddi_si_cfg', 'icet_si_cfg', 'aldeiaxp_si_cfg', 'focams_si_cfg'];
+    for (var i = 0; i < cfgs.length; i++){
+      var c = JSON.parse(localStorage.getItem(cfgs[i]) || '{}');
+      if (c && c.claude) return String(c.claude).trim();
+    }
+  }catch(e){}
+  return '';
+}
+
+function viaClaude(textos, chave){
+  var schema = {type:'object', additionalProperties:false, required:LINGUAS, properties:{}};
+  LINGUAS.forEach(function(l){ schema.properties[l] = {type:'array', items:{type:'string'}}; });
+  var corpo = {
+    model: 'claude-opus-5-5',
+    max_tokens: 16000,
+    fallbacks: 'default',
+    output_config: {effort: 'low', format: {type: 'json_schema', schema: schema}},
+    system: 'Você traduz textos de sites institucionais de organizações indígenas de Mato Grosso do Sul (Brasil) do português para inglês (en), espanhol latino-americano (es) e francês (fr). ' +
+      'Preserve intactos nomes próprios de pessoas, organizações, etnias, aldeias e lugares, siglas (ICET, CMDDI, FOCAMS, UNIPBRAS, IFMS, MPE/MS, COOPIMS, INPI, FUNAI etc.), números, datas e links. ' +
+      'Use tom formal e respeitoso. Cada lista de saída deve ter exatamente um item por texto de entrada, na mesma ordem; quebras de linha devem ser mantidas.',
+    messages: [{role: 'user', content: JSON.stringify({textos: textos})}]
+  };
+  return fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': chave,
+      'anthropic-version': '2023-06-01',
+      'anthropic-beta': 'server-side-fallback-2026-07-01',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify(corpo)
+  }).then(function(r){
+    return r.json().then(function(j){
+      if (!r.ok) throw new Error((j && j.error && j.error.message) || ('HTTP ' + r.status));
+      if (j.stop_reason === 'refusal') throw new Error('recusado');
+      var bloco = (j.content || []).filter(function(b){ return b.type === 'text'; })[0];
+      if (!bloco) throw new Error('resposta vazia');
+      var out = JSON.parse(bloco.text);
+      LINGUAS.forEach(function(l){ if (!Array.isArray(out[l]) || out[l].length !== textos.length) throw new Error('resposta incompleta'); });
+      return out;
+    });
+  });
+}
+
+/* MyMemory aceita até ~500 caracteres por pedido: divide por parágrafo e frase */
+function pedacos(t){
+  var out = [];
+  String(t).split(/(\n+)/).forEach(function(par){
+    if (par.length <= 450){ out.push(par); return; }
+    var atual = '';
+    par.split(/(?<=[.!?;:])\s+/).forEach(function(fr){
+      while (fr.length > 450){ if (atual){ out.push(atual); atual = ''; } out.push(fr.slice(0, 450)); fr = fr.slice(450); }
+      if ((atual + ' ' + fr).trim().length > 450){ out.push(atual); atual = fr; }
+      else atual = atual ? atual + ' ' + fr : fr;
+    });
+    if (atual) out.push(atual);
+  });
+  return out;
+}
+function mmUm(trecho, l){
+  if (!trecho.trim()) return Promise.resolve(trecho);
+  var url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(trecho) + '&langpair=' + encodeURIComponent('pt-BR|' + MM_LANG[l]);
+  return fetch(url).then(function(r){ return r.json(); }).then(function(j){
+    if (!j || j.responseStatus != 200 || !j.responseData) throw new Error((j && j.responseDetails) || 'MyMemory');
+    var t = j.responseData.translatedText || '';
+    if (/MYMEMORY WARNING|QUERY LENGTH LIMIT/i.test(t)) throw new Error(t.slice(0, 80));
+    var tmp = document.createElement('textarea'); tmp.innerHTML = t; return tmp.value;
+  });
+}
+function viaMyMemory(textos){
+  var out = {en: [], es: [], fr: []}, fila = Promise.resolve();
+  textos.forEach(function(texto, i){
+    LINGUAS.forEach(function(l){
+      fila = fila.then(function(){
+        var p = pedacos(texto), res = [], f2 = Promise.resolve();
+        p.forEach(function(tr){ f2 = f2.then(function(){ return mmUm(tr, l).then(function(x){ res.push(x); }); }); });
+        return f2.then(function(){ out[l][i] = res.join(''); });
+      });
+    });
+  });
+  return fila.then(function(){ return out; });
+}
+
+/* textos: lista de strings em português. Devolve {en:[...], es:[...], fr:[...]} ou null. */
+function traduzir(textos){
+  textos = (textos || []).map(function(t){ return String(t == null ? '' : t); });
+  if (!textos.some(function(t){ return t.trim(); })) return Promise.resolve({en: textos.slice(), es: textos.slice(), fr: textos.slice()});
+  var chave = chaveClaude();
+  var tentativa = chave ? viaClaude(textos, chave).catch(function(e){ console.warn('Tradução pelo Claude falhou, usando MyMemory:', e && e.message); return viaMyMemory(textos); })
+                        : viaMyMemory(textos);
+  return tentativa.catch(function(e){ console.warn('Tradução automática indisponível:', e && e.message); return null; });
+}
+
+/* Preenche campo_en / campo_es / campo_fr de um objeto a partir de campo (pt).
+   Só traduz o que falta ou o que mudou desde a última tradução automática
+   (traduções feitas à mão, sem registro em trad_src, não são sobrescritas). */
+function pendentes(item, campos){
+  return campos.filter(function(c){
+    var pt = item[c]; if (typeof pt !== 'string' || !pt.trim()) return false;
+    var src = item.trad_src && item.trad_src[c];
+    var falta = LINGUAS.some(function(l){ return !item[c + '_' + l]; });
+    return falta || (src != null && src !== pt);
+  });
+}
+function traduzirCampos(item, campos){
+  var cs = pendentes(item, campos); if (!cs.length) return Promise.resolve(false);
+  return traduzir(cs.map(function(c){ return item[c]; })).then(function(t){
+    if (!t) return false;
+    item.trad_src = item.trad_src || {};
+    cs.forEach(function(c, i){
+      var mudou = item.trad_src[c] != null && item.trad_src[c] !== item[c];
+      LINGUAS.forEach(function(l){ if (mudou || !item[c + '_' + l]) item[c + '_' + l] = t[l][i]; });
+      item.trad_src[c] = item[c];
+    });
+    return true;
+  });
+}
+
+window.TRAD_AUTO = {traduzir: traduzir, traduzirCampos: traduzirCampos, pendentes: pendentes, chaveClaude: chaveClaude, linguas: LINGUAS};
+})();
+</script>
+<script>window.VG_CFG={"cloud": {"nome": "dn1ubybc0", "preset": "cmddi_galeria"}, "repo": "germanocoelho/unipbras.github.io", "arquivo": "galeria.json", "chaveCache": "unipbras_galeria_cache", "chaveToken": "unipbras_gh_token", "senhaSal": "unipbras-vg-1", "senhaHash": "64074fa852d691d8fd943e18702bc4dbe43a07557748eff89eaa448eb8949369", "idiomas": ["pt", "en", "es", "fr"], "legPadrao": "UNIPBRAS", "textos": {"pt": {"todos": "Todos", "vazio": "Nenhuma foto nesta categoria ainda.", "indice": "Índice de registros", "indice_cab": "{n} registro(s) em {a}", "abrir": "Abrir ›", "album_rotulo": "Álbum", "n_fotos": "{n} foto(s)", "e_videos": " e {n} vídeo(s)", "abrir_album": "clique para abrir", "clique_ampliar": "clique para ampliar", "lb_orig": "Abrir original", "restrito": "Restrito", "video": "Vídeo", "capa": "Capa", "adm_link": "Administrar galeria", "adm_titulo": "Adicionar fotos e vídeos à galeria", "backup": "Baixar cópia de segurança", "sair": "Sair do modo administrador", "dica_arrastar": "Arraste os cartões para reordenar. Clique duas vezes na legenda para editá-la.", "f_leg": "Legenda padrão (usada quando o arquivo não tem legenda própria)", "f_data": "Data ou evento", "ph_data": "Ex.: 15 de jun. de 2026", "f_album": "Álbum", "f_visib": "Visibilidade", "v_pub": "Público", "v_res": "Somente administradores", "f_ocasiao": "Nome do evento ou reunião (agrupa as fotos em um álbum, opcional)", "f_ocasiao_dica": "Com o nome preenchido, todas as fotos do lote formam um álbum com capa e contador. Sem o nome, entram soltas na galeria.", "f_arquivos": "Selecionar várias fotos ou vídeos de uma vez (Ctrl ou Shift)", "lote_titulo": "{n} arquivo(s) selecionado(s). Escreva a legenda de cada um:", "ph_leg": "Legenda do arquivo {n}", "publicar_n": "Publicar {n} arquivo(s)", "cancelar": "Cancelar", "ou_link": "ou informe o link direto de uma imagem", "f_href": "Link externo ao clicar (opcional)", "add_link": "Adicionar pelo link", "enviando": "Enviando {i} de {n}...", "publicado": "{n} item(ns) publicado(s) e salvo(s).", "nenhum": "Nenhum arquivo foi enviado. Verifique a conexão.", "falha_envio": "Falha no envio ({m}).", "login_titulo": "Acesso administrativo", "login_dica": "Digite a senha de administrador. Na primeira vez em cada navegador, informe também o token do GitHub com permissão de escrita neste repositório. Ele fica guardado apenas neste navegador.", "senha_rot": "Senha de administrador", "token_rot": "Token do GitHub (só na primeira vez neste navegador)", "senha_errada": "Senha incorreta.", "token_falta": "Informe também o token do GitHub (primeira vez neste navegador).", "entrar": "Entrar", "token_invalido": "Token inválido ou sem permissão de escrita.", "conectado": "Conectado: tudo que você publicar é salvo permanentemente.", "verificando": "Verificando a conexão...", "falha_salvar": "Falha ao salvar ({m}). Nada foi gravado permanentemente.", "falha_rede": "Falha de rede ao salvar.", "salvo": "Salvo na nuvem.", "ed_titulo": "Editar legenda", "ed_pt": "Legenda (Português)", "ed_en": "Legenda (English)", "ed_es": "Legenda (Español)", "ed_fr": "Legenda (Français)", "ed_dica": "Idiomas em branco usam a legenda em português.", "salvar": "Salvar", "t_editar": "Editar legenda", "t_substituir": "Substituir foto", "t_atras": "Mover para trás", "t_frente": "Mover para frente", "t_capa": "Definir como capa do álbum", "t_excluir": "Excluir", "t_renomear": "Renomear álbum", "conf_excluir": "Remover este item da galeria?", "ren_prompt": "Novo nome do álbum (corrige em todas as fotos do grupo):", "add_fotos": "Adicionar fotos ao álbum", "add_video": "Adicionar vídeo ao álbum", "na_ponta": "O item já está na ponta.", "ordem_ok": "Ordem atualizada e salva.", "capa_ok": "Foto definida como capa do álbum.", "leg_ok": "Legenda atualizada.", "subst_ok": "Foto substituída e salva.", "excl_ok": "Item removido.", "ren_ok": "Álbum renomeado.", "alert_selecione": "Selecione os arquivos primeiro.", "alert_link": "Informe o link da imagem."}, "en": {"todos": "All", "vazio": "No photos in this category yet.", "indice": "Index of records", "indice_cab": "{n} record(s) in {a}", "abrir": "Open ›", "album_rotulo": "Album", "n_fotos": "{n} photo(s)", "e_videos": " and {n} video(s)", "abrir_album": "click to open", "clique_ampliar": "click to enlarge", "lb_orig": "Open original", "restrito": "Restricted", "video": "Video", "capa": "Cover", "adm_link": "Manage gallery"}, "es": {"todos": "Todos", "vazio": "Aún no hay fotos en esta categoría.", "indice": "Índice de registros", "indice_cab": "{n} registro(s) en {a}", "abrir": "Abrir ›", "album_rotulo": "Álbum", "n_fotos": "{n} foto(s)", "e_videos": " y {n} video(s)", "abrir_album": "haga clic para abrir", "clique_ampliar": "haga clic para ampliar", "lb_orig": "Abrir original", "restrito": "Restringido", "video": "Video", "capa": "Portada", "adm_link": "Administrar galería"}, "fr": {"todos": "Tous", "vazio": "Aucune photo dans cette catégorie pour l’instant.", "indice": "Index des enregistrements", "indice_cab": "{n} enregistrement(s) dans {a}", "abrir": "Ouvrir ›", "album_rotulo": "Album", "n_fotos": "{n} photo(s)", "e_videos": " et {n} vidéo(s)", "abrir_album": "cliquez pour ouvrir", "clique_ampliar": "cliquez pour agrandir", "lb_orig": "Ouvrir l’original", "restrito": "Restreint", "video": "Vidéo", "capa": "Couverture", "adm_link": "Gérer la galerie"}}, "albuns": [{"id": "eventos", "nome": {"pt": "Eventos", "en": "Events", "es": "Eventos", "fr": "Événements"}}, {"id": "reunioes", "nome": {"pt": "Reuniões", "en": "Meetings", "es": "Reuniones", "fr": "Réunions"}}, {"id": "liderancas", "nome": {"pt": "Lideranças", "en": "Leaders", "es": "Liderazgos", "fr": "Dirigeants"}}, {"id": "institucional", "nome": {"pt": "Institucional", "en": "Institutional", "es": "Institucional", "fr": "Institutionnel"}}], "idioma": function(){return window.I18N_SITE?window.I18N_SITE.idioma():'pt';}};</script>
 <script>
 /* VG: galeria de fotos e videos com albuns, edicao e publicacao (GitHub + Cloudinary).
    Recursos reunidos dos sites do CMDDI e do ICET. Configuracao em window.VG_CFG. */
@@ -3070,10 +3260,26 @@ function _salvar(msg){
       });
   }
   return tentar(0).then(function(x){
-    if (x.ok && x.j && x.j.content){ banner('ok', t('salvo')); toast(t('salvo')); return true; }
+    if (x.ok && x.j && x.j.content){ banner('ok', t('salvo')); toast(t('salvo')); setTimeout(traduzirPendentes, 50); return true; }
     banner('erro', t('falha_salvar', { m: (x.j && x.j.message) || x.st }));
     return false;
   }).catch(function(){ banner('erro', t('falha_rede')); return false; });
+}
+
+/* ---------- tradução automática das legendas e dos nomes de álbum ---------- */
+function traduzirPendentes(){
+  if (S.traduzindo || !window.TRAD_AUTO || !S.token || (CFG.idiomas || []).length < 2) return;
+  var lista = Object.keys(S.dados.itens).map(function(k){ return S.dados.itens[k]; })
+    .filter(function(it){ return TRAD_AUTO.pendentes(it, ['leg', 'ocasiao']).length; });
+  if (!lista.length) return;
+  S.traduzindo = true; banner('espera', '🌐 Traduzindo ' + lista.length + ' legenda(s) para inglês, espanhol e francês...');
+  var fila = Promise.resolve(), mudou = false;
+  lista.forEach(function(it){ fila = fila.then(function(){ return TRAD_AUTO.traduzirCampos(it, ['leg', 'ocasiao']).then(function(ok){ if (ok) mudou = true; }); }); });
+  fila.then(function(){
+    S.traduzindo = false; render();
+    if (mudou) return salvar('Galeria: tradução automática das legendas');
+    banner('erro', 'Tradução automática indisponível agora; as legendas ficam em português até a próxima gravação.');
+  }).catch(function(){ S.traduzindo = false; });
 }
 
 /* ---------- Cloudinary e envio ---------- */
@@ -3137,6 +3343,12 @@ function posterVideo(src){
 
 /* ---------- utilidades de dados ---------- */
 function legDe(it){ var l = lang(); return (l !== 'pt' && it['leg_' + l]) ? it['leg_' + l] : (it.leg || ''); }
+function nomeOcasiao(oc){
+  var l = lang(); if (l === 'pt') return oc;
+  var ks = Object.keys(S.dados.itens);
+  for (var i = 0; i < ks.length; i++){ var it = S.dados.itens[ks[i]]; if (it.ocasiao === oc && it['ocasiao_' + l]) return it['ocasiao_' + l]; }
+  return oc;
+}
 function lista(){
   var o = [];
   Object.keys(S.dados.itens).forEach(function(k){
@@ -3228,10 +3440,10 @@ function cartaoAlbum(oc, itens){
   var nF = itens.filter(function(x){ return x.it.tipo !== 'video'; }).length, nV = itens.length - nF;
   var sub = t('n_fotos', { n: nF }) + (nV ? t('e_videos', { n: nV }) : '');
   return '<div class="vg-card vg-album-card" data-oc="' + esc(oc) + '">' +
-    '<button type="button" class="vg-abrir" data-vg="abrir-album" data-oc="' + esc(oc) + '" aria-label="' + esc(t('album_rotulo') + ': ' + oc) + '">' +
+    '<button type="button" class="vg-abrir" data-vg="abrir-album" data-oc="' + esc(oc) + '" aria-label="' + esc(t('album_rotulo') + ': ' + nomeOcasiao(oc)) + '">' +
       (src ? '<img class="vg-midia" loading="lazy" src="' + esc(src) + '" alt="">' : '<span class="vg-midia vg-video"></span>') +
       '<span class="vg-album-info"><span class="vg-album-tag">' + esc(t('album_rotulo')) + '</span>' +
-      '<span class="vg-album-nome">' + esc(oc) + '</span>' +
+      '<span class="vg-album-nome">' + esc(nomeOcasiao(oc)) + '</span>' +
       '<span class="vg-album-sub">' + esc(sub) + ' · ' + esc(t('abrir_album')) + '</span></span>' +
     '</button>' +
     '<span class="vg-badge">' + itens.length + '</span>' +
@@ -3277,7 +3489,7 @@ function render(){
       return '<button type="button" class="vg-ind-linha" data-vg="abrir-indice" data-key="' + esc(x.key) + '">' +
         (th ? '<img src="' + esc(th) + '" alt="" loading="lazy">' : '<span class="vg-ind-sem"></span>') +
         '<span class="vg-ind-txt"><span class="vg-ind-leg">' + esc(r || '-') + '</span>' +
-        '<span class="vg-ind-alb">' + esc(x.it.ocasiao ? x.it.ocasiao : nomeAlbum(x.it.album)) + '</span></span>' +
+        '<span class="vg-ind-alb">' + esc(x.it.ocasiao ? nomeOcasiao(x.it.ocasiao) : nomeAlbum(x.it.album)) + '</span></span>' +
         '<span class="vg-ind-ir">' + esc(t('abrir')) + '</span></button>';
     }).join('');
 
@@ -3288,7 +3500,7 @@ function renderAlbum(oc){
   if (!itens.length){ S.albumAberto = null; fecharModal('vg-album'); return; }
   var capa = capaDe(itens);
   var nF = itens.filter(function(x){ return x.it.tipo !== 'video'; }).length, nV = itens.length - nF;
-  $('vg-album-titulo').textContent = oc;
+  $('vg-album-titulo').textContent = nomeOcasiao(oc);
   $('vg-album-sub').textContent = t('n_fotos', { n: nF }) + (nV ? t('e_videos', { n: nV }) : '') + ' · ' + t('clique_ampliar');
   $('vg-album-grid').innerHTML = itens.map(function(x){
     return cartao(x, { album: true, capa: capa && x.key === capa.key });
@@ -3401,11 +3613,16 @@ function salvarLegenda(){
   var x = acharItem(S.editando); if (!x) return;
   var pt = $('vg-ed-pt').value.trim();
   if (!pt){ $('vg-ed-pt').focus(); return; }
+  var ptMudou = pt !== x.it.leg, manual = false;
   x.it.leg = pt;
   ['en', 'es', 'fr'].forEach(function(l){
-    var el = $('vg-ed-' + l), v = el ? el.value.trim() : '';
-    if (v) x.it['leg_' + l] = v; else delete x.it['leg_' + l];
+    var el = $('vg-ed-' + l), v = el ? el.value.trim() : '', antes = x.it['leg_' + l] || '';
+    if (v && v !== antes) manual = true;                   // escrita à mão: mantém
+    if (!v || (ptMudou && v === antes)) delete x.it['leg_' + l]; // vazia ou desatualizada: tradução automática
+    else x.it['leg_' + l] = v;
   });
+  x.it.trad_src = x.it.trad_src || {};
+  if (manual || !ptMudou) x.it.trad_src.leg = pt; else delete x.it.trad_src.leg;
   fecharModal('vg-ed'); render();
   salvar('Legenda da galeria').then(function(ok){ if (ok) toast(t('leg_ok')); });
 }
@@ -3777,6 +3994,17 @@ function u(k, v){ var d = UI[lang()], s = d[k] != null ? d[k] : UI.pt[k]; if (v)
 function tx(v){ if (v == null) return ''; if (typeof v === 'string') return v; var l = lang(); return v[l] != null ? v[l] : (v.pt || ''); }
 function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function urlSegura(s){ s = String(s || '').trim(); return /^(https?:\/\/|imgs\/)/i.test(s) ? s : ''; }
+function ptDe(v){ return (v && typeof v === 'object' && !Array.isArray(v)) ? (v.pt || '') : (v || ''); }
+function paragrafosPt(it){ var t = ptDe(it.texto); if (Array.isArray(t)) return t; return String(t || '').split(/\n\s*\n/).map(function(p){ return p.trim(); }).filter(Boolean); }
+function traduzirNoticia(it){
+  var campos = ['titulo', 'resumo', 'texto'].filter(function(c){ return typeof it[c] === 'string' && it[c].trim(); });
+  if (!campos.length || !window.TRAD_AUTO) return Promise.resolve();
+  status('espera', '🌐 Traduzindo para inglês, espanhol e francês...');
+  return TRAD_AUTO.traduzir(campos.map(function(c){ return it[c]; })).then(function(t){
+    if (!t){ status('espera', '⚠️ Tradução automática indisponível agora; a notícia será publicada em português.'); return; }
+    campos.forEach(function(c, i){ var o = {pt: it[c]}; TRAD_AUTO.linguas.forEach(function(l){ o[l] = t[l][i]; }); it[c] = o; });
+  });
+}
 function normalizar(j){ var d = (j && typeof j === 'object') ? j : {}; if (!d.itens || typeof d.itens !== 'object') d.itens = {}; d.versao = 1; return d; }
 function dataFmt(iso){
   var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || ''); if (!m) return '';
@@ -3951,11 +4179,11 @@ function editar(k){
   editando = k; capaNova = null;
   $('nt-f-tipo').value = it.tipo; $('nt-form').setAttribute('data-tipo', it.tipo);
   $('nt-f-data').value = it.data || '';
-  $('nt-f-titulo').value = tx(it.titulo);
+  $('nt-f-titulo').value = ptDe(it.titulo);
   $('nt-f-veiculo').value = it.veiculo || '';
   $('nt-f-link').value = it.link || '';
-  $('nt-f-resumo').value = tx(it.resumo) || tx(it.fina);
-  $('nt-f-texto').value = paragrafos(it).join('\n\n');
+  $('nt-f-resumo').value = ptDe(it.resumo) || ptDe(it.fina);
+  $('nt-f-texto').value = paragrafosPt(it).join('\n\n');
   $('nt-f-assina').value = it.assinatura || '';
   $('nt-f-capa').value = '';
   var p = $('nt-f-capa-previa'); if (urlSegura(it.capa)){ p.src = it.capa; p.hidden = false; } else p.hidden = true;
@@ -3990,17 +4218,23 @@ function publicar(){
     // preserva o que o formulário não edita (fotos, logo, legendas, traduções intactas)
     ['fotos', 'assinaturaLogo', 'capaLeg', 'local', 'ts'].forEach(function(c){ if (antigo[c] != null) it[c] = antigo[c]; });
     if (antigo.tipo === 'release' && tipo === 'release'){
-      if (typeof antigo.titulo === 'object' && it.titulo === tx(antigo.titulo)) it.titulo = antigo.titulo;
-      if (typeof antigo.fina === 'object' && it.resumo === tx(antigo.fina)){ it.fina = antigo.fina; delete it.resumo; }
-      if (typeof antigo.texto === 'object' && !Array.isArray(antigo.texto) && it.texto === paragrafos(antigo).join('\n\n')) it.texto = antigo.texto;
+      if (typeof antigo.fina === 'object' && it.resumo === ptDe(antigo.fina)){ it.fina = antigo.fina; delete it.resumo; }
     }
     it.capa = antigo.capa;
+    // o que não mudou em português mantém as traduções que já tinha
+    ['titulo', 'resumo', 'texto'].forEach(function(c){
+      var a = antigo[c]; if (!a || typeof a !== 'object' || Array.isArray(a) || typeof it[c] !== 'string') return;
+      var igual = c === 'texto' ? it.texto === paragrafosPt(antigo).join('\n\n') : it[c] === ptDe(a);
+      if (igual) it[c] = a;
+    });
   }
   if (!it.ts) it.ts = Date.now();
   var btn = $('nt-f-publicar'); btn.disabled = true;
   status('espera', '⏳ Publicando...');
   var passo = capaNova ? enviarCapa(capaNova).then(function(url){ it.capa = url; }) : Promise.resolve();
   passo.then(function(){
+    return traduzirNoticia(it);
+  }).then(function(){
     return lerRemoto();
   }).then(function(){
     var k = editando || ((tipo === 'midia' ? 'mid_' : 'rel_') + Date.now());
@@ -4064,6 +4298,274 @@ fetch(ARQ + '?t=' + Date.now(), {cache:'no-store'})
   .then(function(r){ if (!r.ok) throw new Error('sem arquivo'); return r.json(); })
   .then(function(j){ if (!admAtivo()){ DADOS = normalizar(j); render(); } })
   .catch(function(){});
+})();
+</script>
+<script type="application/json" id="i18n-dic">{"versao": 1, "textos": {"No emblema, uma so linha se transforma: folha verde da floresta, chama dourada do sol e agua azul do rio, unidas em um unico traco continuo. A moldura externa reproduz o grafismo tradicional indigena, e o nome UNIPBRAS INDIGENA reafirma a origem da organizacao.": {"en": "In the emblem, a single line transforms itself: the green leaf of the forest, the golden flame of the sun and the blue water of the river, joined in one continuous stroke. The outer frame reproduces traditional Indigenous graphic art, and the name UNIPBRAS INDÍGENA reaffirms the organization's origin.", "es": "En el emblema, una sola línea se transforma: la hoja verde del bosque, la llama dorada del sol y el agua azul del río, unidas en un único trazo continuo. El marco exterior reproduce el grafismo tradicional indígena, y el nombre UNIPBRAS INDÍGENA reafirma el origen de la organización.", "fr": "Dans l'emblème, une seule ligne se transforme : la feuille verte de la forêt, la flamme dorée du soleil et l'eau bleue du fleuve, réunies en un tracé continu. Le cadre extérieur reproduit le graphisme traditionnel autochtone, et le nom UNIPBRAS INDÍGENA réaffirme l'origine de l'organisation."}, "A coroa de dezesseis flechas em ouro, azul-rio e terracota representa a multiplicidade de povos e territórios que se unem em torno de um mesmo propósito. O círculo verde é o território compartilhado; o anel pontilhado que gira é o movimento permanente da articulação. A estrela dourada marca a convergência nacional sobre as águas (azul) e a terra (terracota) que sustentam todos os povos.": {"en": "The crown of sixteen arrows in gold, river blue and terracotta represents the many peoples and territories that come together around a common purpose. The green circle is the shared territory; the slowly turning dotted ring is the constant movement of the alliance. The golden star marks the national convergence over the waters (blue) and the land (terracotta) that sustain all peoples.", "es": "La corona de dieciséis flechas en oro, azul río y terracota representa la multiplicidad de pueblos y territorios que se unen en torno a un mismo propósito. El círculo verde es el territorio compartido; el anillo punteado que gira es el movimiento permanente de la articulación. La estrella dorada marca la convergencia nacional sobre las aguas (azul) y la tierra (terracota) que sostienen a todos los pueblos.", "fr": "La couronne de seize flèches or, bleu fleuve et terre cuite représente la multiplicité des peuples et des territoires réunis autour d'un même objectif. Le cercle vert est le territoire partagé ; l'anneau en pointillés qui tourne est le mouvement permanent de l'articulation. L'étoile dorée marque la convergence nationale sur les eaux (bleu) et la terre (terre cuite) qui font vivre tous les peuples."}, "Site criado por VERTTI Consultoria (Germano Coelho Ramos Rocha-Silva). Clique para conhecer.": {"en": "Website created by VERTTI Consultoria (Germano Coelho Ramos Rocha-Silva). Click to learn more.", "es": "Sitio creado por VERTTI Consultoria (Germano Coelho Ramos Rocha-Silva). Haga clic para conocerla.", "fr": "Site créé par VERTTI Consultoria (Germano Coelho Ramos Rocha-Silva). Cliquez pour en savoir plus."}, "Comunicação e audiovisual por Aldeia XP. Clique para conhecer.": {"en": "Communication and audiovisual production by Aldeia XP. Click to learn more.", "es": "Comunicación y audiovisual a cargo de Aldeia XP. Haga clic para conocerla.", "fr": "Communication et audiovisuel par Aldeia XP. Cliquez pour en savoir plus."}, "Em parceria com o Instituto Cacique Enir Terena (ICET). Clique para conhecer.": {"en": "In partnership with the Cacique Enir Terena Institute (ICET). Click to learn more.", "es": "En alianza con el Instituto Cacique Enir Terena (ICET). Haga clic para conocerlo.", "fr": "En partenariat avec l'Institut Cacique Enir Terena (ICET). Cliquez pour en savoir plus."}, "Quem somos": {"en": "About us", "es": "Quiénes somos", "fr": "Qui sommes-nous"}, "Objetivos": {"en": "Objectives", "es": "Objetivos", "fr": "Objectifs"}, "Estrutura": {"en": "Structure", "es": "Estructura", "fr": "Structure"}, "Fundação": {"en": "Founding", "es": "Fundación", "fr": "Fondation"}, "Notícias": {"en": "News", "es": "Noticias", "fr": "Actualités"}, "Galeria": {"en": "Gallery", "es": "Galería", "fr": "Galerie"}, "Associe-se": {"en": "Join us", "es": "Asóciese", "fr": "Adhérer"}, "Legislação": {"en": "Legislation", "es": "Legislación", "fr": "Législation"}, "Contato": {"en": "Contact", "es": "Contacto", "fr": "Contact"}, "União Nacional dos Produtores e Agricultores Indígenas do Brasil": {"en": "National Union of Indigenous Producers and Farmers of Brazil", "es": "Unión Nacional de los Productores y Agricultores Indígenas de Brasil", "fr": "Union nationale des producteurs et agriculteurs autochtones du Brésil"}, "Constituída em Assembleia Geral · 11 de dezembro de 2025 · Brasília, DF": {"en": "Established by General Assembly · December 11, 2025 · Brasília, DF", "es": "Constituida en Asamblea General · 11 de diciembre de 2025 · Brasilia, DF", "fr": "Constituée en Assemblée générale · 11 décembre 2025 · Brasília, DF"}, "Autonomia territorial,<0/>articulação nacional.": {"en": "Territorial autonomy,<0/>national alliance.", "es": "Autonomía territorial,<0/>articulación nacional.", "fr": "Autonomie territoriale,<0/>articulation nationale."}, "Uma organização nacional dos povos indígenas do Brasil para decidir, com autonomia, o destino de seus territórios, de sua produção e de seu futuro.": {"en": "A national organization of the Indigenous peoples of Brazil, created to decide autonomously the future of their territories, their production and their lives.", "es": "Una organización nacional de los pueblos indígenas de Brasil para decidir, con autonomía, el destino de sus territorios, de su producción y de su futuro.", "fr": "Une organisation nationale des peuples autochtones du Brésil pour décider, en toute autonomie, de l'avenir de leurs territoires, de leur production et de leur futur."}, "Conhecer os objetivos": {"en": "See our objectives", "es": "Conocer los objetivos", "fr": "Découvrir les objectifs"}, "Como se associar": {"en": "How to join", "es": "Cómo asociarse", "fr": "Comment adhérer"}, "A posse permanente e o usufruto exclusivo dos territórios, a autonomia sobre os próprios sistemas de produção, a proteção integral dos valores culturais e ambientais.": {"en": "Permanent possession and exclusive use of the territories, autonomy over their own production systems, and full protection of cultural and environmental values.", "es": "La posesión permanente y el usufructo exclusivo de los territorios, la autonomía sobre los propios sistemas de producción y la protección integral de los valores culturales y ambientales.", "fr": "La possession permanente et l'usufruit exclusif des territoires, l'autonomie sur leurs propres systèmes de production et la protection intégrale des valeurs culturelles et environnementales."}, "Estatuto Social da UNIPBRAS, Artigo 4º": {"en": "UNIPBRAS Bylaws, Article 4", "es": "Estatutos Sociales de la UNIPBRAS, artículo 4", "fr": "Statuts de l'UNIPBRAS, article 4"}, "Nossa marca": {"en": "Our brand", "es": "Nuestra marca", "fr": "Notre marque"}, "A identidade da UNIPBRAS": {"en": "The UNIPBRAS identity", "es": "La identidad de la UNIPBRAS", "fr": "L'identité de l'UNIPBRAS"}, "Logomarca oficial": {"en": "Official logo", "es": "Logotipo oficial", "fr": "Logo officiel"}, "Clique para ampliar": {"en": "Click to enlarge", "es": "Haga clic para ampliar", "fr": "Cliquez pour agrandir"}, "No emblema, uma só linha se transforma: folha verde da floresta, chama dourada do sol e água azul do rio, unidas em um único traço contínuo, que representa a força da natureza que sustenta os povos indígenas do Brasil. A moldura externa, em triângulos verdes, dourados e terracota, reproduz o grafismo tradicional indígena. Ao lado, o nome UNIPBRAS aparece em duas cores, terracota e azul, e a assinatura INDÍGENA, emoldurada por pequenos losangos dourados, reafirma a origem e a identidade da organização.": {"en": "In the emblem, a single line transforms itself: the green leaf of the forest, the golden flame of the sun and the blue water of the river, joined in one continuous stroke that represents the force of nature sustaining the Indigenous peoples of Brazil. The outer frame, in green, golden and terracotta triangles, reproduces traditional Indigenous graphic art. Beside it, the name UNIPBRAS appears in two colors, terracotta and blue, and the word INDÍGENA, framed by small golden diamonds, reaffirms the organization's origin and identity.", "es": "En el emblema, una sola línea se transforma: la hoja verde del bosque, la llama dorada del sol y el agua azul del río, unidas en un único trazo continuo que representa la fuerza de la naturaleza que sostiene a los pueblos indígenas de Brasil. El marco exterior, en triángulos verdes, dorados y terracota, reproduce el grafismo tradicional indígena. Al lado, el nombre UNIPBRAS aparece en dos colores, terracota y azul, y la firma INDÍGENA, enmarcada por pequeños rombos dorados, reafirma el origen y la identidad de la organización.", "fr": "Dans l'emblème, une seule ligne se transforme : la feuille verte de la forêt, la flamme dorée du soleil et l'eau bleue du fleuve, réunies en un tracé continu qui représente la force de la nature qui fait vivre les peuples autochtones du Brésil. Le cadre extérieur, en triangles verts, dorés et terre cuite, reproduit le graphisme traditionnel autochtone. À côté, le nom UNIPBRAS apparaît en deux couleurs, terre cuite et bleu, et la signature INDÍGENA, encadrée de petits losanges dorés, réaffirme l'origine et l'identité de l'organisation."}, "Símbolo animado": {"en": "Animated symbol", "es": "Símbolo animado", "fr": "Symbole animé"}, "A coroa de dezesseis flechas em ouro, azul-rio e terracota representa a multiplicidade de povos e territórios que se unem em torno de um mesmo propósito: cada ponta guarda sua própria fronteira e, ao mesmo tempo, aponta para o centro comum. O círculo verde é o território compartilhado; o anel pontilhado que gira lentamente é o movimento permanente da articulação. No centro, a estrela dourada de quatro pontas marca a convergência nacional, a União, sobre o círculo azul das águas que atravessam os territórios e o núcleo terracota da terra que sustenta todos os povos.": {"en": "The crown of sixteen arrows in gold, river blue and terracotta represents the many peoples and territories that come together around a common purpose: each point keeps its own boundary while pointing to the shared center. The green circle is the shared territory; the slowly turning dotted ring is the constant movement of the alliance. At the center, the four-pointed golden star marks the national convergence, the Union, over the blue circle of the waters that flow through the territories and the terracotta core of the land that sustains all peoples.", "es": "La corona de dieciséis flechas en oro, azul río y terracota representa la multiplicidad de pueblos y territorios que se unen en torno a un mismo propósito: cada punta guarda su propia frontera y, al mismo tiempo, apunta al centro común. El círculo verde es el territorio compartido; el anillo punteado que gira lentamente es el movimiento permanente de la articulación. En el centro, la estrella dorada de cuatro puntas marca la convergencia nacional, la Unión, sobre el círculo azul de las aguas que atraviesan los territorios y el núcleo terracota de la tierra que sostiene a todos los pueblos.", "fr": "La couronne de seize flèches or, bleu fleuve et terre cuite représente la multiplicité des peuples et des territoires réunis autour d'un même objectif : chaque pointe garde sa propre frontière tout en désignant le centre commun. Le cercle vert est le territoire partagé ; l'anneau en pointillés qui tourne lentement est le mouvement permanent de l'articulation. Au centre, l'étoile dorée à quatre branches marque la convergence nationale, l'Union, sur le cercle bleu des eaux qui traversent les territoires et le noyau terre cuite de la terre qui fait vivre tous les peuples."}, "Articulação nacional entre os povos": {"en": "A national alliance among peoples", "es": "Articulación nacional entre los pueblos", "fr": "Une articulation nationale entre les peuples"}, "A UNIPBRAS é uma pessoa jurídica de direito privado, sem fins lucrativos, com atuação em âmbito nacional e internacional. Existe para que comunidades e povos indígenas produtores decidam, segundo seus próprios sistemas de deliberação, sobre o uso de seus territórios e sobre as atividades econômicas que neles desenvolvem, da agrossilvicultura ao turismo e do manejo florestal aos recursos genéticos.": {"en": "UNIPBRAS is a private, non-profit legal entity operating nationally and internationally. It exists so that Indigenous producer communities and peoples can decide, according to their own decision-making systems, on the use of their territories and on the economic activities they carry out there, from agroforestry to tourism and from forest management to genetic resources.", "es": "La UNIPBRAS es una persona jurídica de derecho privado, sin fines de lucro, con actuación en el ámbito nacional e internacional. Existe para que las comunidades y los pueblos indígenas productores decidan, según sus propios sistemas de deliberación, sobre el uso de sus territorios y sobre las actividades económicas que desarrollan en ellos, desde la agrosilvicultura hasta el turismo y desde el manejo forestal hasta los recursos genéticos.", "fr": "L'UNIPBRAS est une personne morale de droit privé, à but non lucratif, qui agit aux niveaux national et international. Elle existe pour que les communautés et les peuples autochtones producteurs décident, selon leurs propres systèmes de délibération, de l'usage de leurs territoires et des activités économiques qu'ils y mènent, de l'agroforesterie au tourisme et de la gestion forestière aux ressources génétiques."}, "Constituída em 11 de dezembro, em Assembleia Geral": {"en": "Established on December 11, by General Assembly", "es": "Constituida el 11 de diciembre, en Asamblea General", "fr": "Constituée le 11 décembre, en Assemblée générale"}, "Indeterminado": {"en": "Indefinite", "es": "Indeterminado", "fr": "Indéterminée"}, "Prazo de duração, conforme Art. 1º, §5º": {"en": "Term of existence, under Art. 1, §5", "es": "Plazo de duración, según el art. 1, §5", "fr": "Durée, conformément à l'art. 1er, §5"}, "Nacional": {"en": "National", "es": "Nacional", "fr": "Nationale"}, "e internacional: atuação em todo o território brasileiro e no exterior": {"en": "and international: operating throughout Brazil and abroad", "es": "e internacional: actuación en todo el territorio brasileño y en el exterior", "fr": "et internationale : action sur tout le territoire brésilien et à l'étranger"}, "Sede e foro na capital federal, com filiais previstas em outros estados": {"en": "Headquarters and jurisdiction in the federal capital, with branches planned in other states", "es": "Sede y fuero en la capital federal, con filiales previstas en otros estados", "fr": "Siège et juridiction dans la capitale fédérale, avec des antennes prévues dans d'autres États"}, "Objetivos estatutários · Artigo 2º": {"en": "Statutory objectives · Article 2", "es": "Objetivos estatutarios · Artículo 2", "fr": "Objectifs statutaires · Article 2"}, "Quatro frentes de atuação": {"en": "Four areas of action", "es": "Cuatro frentes de actuación", "fr": "Quatre axes d'action"}, "Território e autonomia": {"en": "Territory and autonomy", "es": "Territorio y autonomía", "fr": "Territoire et autonomie"}, "Usufruto exclusivo dos recursos naturais dos territórios associados, com decisão própria sobre agrossilvicultura, manejo florestal, recursos hídricos e mineração, segundo o sistema de deliberação de cada povo.": {"en": "Exclusive use of the natural resources of member territories, with their own decisions on agroforestry, forest management, water resources and mining, according to each people's decision-making system.", "es": "Usufructo exclusivo de los recursos naturales de los territorios asociados, con decisión propia sobre agrosilvicultura, manejo forestal, recursos hídricos y minería, según el sistema de deliberación de cada pueblo.", "fr": "Usufruit exclusif des ressources naturelles des territoires associés, avec une décision propre sur l'agroforesterie, la gestion forestière, les ressources en eau et l'exploitation minière, selon le système de délibération de chaque peuple."}, "Direitos e representação": {"en": "Rights and representation", "es": "Derechos y representación", "fr": "Droits et représentation"}, "Defesa judicial e extrajudicial dos direitos individuais, coletivos e difusos dos povos indígenas, e interlocução direta com órgãos públicos e entidades nacionais e internacionais.": {"en": "Judicial and extrajudicial defense of the individual, collective and diffuse rights of Indigenous peoples, and direct dialogue with public bodies and national and international entities.", "es": "Defensa judicial y extrajudicial de los derechos individuales, colectivos y difusos de los pueblos indígenas, e interlocución directa con órganos públicos y entidades nacionales e internacionales.", "fr": "Défense judiciaire et extrajudiciaire des droits individuels, collectifs et diffus des peuples autochtones, et dialogue direct avec les organismes publics et les entités nationales et internationales."}, "Capacitação e desenvolvimento": {"en": "Training and development", "es": "Capacitación y desarrollo", "fr": "Formation et développement"}, "Formação técnica em atividades agrossilvipastoris e beneficiamento de produtos, elaboração e acompanhamento de projetos de desenvolvimento socioeconômico nos territórios.": {"en": "Technical training in agroforestry and livestock activities and in product processing, and design and monitoring of socioeconomic development projects in the territories.", "es": "Formación técnica en actividades agrosilvopastoriles y en el procesamiento de productos, y elaboración y seguimiento de proyectos de desarrollo socioeconómico en los territorios.", "fr": "Formation technique aux activités agro-sylvo-pastorales et à la transformation des produits, élaboration et suivi de projets de développement socio-économique dans les territoires."}, "Diálogo e cooperação": {"en": "Dialogue and cooperation", "es": "Diálogo y cooperación", "fr": "Dialogue et coopération"}, "Intercâmbio permanente com organismos e redes de povos indígenas, nacionais e internacionais, para difusão de boas práticas e fortalecimento da autodeterminação.": {"en": "Ongoing exchange with national and international bodies and networks of Indigenous peoples, to share good practices and strengthen self-determination.", "es": "Intercambio permanente con organismos y redes de pueblos indígenas, nacionales e internacionales, para la difusión de buenas prácticas y el fortalecimiento de la autodeterminación.", "fr": "Échanges permanents avec des organismes et réseaux de peuples autochtones, nationaux et internationaux, pour diffuser les bonnes pratiques et renforcer l'autodétermination."}, "Órgãos estatutários<0/>Assembleia, Diretoria e Conselho Fiscal": {"en": "Statutory bodies<0/>Assembly, Board and Fiscal Council", "es": "Órganos estatutarios<0/>Asamblea, Directiva y Consejo Fiscal", "fr": "Organes statutaires<0/>Assemblée, Direction et Conseil fiscal"}, "Anos de mandato<0/>com uma recondução permitida": {"en": "Years per term<0/>with one re-election allowed", "es": "Años de mandato<0/>con una reelección permitida", "fr": "Ans de mandat<0/>avec un renouvellement autorisé"}, "Objetivos estatutários<0/>definidos no Artigo 2º": {"en": "Statutory objectives<0/>set out in Article 2", "es": "Objetivos estatutarios<0/>definidos en el artículo 2", "fr": "Objectifs statutaires<0/>définis à l'article 2"}, "Categorias de associados<0/>fundadores, efetivos e beneméritos": {"en": "Membership categories<0/>founding, full and honorary", "es": "Categorías de asociados<0/>fundadores, efectivos y beneméritos", "fr": "Catégories de membres<0/>fondateurs, effectifs et d'honneur"}, "Como nos organizamos · Artigos 5º a 20": {"en": "How we are organized · Articles 5 to 20", "es": "Cómo nos organizamos · Artículos 5 a 20", "fr": "Notre organisation · Articles 5 à 20"}, "Governança em três órgãos": {"en": "Governance in three bodies", "es": "Gobernanza en tres órganos", "fr": "Une gouvernance en trois organes"}, "Sem hierarquia entre povos: a Assembleia Geral é soberana, e todo associado tem voz e voto.": {"en": "No hierarchy among peoples: the General Assembly is sovereign, and every member has a voice and a vote.", "es": "Sin jerarquía entre pueblos: la Asamblea General es soberana y todo asociado tiene voz y voto.", "fr": "Aucune hiérarchie entre les peuples : l'Assemblée générale est souveraine et chaque membre a voix délibérative."}, "Órgão soberano": {"en": "Sovereign body", "es": "Órgano soberano", "fr": "Organe souverain"}, "Assembleia Geral": {"en": "General Assembly", "es": "Asamblea General", "fr": "Assemblée générale"}, "Composta por todos os associados em pleno gozo de seus direitos. Elege a Diretoria e o Conselho Fiscal, delibera sobre reforma estatutária e decide os casos omissos.": {"en": "Made up of all members in full exercise of their rights. It elects the Board and the Fiscal Council, decides on amendments to the bylaws and rules on matters not covered by them.", "es": "Integrada por todos los asociados en pleno goce de sus derechos. Elige a la Directiva y al Consejo Fiscal, delibera sobre la reforma estatutaria y decide los casos no previstos.", "fr": "Composée de tous les membres jouissant pleinement de leurs droits. Elle élit la Direction et le Conseil fiscal, délibère sur la réforme des statuts et tranche les cas non prévus."}, "Executiva": {"en": "Executive", "es": "Ejecutiva", "fr": "Exécutif"}, "Diretoria Executiva": {"en": "Executive Board", "es": "Directiva Ejecutiva", "fr": "Direction exécutive"}, "Presidente, Vice-Presidente, Secretário-Geral e Adjunto, Tesoureiro e 2º Tesoureiro. Mandato de 4 anos, uma recondução permitida. Só associados de comunidades indígenas podem ocupar cargo.": {"en": "President, Vice-President, Secretary-General and Deputy Secretary, Treasurer and Second Treasurer. Four-year term, with one re-election allowed. Only members from Indigenous communities may hold office.", "es": "Presidente, Vicepresidente, Secretario General y Adjunto, Tesorero y 2.º Tesorero. Mandato de 4 años, con una reelección permitida. Solo los asociados de comunidades indígenas pueden ocupar cargos.", "fr": "Président, vice-président, secrétaire général et secrétaire adjoint, trésorier et second trésorier. Mandat de 4 ans, un renouvellement autorisé. Seuls les membres issus de communautés autochtones peuvent occuper une fonction."}, "Fiscalização": {"en": "Oversight", "es": "Fiscalización", "fr": "Contrôle"}, "Conselho Fiscal": {"en": "Fiscal Council", "es": "Consejo Fiscal", "fr": "Conseil fiscal"}, "Cinco membros titulares e cinco suplentes, com mandato coincidente ao da Diretoria. Examina livros contábeis, fiscaliza atos de gestão e opina sobre orçamento e prestação de contas.": {"en": "Five full members and five alternates, with a term matching that of the Board. It examines the accounting records, oversees management acts and gives its opinion on the budget and financial statements.", "es": "Cinco miembros titulares y cinco suplentes, con mandato coincidente con el de la Directiva. Examina los libros contables, fiscaliza los actos de gestión y opina sobre el presupuesto y la rendición de cuentas.", "fr": "Cinq membres titulaires et cinq suppléants, avec un mandat qui coïncide avec celui de la Direction. Il examine les livres comptables, contrôle les actes de gestion et donne son avis sur le budget et la reddition des comptes."}, "<0>Sem remuneração.<\/0> Nenhum integrante dos órgãos administrativos recebe lucro, gratificação ou vantagem (Art. 6º, §1º).": {"en": "<0>No remuneration.<\/0> No member of the administrative bodies receives profit, bonuses or benefits (Art. 6, §1).", "es": "<0>Sin remuneración.<\/0> Ningún integrante de los órganos administrativos recibe lucro, gratificación o ventaja (art. 6, §1).", "fr": "<0>Aucune rémunération.<\/0> Aucun membre des organes administratifs ne perçoit de bénéfice, de gratification ou d'avantage (art. 6, §1)."}, "<0>Deliberação virtual.<\/0> Assembleia e órgãos colegiados podem reunir-se por meios eletrônicos, com identificação, voz e voto garantidos (Art. 5º, §1º).": {"en": "<0>Virtual decision-making.<\/0> The Assembly and collegiate bodies may meet electronically, with identification, voice and vote guaranteed (Art. 5, §1).", "es": "<0>Deliberación virtual.<\/0> La Asamblea y los órganos colegiados pueden reunirse por medios electrónicos, con identificación, voz y voto garantizados (art. 5, §1).", "fr": "<0>Délibération à distance.<\/0> L'Assemblée et les organes collégiaux peuvent se réunir par voie électronique, avec identification, droit de parole et droit de vote garantis (art. 5, §1)."}, "<0>Ampla defesa.<\/0> Toda penalidade ou afastamento respeita o contraditório, nos termos do Regimento Interno (Art. 6º, §5º).": {"en": "<0>Full right of defense.<\/0> Every penalty or removal respects due process, under the Internal Rules (Art. 6, §5).", "es": "<0>Amplia defensa.<\/0> Toda sanción o separación respeta el derecho de contradicción, en los términos del Reglamento Interno (art. 6, §5).", "fr": "<0>Droits de la défense.<\/0> Toute sanction ou suspension respecte le principe du contradictoire, conformément au Règlement intérieur (art. 6, §5)."}, "Ata de Assembleia Geral de Constituição · 11 de dezembro de 2025": {"en": "Minutes of the Founding General Assembly · December 11, 2025", "es": "Acta de la Asamblea General de Constitución · 11 de diciembre de 2025", "fr": "Procès-verbal de l'Assemblée générale constitutive · 11 décembre 2025"}, "Territórios na fundação da UNIPBRAS": {"en": "Territories at the founding of UNIPBRAS", "es": "Territorios en la fundación de la UNIPBRAS", "fr": "Les territoires à la fondation de l'UNIPBRAS"}, "Dezesseis lideranças, de dez estados brasileiros, reunidas por videoconferência em 11 de dezembro de 2025 para fundar a UNIPBRAS. Toque em cada ponto do mapa para conhecer o município, o estado e a etnia representada ali.": {"en": "Sixteen leaders from ten Brazilian states met by videoconference on December 11, 2025 to found UNIPBRAS. Tap each point on the map to see the municipality, the state and the people represented there.", "es": "Dieciséis liderazgos de diez estados brasileños se reunieron por videoconferencia el 11 de diciembre de 2025 para fundar la UNIPBRAS. Toque cada punto del mapa para conocer el municipio, el estado y la etnia representada allí.", "fr": "Seize dirigeants de dix États brésiliens se sont réunis par visioconférence le 11 décembre 2025 pour fonder l'UNIPBRAS. Touchez chaque point de la carte pour découvrir la municipalité, l'État et le peuple qui y est représenté."}, "Toque em um ponto do mapa para ver o município, o estado e a etnia": {"en": "Tap a point on the map to see the municipality, the state and the people", "es": "Toque un punto del mapa para ver el municipio, el estado y la etnia", "fr": "Touchez un point de la carte pour voir la municipalité, l'État et le peuple"}, "<0/> Diretoria Executiva": {"en": "<0/> Executive Board", "es": "<0/> Directiva Ejecutiva", "fr": "<0/> Direction exécutive"}, "<0/> Conselho Fiscal": {"en": "<0/> Fiscal Council", "es": "<0/> Consejo Fiscal", "fr": "<0/> Conseil fiscal"}, "<0/> Sede da UNIPBRAS": {"en": "<0/> UNIPBRAS headquarters", "es": "<0/> Sede de la UNIPBRAS", "fr": "<0/> Siège de l'UNIPBRAS"}, "Diretoria Executiva <0>composição atual<\/0>": {"en": "Executive Board <0>current members<\/0>", "es": "Directiva Ejecutiva <0>composición actual<\/0>", "fr": "Direction exécutive <0>composition actuelle<\/0>"}, "Presidente": {"en": "President", "es": "Presidente", "fr": "Président"}, "Vice-Presidente": {"en": "Vice-President", "es": "Vicepresidente", "fr": "Vice-président"}, "Secretário Geral": {"en": "Secretary-General", "es": "Secretario General", "fr": "Secrétaire général"}, "Secretário Adjunto": {"en": "Deputy Secretary", "es": "Secretario Adjunto", "fr": "Secrétaire adjoint"}, "Tesoureiro": {"en": "Treasurer", "es": "Tesorero", "fr": "Trésorier"}, "2º Tesoureiro": {"en": "Second Treasurer", "es": "2.º Tesorero", "fr": "Second trésorier"}, "Organizações irmãs": {"en": "Sister organizations", "es": "Organizaciones hermanas", "fr": "Organisations sœurs"}, "A UNIPBRAS nasceu da mesma rede de lideranças que já impulsionava outras organizações indígenas pelo país, com raízes que remontam ao Fórum dos Caciques de Mato Grosso do Sul (FOCAMS), do qual o presidente Aguinaldo Arruda Areco também é liderança, ao lado de Lisio Lili e Rosemiro Pereira, da Associação TXANÉ.": {"en": "UNIPBRAS was born from the same network of leaders that was already driving other Indigenous organizations across the country, with roots going back to the Forum of Chiefs of Mato Grosso do Sul (FOCAMS), which President Aguinaldo Arruda Areco also leads, alongside Lisio Lili and Rosemiro Pereira, of the TXANÉ Association.", "es": "La UNIPBRAS nació de la misma red de liderazgos que ya impulsaba otras organizaciones indígenas en el país, con raíces que se remontan al Foro de los Caciques de Mato Grosso do Sul (FOCAMS), del cual el presidente Aguinaldo Arruda Areco también es líder, junto a Lisio Lili y Rosemiro Pereira, de la Asociación TXANÉ.", "fr": "L'UNIPBRAS est née du même réseau de dirigeants qui impulsait déjà d'autres organisations autochtones dans le pays, avec des racines qui remontent au Forum des caciques du Mato Grosso do Sul (FOCAMS), dont le président Aguinaldo Arruda Areco est aussi l'un des dirigeants, aux côtés de Lisio Lili et de Rosemiro Pereira, de l'Association TXANÉ."}, "Cooperativa Estadual Indígena de Mato Grosso do Sul, da mesma geração de caciques e com a mesma busca por autonomia produtiva.": {"en": "Indigenous State Cooperative of Mato Grosso do Sul, from the same generation of chiefs and pursuing the same productive autonomy.", "es": "Cooperativa Estatal Indígena de Mato Grosso do Sul, de la misma generación de caciques y con la misma búsqueda de autonomía productiva.", "fr": "Coopérative autochtone de l'État du Mato Grosso do Sul, issue de la même génération de caciques et animée par la même quête d'autonomie productive."}, "Conselho Municipal dos Direitos e Defesa dos Povos Indígenas de Campo Grande.": {"en": "Municipal Council for the Rights and Defense of Indigenous Peoples of Campo Grande.", "es": "Consejo Municipal de los Derechos y Defensa de los Pueblos Indígenas de Campo Grande.", "fr": "Conseil municipal des droits et de la défense des peuples autochtones de Campo Grande."}, "Comunicação e audiovisual para povos indígenas, com atuação também junto à UNIPBRAS.": {"en": "Communication and audiovisual production for Indigenous peoples, also working with UNIPBRAS.", "es": "Comunicación y audiovisual para pueblos indígenas, con actuación también junto a la UNIPBRAS.", "fr": "Communication et audiovisuel pour les peuples autochtones, qui travaille aussi avec l'UNIPBRAS."}, "Memória visual": {"en": "Visual memory", "es": "Memoria visual", "fr": "Mémoire visuelle"}, "Galeria de fotos": {"en": "Photo gallery", "es": "Galería de fotos", "fr": "Galerie photos"}, "Registros de encontros, reuniões e articulações da UNIPBRAS. Escolha um álbum para ver as fotos e abra cada imagem para ampliar.": {"en": "Records of UNIPBRAS meetings, gatherings and alliances. Choose an album to see the photos and open each image to enlarge it.", "es": "Registros de encuentros, reuniones y articulaciones de la UNIPBRAS. Elija un álbum para ver las fotos y abra cada imagen para ampliarla.", "fr": "Souvenirs de rencontres, de réunions et d'articulations de l'UNIPBRAS. Choisissez un album pour voir les photos et ouvrez chaque image pour l'agrandir."}, "Quadro social · Artigos 22 e 27 a 30": {"en": "Membership · Articles 22 and 27 to 30", "es": "Cuadro social · Artículos 22 y 27 a 30", "fr": "Membres · Articles 22 et 27 à 30"}, "Categorias de associados": {"en": "Membership categories", "es": "Categorías de asociados", "fr": "Catégories de membres"}, "Fundadores": {"en": "Founding members", "es": "Fundadores", "fr": "Membres fondateurs"}, "Signatários da Ata da Assembleia Geral de constituição da UNIPBRAS, realizada em 11 de dezembro de 2025.": {"en": "Signatories of the Minutes of the Founding General Assembly of UNIPBRAS, held on December 11, 2025.", "es": "Firmantes del Acta de la Asamblea General de constitución de la UNIPBRAS, celebrada el 11 de diciembre de 2025.", "fr": "Signataires du procès-verbal de l'Assemblée générale constitutive de l'UNIPBRAS, tenue le 11 décembre 2025."}, "Efetivos": {"en": "Full members", "es": "Efectivos", "fr": "Membres effectifs"}, "Povos e organizações indígenas admitidos pela Diretoria mediante proposta assinada por três associados em pleno gozo de seus direitos.": {"en": "Indigenous peoples and organizations admitted by the Board upon a proposal signed by three members in full exercise of their rights.", "es": "Pueblos y organizaciones indígenas admitidos por la Directiva mediante propuesta firmada por tres asociados en pleno goce de sus derechos.", "fr": "Peuples et organisations autochtones admis par la Direction sur proposition signée par trois membres jouissant pleinement de leurs droits."}, "Beneméritos": {"en": "Honorary members", "es": "Beneméritos", "fr": "Membres d'honneur"}, "Reconhecimento concedido pela Assembleia Geral a quem prestou serviços relevantes à Associação.": {"en": "Recognition granted by the General Assembly to those who have rendered outstanding services to the Association.", "es": "Reconocimiento otorgado por la Asamblea General a quienes prestaron servicios relevantes a la Asociación.", "fr": "Distinction accordée par l'Assemblée générale à celles et ceux qui ont rendu des services remarquables à l'Association."}, "Direitos do associado": {"en": "Members' rights", "es": "Derechos del asociado", "fr": "Droits des membres"}, "Votar e ser votado para os cargos eletivos": {"en": "Vote and stand for elected office", "es": "Votar y ser elegido para los cargos electivos", "fr": "Voter et être élu aux fonctions électives"}, "Participar de programações, benefícios e projetos": {"en": "Take part in programs, benefits and projects", "es": "Participar de programaciones, beneficios y proyectos", "fr": "Participer aux programmes, avantages et projets"}, "Acesso a livros contábeis, relatórios e auditorias": {"en": "Access to accounting records, reports and audits", "es": "Acceso a libros contables, informes y auditorías", "fr": "Accès aux livres comptables, rapports et audits"}, "Requerer convocação de Assembleia Geral": {"en": "Request that a General Assembly be called", "es": "Solicitar la convocatoria de la Asamblea General", "fr": "Demander la convocation de l'Assemblée générale"}, "Deveres do associado": {"en": "Members' duties", "es": "Deberes del asociado", "fr": "Devoirs des membres"}, "Zelar pelo cumprimento do Estatuto e do Regimento Interno": {"en": "Ensure compliance with the Bylaws and the Internal Rules", "es": "Velar por el cumplimiento de los Estatutos y del Reglamento Interno", "fr": "Veiller au respect des Statuts et du Règlement intérieur"}, "Comparecer às Assembleias para as quais for convocado": {"en": "Attend the Assemblies to which they are called", "es": "Asistir a las Asambleas a las que sea convocado", "fr": "Assister aux Assemblées auxquelles il est convoqué"}, "Cooperar para o fortalecimento e a difusão dos objetivos da UNIPBRAS": {"en": "Help strengthen and spread the objectives of UNIPBRAS", "es": "Cooperar para el fortalecimiento y la difusión de los objetivos de la UNIPBRAS", "fr": "Contribuer au renforcement et à la diffusion des objectifs de l'UNIPBRAS"}, "Manter em dia as contribuições estatutárias definidas": {"en": "Keep the established statutory contributions up to date", "es": "Mantener al día las contribuciones estatutarias definidas", "fr": "Être à jour des cotisations statutaires fixées"}, "O ingresso de pessoas físicas e jurídicas é processado pela Diretoria Executiva, segundo as condições fixadas em Assembleia Geral e no Regimento Interno.": {"en": "Applications from individuals and organizations are processed by the Executive Board, under the conditions set by the General Assembly and the Internal Rules.", "es": "El ingreso de personas físicas y jurídicas lo tramita la Directiva Ejecutiva, según las condiciones fijadas por la Asamblea General y el Reglamento Interno.", "fr": "L'adhésion des personnes physiques et morales est traitée par la Direction exécutive, selon les conditions fixées par l'Assemblée générale et le Règlement intérieur."}, "Solicitar associação": {"en": "Apply for membership", "es": "Solicitar la asociación", "fr": "Demander l'adhésion"}, "Legislação e articulação nacional": {"en": "Legislation and national alliance", "es": "Legislación y articulación nacional", "fr": "Législation et articulation nationale"}, "Legislação de referência": {"en": "Reference legislation", "es": "Legislación de referencia", "fr": "Législation de référence"}, "A UNIPBRAS atua em três frentes: o direito à terra, a representação institucional e o desenvolvimento produtivo dos povos indígenas. As normas podem ser filtradas por eixo estatutário, e cada uma tem link para a fonte oficial.": {"en": "UNIPBRAS works on three fronts: the right to land, institutional representation and the productive development of Indigenous peoples. The laws can be filtered by statutory area, and each one links to its official source.", "es": "La UNIPBRAS actúa en tres frentes: el derecho a la tierra, la representación institucional y el desarrollo productivo de los pueblos indígenas. Las normas pueden filtrarse por eje estatutario y cada una tiene un enlace a la fuente oficial.", "fr": "L'UNIPBRAS agit sur trois fronts : le droit à la terre, la représentation institutionnelle et le développement productif des peuples autochtones. Les textes peuvent être filtrés par axe statutaire, et chacun renvoie à sa source officielle."}, "Todos": {"en": "All", "es": "Todas", "fr": "Tous"}, "Lei nº 14.701/2023: Marco Temporal": {"en": "Law No. 14,701/2023: “Marco Temporal” (time-frame thesis)", "es": "Ley n.º 14.701/2023: Marco Temporal", "fr": "Loi n° 14.701/2023 : « Marco Temporal » (thèse du cadre temporel)"}, "Tese que buscava limitar o direito às terras indígenas a áreas ocupadas em 1988, declarada inconstitucional pelo STF, mas reafirmada em lei pelo Congresso. Disputa direta com a autonomia territorial defendida pela UNIPBRAS.": {"en": "A thesis that sought to limit the right to Indigenous lands to areas occupied in 1988, declared unconstitutional by the Supreme Federal Court (STF) but reaffirmed in law by Congress. It directly challenges the territorial autonomy defended by UNIPBRAS.", "es": "Tesis que buscaba limitar el derecho a las tierras indígenas a las áreas ocupadas en 1988, declarada inconstitucional por el Supremo Tribunal Federal (STF), pero reafirmada en ley por el Congreso. Choca directamente con la autonomía territorial que defiende la UNIPBRAS.", "fr": "Thèse qui cherchait à limiter le droit aux terres autochtones aux zones occupées en 1988, déclarée inconstitutionnelle par le Tribunal suprême fédéral (STF) mais réaffirmée dans la loi par le Congrès. Elle s'oppose directement à l'autonomie territoriale défendue par l'UNIPBRAS."}, "Acompanhar a norma": {"en": "Follow this law", "es": "Seguir la norma", "fr": "Suivre le texte"}, "Constituição Federal, arts. 231 e 232": {"en": "Federal Constitution, Articles 231 and 232", "es": "Constitución Federal, arts. 231 y 232", "fr": "Constitution fédérale, articles 231 et 232"}, "Reconhece a organização social, os costumes e as terras tradicionalmente ocupadas pelos povos indígenas, e sua legitimidade para agir em juízo em defesa desses direitos.": {"en": "Recognizes the social organization, customs and traditionally occupied lands of Indigenous peoples, and their standing to go to court in defense of these rights.", "es": "Reconoce la organización social, las costumbres y las tierras tradicionalmente ocupadas por los pueblos indígenas, y su legitimidad para actuar en juicio en defensa de esos derechos.", "fr": "Reconnaît l'organisation sociale, les coutumes et les terres traditionnellement occupées par les peuples autochtones, ainsi que leur qualité pour agir en justice afin de défendre ces droits."}, "Acessar a norma": {"en": "Read the law", "es": "Acceder a la norma", "fr": "Consulter le texte"}, "Lei nº 6.001/1973: Estatuto do Índio": {"en": "Law No. 6,001/1973: Indian Statute", "es": "Ley n.º 6.001/1973: Estatuto del Indio", "fr": "Loi n° 6.001/1973 : Statut de l'Indien"}, "Regula a situação jurídica dos povos indígenas no Brasil e a atuação do Estado na proteção de suas comunidades, culturas e direitos individuais e coletivos.": {"en": "Regulates the legal status of Indigenous peoples in Brazil and the State's role in protecting their communities, cultures and individual and collective rights.", "es": "Regula la situación jurídica de los pueblos indígenas en Brasil y la actuación del Estado en la protección de sus comunidades, culturas y derechos individuales y colectivos.", "fr": "Régit la situation juridique des peuples autochtones au Brésil et l'action de l'État pour protéger leurs communautés, leurs cultures et leurs droits individuels et collectifs."}, "Lei nº 5.371/1967: Criação da FUNAI": {"en": "Law No. 5,371/1967: Creation of FUNAI", "es": "Ley n.º 5.371/1967: Creación de la FUNAI", "fr": "Loi n° 5.371/1967 : Création de la FUNAI"}, "Cria a Fundação Nacional do Índio, órgão federal com quem a UNIPBRAS dialoga diretamente na representação institucional dos povos associados.": {"en": "Creates the National Foundation for Indigenous Peoples (FUNAI), the federal body with which UNIPBRAS engages directly in the institutional representation of its member peoples.", "es": "Crea la Fundación Nacional de los Pueblos Indígenas (FUNAI), órgano federal con el que la UNIPBRAS dialoga directamente en la representación institucional de los pueblos asociados.", "fr": "Crée la Fondation nationale des peuples autochtones (FUNAI), organisme fédéral avec lequel l'UNIPBRAS dialogue directement pour la représentation institutionnelle des peuples membres."}, "Declaração da ONU sobre os Direitos dos Povos Indígenas": {"en": "United Nations Declaration on the Rights of Indigenous Peoples", "es": "Declaración de las Naciones Unidas sobre los Derechos de los Pueblos Indígenas", "fr": "Déclaration des Nations Unies sur les droits des peuples autochtones"}, "Documento internacional que fundamenta a autodeterminação e a livre disposição dos povos indígenas sobre o próprio desenvolvimento econômico e social.": {"en": "International instrument that underpins the self-determination of Indigenous peoples and their freedom to pursue their own economic and social development.", "es": "Instrumento internacional que fundamenta la autodeterminación y la libre determinación de los pueblos indígenas sobre su propio desarrollo económico y social.", "fr": "Instrument international qui fonde l'autodétermination des peuples autochtones et leur libre choix de leur propre développement économique et social."}, "Acessar o texto": {"en": "Read the text", "es": "Acceder al texto", "fr": "Consulter le texte"}, "Lei nº 12.651/2012: Código Florestal": {"en": "Law No. 12,651/2012: Forest Code", "es": "Ley n.º 12.651/2012: Código Forestal", "fr": "Loi n° 12.651/2012 : Code forestier"}, "Estabelece o Cadastro Ambiental Rural (CAR), referência para o manejo florestal e agrossilvipastoril nos territórios dos povos associados.": {"en": "Establishes the Rural Environmental Registry (CAR), a reference for forest and agroforestry-livestock management in the territories of member peoples.", "es": "Establece el Catastro Ambiental Rural (CAR), referencia para el manejo forestal y agrosilvopastoril en los territorios de los pueblos asociados.", "fr": "Instaure le Registre environnemental rural (CAR), référence pour la gestion forestière et agro-sylvo-pastorale dans les territoires des peuples membres."}, "Lei nº 13.123/2015: Marco Legal da Biodiversidade": {"en": "Law No. 13,123/2015: Biodiversity Legal Framework", "es": "Ley n.º 13.123/2015: Marco Legal de la Biodiversidad", "fr": "Loi n° 13.123/2015 : Cadre juridique de la biodiversité"}, "Disciplina o acesso ao patrimônio genético e ao conhecimento tradicional associado, sempre condicionado ao consentimento prévio das comunidades.": {"en": "Governs access to genetic heritage and associated traditional knowledge, always subject to the prior consent of the communities.", "es": "Regula el acceso al patrimonio genético y al conocimiento tradicional asociado, siempre condicionado al consentimiento previo de las comunidades.", "fr": "Encadre l'accès au patrimoine génétique et aux savoirs traditionnels associés, toujours subordonné au consentement préalable des communautés."}, "Lei nº 11.947/2009: PNAE": {"en": "Law No. 11,947/2009: PNAE (National School Meals Program)", "es": "Ley n.º 11.947/2009: PNAE (Programa Nacional de Alimentación Escolar)", "fr": "Loi n° 11.947/2009 : PNAE (Programme national d'alimentation scolaire)"}, "Garante prioridade legal de compra da produção da agricultura familiar e dos povos indígenas para a merenda escolar em todo o país.": {"en": "Guarantees legal priority for purchasing food from family farming and Indigenous peoples for school meals nationwide.", "es": "Garantiza prioridad legal de compra de la producción de la agricultura familiar y de los pueblos indígenas para la alimentación escolar en todo el país.", "fr": "Garantit une priorité légale d'achat de la production de l'agriculture familiale et des peuples autochtones pour les cantines scolaires dans tout le pays."}, "Lei nº 10.696/2003: PAA": {"en": "Law No. 10,696/2003: PAA (Food Acquisition Program)", "es": "Ley n.º 10.696/2003: PAA (Programa de Adquisición de Alimentos)", "fr": "Loi n° 10.696/2003 : PAA (Programme d'acquisition d'aliments)"}, "Institui o Programa de Aquisição de Alimentos, com regras próprias de acesso para comunidades indígenas produtoras.": {"en": "Establishes the Food Acquisition Program, with specific access rules for Indigenous producer communities.", "es": "Instituye el Programa de Adquisición de Alimentos, con reglas propias de acceso para las comunidades indígenas productoras.", "fr": "Institue le Programme d'acquisition d'aliments, avec des règles d'accès propres aux communautés autochtones productrices."}, "Convenção 169 da OIT": {"en": "ILO Convention No. 169", "es": "Convenio 169 de la OIT", "fr": "Convention n° 169 de l'OIT"}, "Base do direito à consulta prévia, livre e informada, instrumento central do diálogo entre a UNIPBRAS, o Estado e organismos internacionais.": {"en": "The basis of the right to free, prior and informed consultation, the central instrument of dialogue between UNIPBRAS, the State and international bodies.", "es": "Base del derecho a la consulta previa, libre e informada, instrumento central del diálogo entre la UNIPBRAS, el Estado y los organismos internacionales.", "fr": "Fondement du droit à la consultation préalable, libre et éclairée, instrument central du dialogue entre l'UNIPBRAS, l'État et les organismes internationaux."}, "Lei nº 13.709/2018: LGPD": {"en": "Law No. 13,709/2018: LGPD (General Data Protection Law)", "es": "Ley n.º 13.709/2018: LGPD (Ley General de Protección de Datos)", "fr": "Loi n° 13.709/2018 : LGPD (Loi générale sur la protection des données)"}, "Protege os dados pessoais dos povos e lideranças que compõem a articulação nacional da UNIPBRAS, em toda comunicação e cadastro da rede.": {"en": "Protects the personal data of the peoples and leaders who make up the UNIPBRAS national alliance, in all of the network's communications and records.", "es": "Protege los datos personales de los pueblos y liderazgos que componen la articulación nacional de la UNIPBRAS, en toda comunicación y registro de la red.", "fr": "Protège les données personnelles des peuples et des dirigeants qui composent l'articulation nationale de l'UNIPBRAS, dans toutes les communications et tous les fichiers du réseau."}, "Fale com a UNIPBRAS": {"en": "Contact UNIPBRAS", "es": "Hable con la UNIPBRAS", "fr": "Contacter l'UNIPBRAS"}, "Sede em Brasília, atuação em todo o território": {"en": "Headquartered in Brasília, working throughout Brazil", "es": "Sede en Brasilia, actuación en todo el territorio", "fr": "Siège à Brasília, action sur tout le territoire"}, "Foro e jurisdição": {"en": "Venue and jurisdiction", "es": "Fuero y jurisdicción", "fr": "For et juridiction"}, "Comarca de Brasília (DF), com jurisdição em todo o território nacional": {"en": "Judicial district of Brasília (DF), with jurisdiction throughout Brazil", "es": "Comarca de Brasilia (DF), con jurisdicción en todo el territorio nacional", "fr": "Ressort judiciaire de Brasília (DF), avec compétence sur tout le territoire national"}, "Fale conosco": {"en": "Contact us", "es": "Contáctenos", "fr": "Nous contacter"}, "Organização regida por Estatuto Social próprio, pela Constituição Federal de 1988 e pela Convenção nº 169 da OIT.": {"en": "Organization governed by its own Bylaws, the 1988 Federal Constitution and ILO Convention No. 169.", "es": "Organización regida por sus propios Estatutos Sociales, por la Constitución Federal de 1988 y por el Convenio n.º 169 de la OIT.", "fr": "Organisation régie par ses propres Statuts, par la Constitution fédérale de 1988 et par la Convention n° 169 de l'OIT."}, "Site desenvolvido por Germano Coelho Ramos Rocha-Silva": {"en": "Website developed by Germano Coelho Ramos Rocha-Silva", "es": "Sitio desarrollado por Germano Coelho Ramos Rocha-Silva", "fr": "Site développé par Germano Coelho Ramos Rocha-Silva"}, "Mestre em Propriedade Intelectual e Transferência de Tecnologia para Inovação · VERTTI Consultoria · Aldeia XP Comunicação e pelo Instituto Cacique Enir Terena (ICET) (Maria Auxiliadora Bezerra, Presidente)": {"en": "Master in Intellectual Property and Technology Transfer for Innovation · VERTTI Consultoria · Aldeia XP Comunicação and the Cacique Enir Terena Institute (ICET) (Maria Auxiliadora Bezerra, President)", "es": "Magíster en Propiedad Intelectual y Transferencia de Tecnología para la Innovación · VERTTI Consultoria · Aldeia XP Comunicação y el Instituto Cacique Enir Terena (ICET) (Maria Auxiliadora Bezerra, Presidenta)", "fr": "Master en propriété intellectuelle et transfert de technologie pour l'innovation · VERTTI Consultoria · Aldeia XP Comunicação et l'Institut Cacique Enir Terena (ICET) (Maria Auxiliadora Bezerra, présidente)"}, "Criado na gestão Aguinaldo Arruda Areco": {"en": "Created under the administration of Aguinaldo Arruda Areco", "es": "Creado durante la gestión de Aguinaldo Arruda Areco", "fr": "Créé sous la présidence d'Aguinaldo Arruda Areco"}, "Logomarca oficial da UNIPBRAS ampliada": {"en": "Official UNIPBRAS logo, enlarged", "es": "Logotipo oficial de la UNIPBRAS ampliado", "fr": "Logo officiel de l'UNIPBRAS agrandi"}, "Fechar": {"en": "Close", "es": "Cerrar", "fr": "Fermer"}, "Logomarca oficial da UNIPBRAS": {"en": "Official UNIPBRAS logo", "es": "Logotipo oficial de la UNIPBRAS", "fr": "Logo officiel de l'UNIPBRAS"}, "Emblema da UNIPBRAS ampliado": {"en": "UNIPBRAS emblem, enlarged", "es": "Emblema de la UNIPBRAS ampliado", "fr": "Emblème de l'UNIPBRAS agrandi"}, "Progresso da página": {"en": "Page progress", "es": "Progreso de la página", "fr": "Progression de la page"}, "Início": {"en": "Home", "es": "Inicio", "fr": "Accueil"}, "Instituto Cacique Enir Terena": {"en": "Cacique Enir Terena Institute", "es": "Instituto Cacique Enir Terena", "fr": "Institut Cacique Enir Terena"}, "Abrir menu": {"en": "Open menu", "es": "Abrir menú", "fr": "Ouvrir le menu"}, "Logomarca oficial da UNIPBRAS: emblema circular com folha, sol e água ao centro, e o nome UNIPBRAS INDÍGENA": {"en": "Official UNIPBRAS logo: circular emblem with a leaf, sun and water at the center, and the name UNIPBRAS INDÍGENA", "es": "Logotipo oficial de la UNIPBRAS: emblema circular con hoja, sol y agua en el centro, y el nombre UNIPBRAS INDÍGENA", "fr": "Logo officiel de l'UNIPBRAS : emblème circulaire avec une feuille, le soleil et l'eau au centre, et le nom UNIPBRAS INDÍGENA"}, "Logomarca oficial da UNIPBRAS: emblema circular com folha, sol e agua ao centro, e o nome UNIPBRAS INDIGENA": {"en": "Official UNIPBRAS logo: circular emblem with a leaf, sun and water at the center, and the name UNIPBRAS INDÍGENA", "es": "Logotipo oficial de la UNIPBRAS: emblema circular con hoja, sol y agua en el centro, y el nombre UNIPBRAS INDÍGENA", "fr": "Logo officiel de l'UNIPBRAS : emblème circulaire avec une feuille, le soleil et l'eau au centre, et le nom UNIPBRAS INDÍGENA"}, "Municípios das lideranças fundadoras": {"en": "Municipalities of the founding leaders", "es": "Municipios de los liderazgos fundadores", "fr": "Municipalités des dirigeants fondateurs"}, "UNIPBRAS: União Nacional dos Produtores e Agricultores Indígenas do Brasil": {"en": "UNIPBRAS: National Union of Indigenous Producers and Farmers of Brazil", "es": "UNIPBRAS: Unión Nacional de los Productores y Agricultores Indígenas de Brasil", "fr": "UNIPBRAS : Union nationale des producteurs et agriculteurs autochtones du Brésil"}, "Etnia:": {"en": "People:", "es": "Etnia:", "fr": "Peuple :"}}}</script>
+<script>
+window.I18N_SITE_CFG = {
+  chave: 'unipbras_lang',
+  // módulos que já se traduzem sozinhos (galeria e notícias) e áreas do ADM
+  ignorar: '[data-nt],#nt-grid,#nt-tabs,#nt-vazio,#nt-modal,#nt-lb,#nt-painel,#nt-adm-link,#vg-raiz,.vg-modal,.vg-lb,[id^=vg-],.vg-so-adm',
+  aoTrocar: function(l){
+    if (window.NT_idioma) window.NT_idioma();
+    if (window.VG_idioma) window.VG_idioma();
+  }
+};
+</script>
+<script>
+/* ===== Tradução do site: português, inglês, espanhol e francês =====
+   Percorre a página inteira e traduz cada frase visível (com negritos e links
+   preservados dentro dela), além de legendas de imagem, dicas e campos.
+   As traduções ficam no dicionário #i18n-dic (revisado à mão, com glossário).
+   O conteúdo publicado pelo ADM já vem traduzido pelos próprios módulos.
+   Configuração em window.I18N_SITE_CFG. */
+(function(){
+var CFG = window.I18N_SITE_CFG || {};
+var IDIOMAS = ['pt', 'en', 'es', 'fr'];
+var ROTULOS = {pt: 'PT', en: 'EN', es: 'ES', fr: 'FR'};
+var NOMES = {pt: 'Português', en: 'English', es: 'Español', fr: 'Français'};
+var HTML_LANG = {pt: 'pt-BR', en: 'en', es: 'es', fr: 'fr'};
+var CHAVE = CFG.chave || 'site_lang';
+var INLINE = {A:1, ABBR:1, B:1, BDI:1, BDO:1, BR:1, CITE:1, DFN:1, EM:1, I:1, KBD:1, MARK:1, Q:1, S:1, SMALL:1, SPAN:1, STRONG:1, SUB:1, SUP:1, TIME:1, U:1, WBR:1};
+var PULAR = 'script,style,noscript,template,textarea,code,pre,svg,math,iframe,[translate="no"],.notranslate,[data-i18n-ignorar],.i18n-seletor' + (CFG.ignorar ? ',' + CFG.ignorar : '');
+var ATRS = ['alt', 'title', 'placeholder', 'aria-label'];
+var LETRA = /[A-Za-zÀ-ÿ]/;
+var DIC = {};
+try{ DIC = JSON.parse(document.getElementById('i18n-dic').textContent).textos || {}; }catch(e){}
+
+var atual = 'pt', aplicando = false;
+var unidades = [];            // {tipo:'el'|'txt', no, orig, chave, els}
+var regEl = new WeakMap(), regTxt = new WeakMap(), regAtr = new WeakMap();
+var meta = null;
+
+function norm(s){ return String(s).replace(/\s+/g, ' ').trim(); }
+function esc(s){ return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function desesc(s){ return s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&'); }
+function pular(el){ return !el || (el.closest && el.closest(PULAR)); }
+function temLetra(el){ return LETRA.test(el.textContent || ''); }
+
+/* elemento cujo conteúdo é só texto e elementos de linha (negrito, link...) */
+function soLinha(el){
+  for (var c = el.firstChild; c; c = c.nextSibling){
+    if (c.nodeType === 1){ if (!INLINE[c.tagName] || c.matches(PULAR) || !soLinha(c)) return false; }
+  }
+  return true;
+}
+function temTextoDireto(el){
+  for (var c = el.firstChild; c; c = c.nextSibling) if (c.nodeType === 3 && LETRA.test(c.nodeValue)) return true;
+  return false;
+}
+/* molde da frase: texto com marcadores <0>..</0> no lugar dos elementos de linha */
+function molde(el, els){
+  var out = '';
+  for (var c = el.firstChild; c; c = c.nextSibling){
+    if (c.nodeType === 3) out += esc(c.nodeValue);
+    else if (c.nodeType === 1){
+      var i = els.length; els.push(c);
+      if (!c.firstChild || c.tagName === 'BR' || c.tagName === 'WBR' || !LETRA.test(c.textContent)) out += '<' + i + '/>';
+      else out += '<' + i + '>' + molde(c, els) + '</' + i + '>';
+    }
+  }
+  return out;
+}
+function montar(trad, els){
+  var frag = document.createDocumentFragment(), pilha = [frag], m, re = /<(\d+)\/>|<(\d+)>|<\/(\d+)>|([^<]+)/g;
+  while ((m = re.exec(trad))){
+    var topo = pilha[pilha.length - 1];
+    if (m[1] != null){ if (!els[+m[1]]) return null; topo.appendChild(els[+m[1]].cloneNode(true)); }
+    else if (m[2] != null){ if (!els[+m[2]]) return null; var n = els[+m[2]].cloneNode(false); topo.appendChild(n); pilha.push(n); }
+    else if (m[3] != null){ if (pilha.length < 2) return null; pilha.pop(); }
+    else topo.appendChild(document.createTextNode(desesc(m[4])));
+  }
+  return pilha.length === 1 ? frag : null;
+}
+
+/* ---------- registro das frases da página ---------- */
+function registrarEl(el){
+  var els = [], ch = norm(molde(el, els));
+  var u = {tipo: 'el', no: el, orig: Array.prototype.slice.call(el.childNodes), chave: ch, els: els, estado: 'pt'};
+  regEl.set(el, u); unidades.push(u); return u;
+}
+function registrarTxt(t){
+  var u = {tipo: 'txt', no: t, orig: t.nodeValue, chave: norm(t.nodeValue), estado: 'pt'};
+  regTxt.set(t, u); unidades.push(u); return u;
+}
+function registrarAtrs(el){
+  var r = regAtr.get(el) || {};
+  ATRS.forEach(function(a){ var v = el.getAttribute(a); if (v && LETRA.test(v) && !(a in r)) r[a] = v; });
+  regAtr.set(el, r);
+}
+function varrer(raiz){
+  var novas = [];
+  (function andar(el){
+    if (el.nodeType !== 1 || pular(el)) return;
+    if (el.hasAttribute && ATRS.some(function(a){ return el.hasAttribute(a); })) registrarAtrs(el);
+    if (temTextoDireto(el) && soLinha(el) && el !== document.body){
+      if (!regEl.has(el)) novas.push(registrarEl(el));
+      el.querySelectorAll('[alt],[title],[placeholder],[aria-label]').forEach(registrarAtrs);
+      return;
+    }
+    for (var c = el.firstChild; c; c = c.nextSibling){
+      if (c.nodeType === 3 && LETRA.test(c.nodeValue) && !regTxt.has(c)) novas.push(registrarTxt(c));
+      else if (c.nodeType === 1) andar(c);
+    }
+  })(raiz);
+  return novas;
+}
+
+/* ---------- aplicar um idioma ---------- */
+function traduzirChave(ch, l){ var e = DIC[ch]; return (e && e[l]) || null; }
+function aplicarUnidade(u, l){
+  if (!u.no.isConnected || u.estado === l) return;
+  u.estado = l;
+  if (u.tipo === 'txt'){
+    var t = l === 'pt' ? null : traduzirChave(u.chave, l);
+    var base = u.orig, ini = base.match(/^\s*/)[0], fim = base.match(/\s*$/)[0];
+    var novo = t ? ini + t + fim : base;
+    if (u.no.nodeValue !== novo) u.no.nodeValue = novo;
+    return;
+  }
+  var el = u.no, tr = l === 'pt' ? null : traduzirChave(u.chave, l), frag = tr ? montar(tr, u.els) : null;
+  while (el.firstChild) el.removeChild(el.firstChild);
+  if (frag) el.appendChild(frag);
+  else u.orig.forEach(function(n){ el.appendChild(n); });
+}
+function aplicarAtrs(el, l){
+  var r = regAtr.get(el); if (!r) return;
+  Object.keys(r).forEach(function(a){ var t = l === 'pt' ? null : traduzirChave(norm(r[a]), l); el.setAttribute(a, t || r[a]); });
+}
+function aplicarMeta(l){
+  if (!meta){
+    meta = {titulo: document.title, itens: []};
+    document.querySelectorAll('meta[name="description"],meta[property="og:title"],meta[property="og:description"],meta[name="twitter:title"],meta[name="twitter:description"]').forEach(function(m){ meta.itens.push({m: m, v: m.getAttribute('content') || ''}); });
+  }
+  document.title = (l !== 'pt' && traduzirChave(norm(meta.titulo), l)) || meta.titulo;
+  meta.itens.forEach(function(x){ x.m.setAttribute('content', (l !== 'pt' && traduzirChave(norm(x.v), l)) || x.v); });
+  var og = document.querySelector('meta[property="og:locale"]');
+  if (og) og.setAttribute('content', {pt: 'pt_BR', en: 'en_US', es: 'es_ES', fr: 'fr_FR'}[l]);
+}
+function aplicarTudo(l){
+  aplicando = true;
+  try{
+    unidades = unidades.filter(function(u){ return u.no.isConnected; });
+    unidades.forEach(function(u){ aplicarUnidade(u, l); });
+    document.querySelectorAll('[alt],[title],[placeholder],[aria-label]').forEach(function(el){ aplicarAtrs(el, l); });
+    aplicarMeta(l);
+  } finally { obs.takeRecords(); aplicando = false; }
+}
+
+/* ---------- conteúdo que entra depois (módulos, janelas, listas) ---------- */
+var pendente = [], agendado = false;
+function processarPendentes(){
+  agendado = false; var lista = pendente; pendente = [];
+  aplicando = true;
+  try{
+    lista.forEach(function(item){
+      if (item.tipo === 'reg'){                       // uma frase registrada mudou por fora
+        var u = item.u; if (!u.no.isConnected) return;
+        u.estado = null;
+        if (u.tipo === 'txt'){ u.orig = u.no.nodeValue; u.chave = norm(u.orig); }
+        else { var els = []; u.chave = norm(molde(u.no, els)); u.els = els; u.orig = Array.prototype.slice.call(u.no.childNodes); }
+        if (atual !== 'pt') aplicarUnidade(u, atual);
+      } else if (item.no.isConnected){
+        var novas = varrer(item.no.nodeType === 3 ? item.no.parentElement : item.no);
+        if (atual !== 'pt') novas.forEach(function(u){ aplicarUnidade(u, atual); });
+        var raiz = item.no.nodeType === 1 ? item.no : item.no.parentElement;
+        if (raiz && atual !== 'pt'){ aplicarAtrs(raiz, atual); raiz.querySelectorAll && raiz.querySelectorAll('[alt],[title],[placeholder],[aria-label]').forEach(function(el){ aplicarAtrs(el, atual); }); }
+      }
+    });
+  } finally { obs.takeRecords(); aplicando = false; }
+}
+function agendar(item){ pendente.push(item); if (!agendado){ agendado = true; (window.queueMicrotask || setTimeout)(processarPendentes); } }
+function unidadeDe(no){
+  for (var n = no; n && n !== document.body; n = n.parentNode){
+    if (n.nodeType === 3 && regTxt.has(n)) return regTxt.get(n);
+    if (n.nodeType === 1 && regEl.has(n)) return regEl.get(n);
+  }
+  return null;
+}
+var obs = new MutationObserver(function(muts){
+  if (aplicando) return;
+  muts.forEach(function(m){
+    if (m.type === 'attributes'){
+      var r = regAtr.get(m.target) || {}, v = m.target.getAttribute(m.attributeName);
+      if (v && LETRA.test(v)){ r[m.attributeName] = v; regAtr.set(m.target, r); if (atual !== 'pt') agendar({tipo: 'atr', no: m.target}); }
+      return;
+    }
+    var alvo = m.type === 'characterData' ? m.target : m.target;
+    if (pular(alvo.nodeType === 3 ? alvo.parentElement : alvo)) return;
+    var u = unidadeDe(alvo);
+    if (u){ agendar({tipo: 'reg', u: u}); return; }
+    if (m.type === 'childList') m.addedNodes.forEach(function(n){ if (n.nodeType === 1 || n.nodeType === 3) agendar({tipo: 'novo', no: n}); });
+  });
+});
+
+/* ---------- escolha do idioma ---------- */
+function idiomaInicial(){
+  try{ var q = new URLSearchParams(location.search).get('lang'); if (q && IDIOMAS.indexOf(q) > -1) return q; }catch(e){}
+  try{ var s = localStorage.getItem(CHAVE); if (s && IDIOMAS.indexOf(s) > -1) return s; }catch(e){}
+  var nav = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'pt']);
+  for (var i = 0; i < nav.length; i++){ var c = String(nav[i]).slice(0, 2).toLowerCase(); if (c === 'pt') return 'pt'; if (IDIOMAS.indexOf(c) > -1) return c; }
+  return 'pt';
+}
+function definir(l, opcoes){
+  if (IDIOMAS.indexOf(l) < 0) l = 'pt';
+  atual = l;
+  try{ localStorage.setItem(CHAVE, l); }catch(e){}
+  document.documentElement.setAttribute('lang', HTML_LANG[l]);
+  aplicarTudo(l);
+  document.querySelectorAll('.i18n-seletor button').forEach(function(b){ var on = b.getAttribute('data-lang') === l; b.setAttribute('aria-pressed', on); b.classList.toggle('on', on); });
+  if (!(opcoes && opcoes.inicial)){
+    try{ var u = new URL(location.href); if (l === 'pt') u.searchParams.delete('lang'); else u.searchParams.set('lang', l); history.replaceState(history.state, '', u); }catch(e){}
+  }
+  if (typeof CFG.aoTrocar === 'function'){ try{ CFG.aoTrocar(l); }catch(e){ console.warn(e); } }
+  try{ document.dispatchEvent(new CustomEvent('i18n:idioma', {detail: {idioma: l}})); }catch(e){}
+}
+function montarSeletor(){
+  if (document.querySelector('.i18n-seletor')) return;
+  var box = document.createElement('div');
+  box.className = 'i18n-seletor' + (CFG.seletorFixo === false ? '' : ' i18n-fixo');
+  box.setAttribute('role', 'group'); box.setAttribute('aria-label', 'Idioma · Language · Idioma · Langue');
+  IDIOMAS.forEach(function(l){
+    var b = document.createElement('button'); b.type = 'button'; b.setAttribute('data-lang', l); b.setAttribute('lang', HTML_LANG[l]);
+    b.title = NOMES[l]; b.setAttribute('aria-label', NOMES[l]); b.textContent = ROTULOS[l];
+    b.addEventListener('click', function(){ definir(l); });
+    box.appendChild(b);
+  });
+  var alvo = CFG.seletorEm ? document.querySelector(CFG.seletorEm) : null;
+  (alvo || document.body).appendChild(box);
+}
+
+function iniciar(){
+  montarSeletor();
+  varrer(document.body);
+  obs.observe(document.body, {subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATRS});
+  definir(idiomaInicial(), {inicial: true});
+}
+
+window.I18N_SITE = {
+  idioma: function(){ return atual; },
+  definir: definir,
+  /* frases da página que ainda não têm tradução (manutenção) */
+  faltando: function(l){
+    l = l || (atual === 'pt' ? 'en' : atual); var s = {};
+    unidades.forEach(function(u){ if (u.no.isConnected && u.chave && LETRA.test(u.chave) && !traduzirChave(u.chave, l)) s[u.chave] = 1; });
+    document.querySelectorAll('[alt],[title],[placeholder],[aria-label]').forEach(function(el){ var r = regAtr.get(el); if (r) Object.keys(r).forEach(function(a){ var k = norm(r[a]); if (!traduzirChave(k, l)) s[k] = 1; }); });
+    return Object.keys(s);
+  },
+  /* todas as frases e atributos da página, no formato das chaves do dicionário */
+  coletar: function(){
+    var s = {};
+    unidades.forEach(function(u){ if (u.no.isConnected && u.chave && LETRA.test(u.chave)) s[u.chave] = 1; });
+    document.querySelectorAll('[alt],[title],[placeholder],[aria-label]').forEach(function(el){ var r = regAtr.get(el); if (r) Object.keys(r).forEach(function(a){ s[norm(r[a])] = 1; }); });
+    if (meta){ s[norm(meta.titulo)] = 1; meta.itens.forEach(function(x){ if (x.v) s[norm(x.v)] = 1; }); }
+    return Object.keys(s);
+  },
+  varrer: function(){ varrer(document.body); if (atual !== 'pt') aplicarTudo(atual); }
+};
+
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function(){ setTimeout(iniciar, 0); });
+else setTimeout(iniciar, 0);
 })();
 </script>
 </body>

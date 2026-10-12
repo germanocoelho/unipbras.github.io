@@ -8,7 +8,17 @@
    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS",
    "tipo": "foto",
    "visib": "publico",
-   "ts": 1791740942094
+   "ts": 1791740942094,
+   "leg_en": "The IFMS rector and pro-rectors with the presidents of the institutions at the meeting on the agreement among CMDDI, ICET, FOCAMS, IFMS and MPE/MS.",
+   "leg_es": "La rectora y los prorrectores del IFMS con los presidentes de las instituciones en el encuentro para el convenio entre CMDDI, ICET, FOCAMS, IFMS y MPE/MS.",
+   "leg_fr": "La rectrice et les pro-recteurs de l’IFMS avec les présidents des institutions lors de la rencontre pour la convention entre CMDDI, ICET, FOCAMS, IFMS et MPE/MS.",
+   "ocasiao_en": "Meeting on the Agreement among CMDDI, ICET, FOCAMS, IFMS and MPE/MS",
+   "ocasiao_es": "Encuentro para el Convenio entre CMDDI, ICET, FOCAMS, IFMS y MPE/MS",
+   "ocasiao_fr": "Rencontre pour la convention entre le CMDDI, l’ICET, le FOCAMS, l’IFMS et le MPE/MS",
+   "trad_src": {
+    "leg": "Reitora e pró-reitores do IFMS e presidentes das instituições no encontro para o convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS.",
+    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS"
+   }
   },
   "k1791740942095_1": {
    "src": "imgs/galeria/convenio-ifms-02-reuniao.jpg",
@@ -17,7 +27,17 @@
    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS",
    "tipo": "foto",
    "visib": "publico",
-   "ts": 1791740942095
+   "ts": 1791740942095,
+   "leg_en": "Working meeting on the agreement, held at IFMS.",
+   "leg_es": "Reunión de trabajo sobre el convenio, realizada en el IFMS.",
+   "leg_fr": "Réunion de travail sur la convention, tenue à l’IFMS.",
+   "ocasiao_en": "Meeting on the Agreement among CMDDI, ICET, FOCAMS, IFMS and MPE/MS",
+   "ocasiao_es": "Encuentro para el Convenio entre CMDDI, ICET, FOCAMS, IFMS y MPE/MS",
+   "ocasiao_fr": "Rencontre pour la convention entre le CMDDI, l’ICET, le FOCAMS, l’IFMS et le MPE/MS",
+   "trad_src": {
+    "leg": "Reunião de trabalho sobre o convênio, realizada no IFMS.",
+    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS"
+   }
   },
   "k1791740942096_2": {
    "src": "imgs/galeria/convenio-ifms-03-documento.jpg",
@@ -26,7 +46,17 @@
    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS",
    "tipo": "foto",
    "visib": "publico",
-   "ts": 1791740942096
+   "ts": 1791740942096,
+   "leg_en": "Handing over of a document during the meeting on the agreement.",
+   "leg_es": "Entrega de un documento durante el encuentro para el convenio.",
+   "leg_fr": "Remise d’un document lors de la rencontre pour la convention.",
+   "ocasiao_en": "Meeting on the Agreement among CMDDI, ICET, FOCAMS, IFMS and MPE/MS",
+   "ocasiao_es": "Encuentro para el Convenio entre CMDDI, ICET, FOCAMS, IFMS y MPE/MS",
+   "ocasiao_fr": "Rencontre pour la convention entre le CMDDI, l’ICET, le FOCAMS, l’IFMS et le MPE/MS",
+   "trad_src": {
+    "leg": "Entrega de documento durante o encontro para o convênio.",
+    "ocasiao": "Encontro para o Convênio entre CMDDI, ICET, FOCAMS, IFMS e MPE/MS"
+   }
   }
  }
 }
