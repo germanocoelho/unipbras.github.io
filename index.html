@@ -616,6 +616,34 @@ a:focus-visible, button:focus-visible{
 .parceiro-info strong{ display:block; font-size:.92rem; color: var(--forest-deep); }
 .parceiro-info span{ font-size:.78rem; color: var(--ink-soft); line-height:1.4; }
 
+
+/* ===== Associações filiadas ===== */
+.section-associadas{ background: var(--cream-warm); }
+.assoc-grid{ display:grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap:22px; }
+.assoc-card{
+  background: var(--paper); border-radius:18px; border:1px solid rgba(36,28,19,.08);
+  overflow:hidden; display:flex; flex-direction:column;
+  transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease;
+}
+.assoc-card:hover{ transform: translateY(-4px); box-shadow: 0 16px 32px rgba(36,28,19,.14); }
+.assoc-logo{ height:190px; display:flex; align-items:center; justify-content:center; background:#fff; border-bottom:1px solid rgba(36,28,19,.08); padding:18px; }
+.assoc-logo img{ max-width:100%; max-height:100%; object-fit:contain; }
+.assoc-logo.is-dark{ background:#55524e; padding:10px; }
+.assoc-body{ padding:20px 22px 22px; display:flex; flex-direction:column; gap:12px; flex:1; }
+.assoc-uf{ align-self:flex-start; font-size:.72rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color: var(--gold-deep); }
+.assoc-body h3{ font-family: var(--font-display); font-size:1.15rem; line-height:1.25; color: var(--forest-deep); margin:0; }
+.assoc-sigla{ display:block; font-size:.85rem; color: var(--ink-soft); font-family: inherit; margin-top:4px; }
+.assoc-desc{ font-size:.9rem; color: var(--ink-soft); line-height:1.55; margin:0; }
+.assoc-dados{ margin:0; display:grid; grid-template-columns: auto 1fr; gap:6px 14px; font-size:.85rem; border-top:1px solid rgba(36,28,19,.08); padding-top:12px; }
+.assoc-dados dt{ color: var(--ink-soft); }
+.assoc-dados dd{ margin:0; color: var(--ink); font-weight:500; overflow-wrap:anywhere; }
+.assoc-dados dd.pendente{ color: var(--ink-soft); font-weight:400; font-style:italic; }
+.assoc-card-vazio{ border:2px dashed rgba(36,28,19,.18); background:transparent; align-items:center; justify-content:center; text-align:center; padding:36px 24px; min-height:220px; }
+.assoc-card-vazio:hover{ transform:none; box-shadow:none; }
+.assoc-card-vazio strong{ font-family: var(--font-display); color: var(--forest-deep); font-size:1.05rem; }
+.assoc-card-vazio p{ font-size:.88rem; color: var(--ink-soft); margin:8px 0 0; max-width:30ch; }
+@media (max-width:640px){ .assoc-grid{ grid-template-columns:1fr; } .assoc-logo{ height:170px; } }
+
 @media (max-width: 720px){
   .roster-grid{ grid-template-columns: 1fr 1fr; }
   .founding-legend{ gap: 16px; }
@@ -1469,6 +1497,7 @@ textarea.nt-in{resize:vertical;line-height:1.55}
   <a href="#objetivos" class="rail-dot" data-section="objetivos" aria-label="Objetivos"><span class="rail-diamond"></span></a>
   <a href="#estrutura" class="rail-dot" data-section="estrutura" aria-label="Estrutura"><span class="rail-diamond"></span></a>
   <a href="#fundacao" class="rail-dot" data-section="fundacao" aria-label="Fundação"><span class="rail-diamond"></span></a>
+  <a href="#associadas" class="rail-dot" data-section="associadas" aria-label="Associações filiadas"><span class="rail-diamond"></span></a>
   <a href="#galeria" class="rail-dot" data-section="galeria" aria-label="Galeria"><span class="rail-diamond"></span></a>
   <a href="#associe" class="rail-dot" data-section="associe" aria-label="Associe-se"><span class="rail-diamond"></span></a>
   <a href="#contato" class="rail-dot" data-section="contato" aria-label="Contato"><span class="rail-diamond"></span></a>
@@ -1500,6 +1529,7 @@ textarea.nt-in{resize:vertical;line-height:1.55}
       <a href="#objetivos">Objetivos</a>
       <a href="#estrutura">Estrutura</a>
       <a href="#fundacao">Fundação</a>
+      <a href="#associadas">Filiadas</a>
       <a href="#noticias">Notícias</a>
       <a href="#galeria">Galeria</a>
       <a href="#associe">Associe-se</a>
@@ -1884,6 +1914,59 @@ textarea.nt-in{resize:vertical;line-height:1.55}
     </div>
   </div>
 </section>
+
+<section class="section section-associadas" id="associadas">
+  <div class="section-inner">
+    <p class="section-eyebrow reveal">Rede UNIPBRAS</p>
+    <h2 class="section-title reveal">Associações filiadas</h2>
+    <p class="section-sub reveal">Organizações indígenas que integram a UNIPBRAS. Os dados de cada associação são publicados à medida que são enviados e confirmados pelas próprias entidades.</p>
+
+    <div class="assoc-grid">
+
+      <!-- Para incluir uma nova associação, copie um bloco <article class="assoc-card">...</article>
+           e coloque o logo em imgs/associadas/. Campos sem informação usam <dd class="pendente">A informar</dd>. -->
+
+      <article class="assoc-card reveal">
+        <div class="assoc-logo"><img src="imgs/associadas/sodiurr.png" alt="Logomarca da SODIURR: duas flechas cruzadas com o nome da Sociedade de Defesa dos Índios Unidos de Roraima" loading="lazy"></div>
+        <div class="assoc-body">
+          <span class="assoc-uf">Roraima &middot; RR</span>
+          <h3>Sociedade de Defesa dos Índios Unidos de Roraima<span class="assoc-sigla">SODIURR</span></h3>
+          <p class="assoc-desc">Organização indígena de Roraima que reúne lideranças de comunidades indígenas do estado na defesa de seus direitos.</p>
+          <dl class="assoc-dados">
+            <dt>CNPJ</dt><dd>01.121.522/0001-04</dd>
+            <dt>Sede</dt><dd class="pendente">A informar</dd>
+            <dt>Povos</dt><dd class="pendente">A informar</dd>
+            <dt>Presidência</dt><dd class="pendente">A informar</dd>
+            <dt>Contato</dt><dd class="pendente">A informar</dd>
+          </dl>
+        </div>
+      </article>
+
+      <article class="assoc-card reveal">
+        <div class="assoc-logo is-dark"><img src="imgs/associadas/instituto-kenkre.webp" alt="Logomarca do Instituto Kenkre: cocar estilizado em verde, laranja e vermelho" loading="lazy"></div>
+        <div class="assoc-body">
+          <span class="assoc-uf">UF a informar</span>
+          <h3>Instituto Kenkre</h3>
+          <p class="assoc-desc">Instituto indígena filiado à UNIPBRAS.</p>
+          <dl class="assoc-dados">
+            <dt>CNPJ</dt><dd>64.693.399/0001-16</dd>
+            <dt>Sede</dt><dd class="pendente">A informar</dd>
+            <dt>Povos</dt><dd class="pendente">A informar</dd>
+            <dt>Presidência</dt><dd class="pendente">A informar</dd>
+            <dt>Contato</dt><dd class="pendente">A informar</dd>
+          </dl>
+        </div>
+      </article>
+
+      <div class="assoc-card assoc-card-vazio reveal">
+        <strong>Novas filiadas em breve</strong>
+        <p>Os dados das demais associações serão incluídos assim que forem enviados.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 <div class="zigzag-divider zigzag-to-river" aria-hidden="true"><svg viewBox="0 0 640 26" preserveAspectRatio="none"><path d="M0,26 L0.0,0 L20.0,26 L40.0,0 L60.0,26 L80.0,0 L100.0,26 L120.0,0 L140.0,26 L160.0,0 L180.0,26 L200.0,0 L220.0,26 L240.0,0 L260.0,26 L280.0,0 L300.0,26 L320.0,0 L340.0,26 L360.0,0 L380.0,26 L400.0,0 L420.0,26 L440.0,0 L460.0,26 L480.0,0 L500.0,26 L520.0,0 L540.0,26 L560.0,0 L580.0,26 L600.0,0 L620.0,26 L640.0,0 L640,26 Z"/></svg></div>
 <section class="section" id="noticias">
