@@ -1,0 +1,89 @@
+/* =====================================================================
+   UNIPBRAS · Pacote 4 (leque.css)
+   Linguagem da abertura do CMDDI aplicada dentro do site:
+   tela que se abre em losango, leque, traço que se desenha e se
+   preenche, poeira dourada com halo, arcos duplos e nome espaçado.
+   A abertura da UNIPBRAS continua a mesma.
+   ===================================================================== */
+
+/* ---------- 1. Transição do menu: a tela se fecha e se abre em losango ---------- */
+#transition-veil{ display: none !important; }
+.lq-losango{ position: fixed; inset: 0; z-index: 10040; pointer-events: none; }
+.lq-losango svg.lq-tela{ position: absolute; inset: 0; width: 100%; height: 100%; }
+.lq-losango rect.lq-fundo{ fill: #0A0F08; }
+.lq-losango .lq-furo{ transform-box: fill-box; transform-origin: center; }
+.lq-losango .lq-centro{
+  position: absolute; left: 50%; top: 50%; width: 92px; height: 92px; margin: -46px 0 0 -46px;
+  opacity: 0; transform: scale(.6) rotate(-30deg);
+  transition: opacity .35s ease, transform .6s cubic-bezier(.2,.9,.2,1);
+}
+.lq-losango.lq-meio .lq-centro{ opacity: 1; transform: none; }
+.lq-losango .lq-centro i{
+  position: absolute; left: 50%; top: 50%; width: 0; height: 0;
+  border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 12px solid var(--c);
+  transform-origin: 0 0;
+}
+
+/* ---------- 2. Leque: grupos de cards se abrem como penas ---------- */
+.lq-leque-pronto > *{
+  opacity: 0;
+  transform: translate(var(--lq-dx, 0), var(--lq-dy, 0)) rotate(var(--lq-a, 0deg)) scale(.32);
+  transform-origin: 50% 100%;
+}
+.lq-leque-pronto.lq-leque-abre > *{
+  opacity: 1; transform: none;
+  transition: transform 1.35s cubic-bezier(.2,.9,.2,1), opacity .6s ease;
+  transition-delay: var(--lq-d, 0s);
+}
+
+/* ---------- 3. Traço que se desenha e depois se preenche ---------- */
+/* (controlado por JS com Web Animations; nada a declarar aqui) */
+
+/* ---------- 4. Halo e poeira dourada nos títulos ---------- */
+
+.lq-halo{
+  position: absolute; left: -6%; top: -40%; width: 70%; height: 180%; z-index: -1; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(232,184,109,.32), rgba(232,184,109,0));
+  opacity: 0; transform: scale(.7);
+}
+.lq-halo.on{ animation: lq-halo 2.6s ease forwards; }
+@keyframes lq-halo{ 30%{ opacity: 1; transform: scale(1); } 100%{ opacity: 0; transform: scale(1.15); } }
+.lq-poeira{ position: absolute; inset: 0; pointer-events: none; overflow: visible; z-index: 2; }
+.lq-poeira i{
+  position: absolute; width: 3px; height: 3px; border-radius: 50%;
+  background: #E8B86D; box-shadow: 0 0 6px rgba(232,184,109,.9); opacity: 0;
+  animation: lq-po 2.6s ease-out forwards;
+}
+@keyframes lq-po{ 20%{ opacity: .95; } to{ opacity: 0; transform: translate(var(--x), var(--y)); } }
+
+/* ---------- 5. Arcos duplos sob os títulos (no lugar do traço reto) ---------- */
+.lq-tem-arco::after{ display: none !important; }
+.lq-arco{ display: block; width: 168px; height: 24px; margin-top: 10px; overflow: visible; }
+.section-inner[style*="center"] .lq-arco{ margin-left: auto; margin-right: auto; }
+.lq-arco path{ fill: none; stroke-linecap: round; stroke-dasharray: 200; stroke-dashoffset: 200; }
+.lq-arco .a1{ stroke: #F7B500; stroke-width: 5; }
+.lq-arco .a2{ stroke: #3FA535; stroke-width: 3.2; }
+.lq-arco.on .a1{ animation: lq-traco .9s cubic-bezier(.6,0,.2,1) .35s forwards; }
+.lq-arco.on .a2{ animation: lq-traco .9s cubic-bezier(.6,0,.2,1) .5s forwards; }
+@keyframes lq-traco{ to{ stroke-dashoffset: 0; } }
+
+/* ---------- 6. Rótulos com espaçamento dourado (como o nome na abertura) ---------- */
+.js-ready .section-eyebrow.reveal{
+  background: linear-gradient(90deg, var(--clay-deep, #7a2e0c) 0%, #E8B86D 35%, #fff3d6 50%, #D4954A 65%, var(--clay-deep, #7a2e0c) 100%);
+  background-size: 300% 100%; background-position: 100% 0;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  letter-spacing: .5em;
+  transition: opacity .9s ease, transform .9s cubic-bezier(.16,1,.3,1), filter .9s ease,
+              letter-spacing 1.4s cubic-bezier(.2,.9,.2,1), background-position 2.2s ease .3s;
+}
+.js-ready .section-eyebrow.reveal.is-visible{ letter-spacing: .14em; background-position: 0 0; }
+.section-dark .section-eyebrow.reveal{
+  background-image: linear-gradient(90deg, var(--gold-light) 0%, #fff3d6 35%, #E8B86D 50%, #fff3d6 65%, var(--gold-light) 100%);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .lq-losango, .lq-poeira, .lq-halo{ display: none !important; }
+  .lq-leque-pronto > *{ opacity: 1 !important; transform: none !important; }
+  .lq-arco path{ stroke-dashoffset: 0; animation: none !important; }
+  .js-ready .section-eyebrow.reveal{ letter-spacing: .14em; transition: none; }
+}
