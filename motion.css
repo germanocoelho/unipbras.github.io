@@ -95,3 +95,136 @@
 @media (hover: none){
   .mx-spot-glow, .mx-aura{ display: none; }
 }
+
+/* =====================================================================
+   PACOTE 2 · Efeitos arrojados, na linguagem da abertura
+   ===================================================================== */
+
+/* ---------- 8. Fileiras: cada seção se abre como a tela de abertura ---------- */
+.mx-has-fileiras{ position: relative; }
+.mx-fileiras{ position: absolute; inset: 0; z-index: 30; display: flex; pointer-events: none; overflow: hidden; }
+.mx-fileiras i{
+  flex: 1; margin-right: -1px;
+  background: linear-gradient(180deg, #0F3312 0%, #123c16 62%, #2a1608 100%);
+  transition: transform 1.05s cubic-bezier(.75,0,.2,1);
+}
+.mx-fileiras i::after{ /* fio dourado na borda de cada fileira */
+  content: ""; display: block; height: 100%; width: 1px; margin-left: auto;
+  background: linear-gradient(180deg, transparent, rgba(232,163,23,.55), transparent);
+}
+.mx-fileiras.abre i:nth-child(odd){ transform: translateY(102%); }
+.mx-fileiras.abre i:nth-child(even){ transform: translateY(-102%); }
+
+/* ---------- 9. Numeração gigante vazada que desliza com a rolagem ---------- */
+.mx-wm-host{ position: relative; overflow-x: clip; }
+.mx-wm{
+  position: absolute; top: 18px; right: -2vw; z-index: 0; pointer-events: none; user-select: none;
+  font-family: var(--font-display, serif); font-weight: 800; line-height: .8;
+  font-size: clamp(120px, 22vw, 300px); letter-spacing: -.04em;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(181,121,12,.28);
+}
+.section-dark .mx-wm{ -webkit-text-stroke-color: rgba(245,197,66,.22); }
+.mx-wm-host > .section-inner{ position: relative; z-index: 1; }
+@supports (animation-timeline: view()){
+  .mx-wm{ animation: mx-wm-drift linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+  @keyframes mx-wm-drift{
+    from{ transform: translateX(18vw) rotate(-6deg); opacity: 0; }
+    30%{ opacity: 1; }
+    to{ transform: translateX(-14vw) rotate(4deg); opacity: .4; }
+  }
+}
+
+/* ---------- 10. Faixa cinética com os povos ---------- */
+.mx-povos{
+  position: relative; overflow: hidden; padding: 34px 0; background: var(--forest-deep);
+  border-block: 1px solid rgba(232,163,23,.35);
+}
+.mx-povos::before, .mx-povos::after{
+  content: ""; position: absolute; top: 0; bottom: 0; width: 12vw; z-index: 2; pointer-events: none;
+}
+.mx-povos::before{ left: 0; background: linear-gradient(90deg, var(--forest-deep), transparent); }
+.mx-povos::after{ right: 0; background: linear-gradient(-90deg, var(--forest-deep), transparent); }
+.mx-povos-linha{ display: flex; width: max-content; white-space: nowrap; will-change: transform; }
+.mx-povos-linha + .mx-povos-linha{ margin-top: 10px; }
+.mx-povos-linha span{
+  font-family: var(--font-display, serif); font-weight: 700; line-height: 1.1;
+  font-size: clamp(34px, 6vw, 78px); padding: 0 .35em; color: var(--cream-warm);
+  display: inline-flex; align-items: center; gap: .55em;
+}
+.mx-povos-linha span::after{
+  content: ""; width: .32em; height: .32em; transform: rotate(45deg);
+  background: var(--gold); box-shadow: 0 0 18px rgba(232,163,23,.8); flex: none;
+}
+.mx-povos-linha span:nth-child(even){ color: transparent; -webkit-text-stroke: 1.5px var(--gold-light); }
+.mx-povos-linha.b span:nth-child(odd){ color: transparent; -webkit-text-stroke: 1.5px var(--gold-light); }
+.mx-povos-linha.b span:nth-child(even){ color: var(--cream-warm); -webkit-text-stroke: 0; }
+
+/* ---------- 11. Cursor-semente (anel dourado que segue o mouse) ---------- */
+.mx-cursor{
+  position: fixed; left: 0; top: 0; z-index: 10060; pointer-events: none;
+  width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 50%;
+  border: 1.5px solid var(--gold); mix-blend-mode: difference;
+  transition: width .35s cubic-bezier(.16,1,.3,1), height .35s cubic-bezier(.16,1,.3,1),
+              margin .35s cubic-bezier(.16,1,.3,1), background .35s, opacity .3s, border-color .3s;
+  opacity: 0;
+}
+.mx-cursor.on{ opacity: 1; }
+.mx-cursor.grande{ width: 76px; height: 76px; margin: -38px 0 0 -38px; background: rgba(232,163,23,.9); border-color: transparent; }
+.mx-cursor.aperta{ width: 22px; height: 22px; margin: -11px 0 0 -11px; }
+.mx-cursor-ponto{
+  position: fixed; left: 0; top: 0; z-index: 10061; pointer-events: none;
+  width: 6px; height: 6px; margin: -3px 0 0 -3px; transform: rotate(45deg);
+  background: var(--gold); opacity: 0; transition: opacity .3s;
+}
+.mx-cursor-ponto.on{ opacity: 1; }
+
+/* ---------- 12. Cards entram em 3D, como peças se encaixando ---------- */
+.js-ready .reveal:not(.is-visible):is(.assoc-card, .obj-card, .member-card, .marca-item, .diag-stat){
+  transform: perspective(900px) rotateX(32deg) translateY(80px) scale(.92);
+  transform-origin: 50% 100%;
+}
+
+/* ---------- 13. Títulos se "escrevem" da esquerda para a direita ---------- */
+.js-ready .section-title.reveal{
+  -webkit-mask-image: linear-gradient(90deg, #000 45%, transparent 55%);
+          mask-image: linear-gradient(90deg, #000 45%, transparent 55%);
+  -webkit-mask-size: 250% 100%; mask-size: 250% 100%;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: 100% 0; mask-position: 100% 0;
+  transition:
+    opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1),
+    filter .9s cubic-bezier(.16,1,.3,1),
+    -webkit-mask-position 1.4s cubic-bezier(.77,0,.18,1), mask-position 1.4s cubic-bezier(.77,0,.18,1);
+}
+.js-ready .section-title.reveal.is-visible{ -webkit-mask-position: 0 0; mask-position: 0 0; }
+
+/* ---------- 14. Hero se afasta em profundidade ao rolar ---------- */
+@supports (animation-timeline: scroll()){
+  .hero-inner{ animation: mx-hero-sai linear both; animation-timeline: scroll(root); animation-range: 0 90vh; }
+  @keyframes mx-hero-sai{ to{ transform: translateY(-90px) scale(.86); opacity: 0; filter: blur(10px); } }
+  .hero-3d, .hero-beadwork{ animation: mx-hero-fundo linear both; animation-timeline: scroll(root); animation-range: 0 100vh; }
+  @keyframes mx-hero-fundo{ to{ transform: translate(-50%,-50%) scale(1.25) rotate(8deg); opacity: .25; } }
+}
+
+/* ---------- 15. Seção escura nasce de um círculo de luz ---------- */
+@supports (animation-timeline: view()){
+  .section-dark{ animation: mx-circulo linear both; animation-timeline: view(); animation-range: entry 0% entry 85%; }
+  @keyframes mx-circulo{
+    from{ clip-path: circle(8% at 50% 40%); }
+    to{ clip-path: circle(150% at 50% 40%); }
+  }
+}
+
+/* ---------- 16. Explosão de sementes no clique ---------- */
+.mx-semente{
+  position: fixed; z-index: 10070; pointer-events: none; width: 8px; height: 8px; margin: -4px 0 0 -4px;
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .mx-fileiras, .mx-cursor, .mx-cursor-ponto, .mx-semente{ display: none !important; }
+  .mx-wm, .hero-inner, .hero-3d, .hero-beadwork, .section-dark{ animation: none !important; }
+  .js-ready .section-title.reveal{ -webkit-mask-image: none !important; mask-image: none !important; }
+  .js-ready .reveal:not(.is-visible){ transform: none !important; }
+}
+@media (hover: none){ .mx-cursor, .mx-cursor-ponto{ display: none; } }
