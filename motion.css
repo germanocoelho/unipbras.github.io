@@ -169,7 +169,7 @@
   opacity: 0;
 }
 .mx-cursor.on{ opacity: 1; }
-.mx-cursor.grande{ width: 76px; height: 76px; margin: -38px 0 0 -38px; background: rgba(232,163,23,.9); border-color: transparent; }
+.mx-cursor.grande{ width: 64px; height: 64px; margin: -32px 0 0 -32px; border-width: 2px; border-style: dashed; }
 .mx-cursor.aperta{ width: 22px; height: 22px; margin: -11px 0 0 -11px; }
 .mx-cursor-ponto{
   position: fixed; left: 0; top: 0; z-index: 10061; pointer-events: none;

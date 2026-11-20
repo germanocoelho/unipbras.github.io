@@ -1,0 +1,146 @@
+/* =====================================================================
+   UNIPBRAS · Pacote 3 (grafismo.css)
+   Botões com iconografia, manifesto em rolagem e shader de grafismo.
+   Iconografia derivada do grafismo geométrico da própria marca
+   (triângulos, zigue-zague, losangos e contas), não de padrões
+   específicos de um povo.
+   ===================================================================== */
+
+/* ---------- Botões-conta: forma de miçanga alongada, contorno de contas ---------- */
+.btn.gb{
+  --gb-p: 20px;
+  position: relative; isolation: isolate;
+  background: transparent !important; border: 0 !important; box-shadow: none !important; border-radius: 0;
+  padding: 17px 36px 17px 24px; gap: 12px;
+  transition: transform .35s cubic-bezier(.16,1,.3,1), color .35s ease;
+}
+.gb-fundo{
+  position: absolute; inset: 0; z-index: -2; overflow: hidden;
+  clip-path: polygon(var(--gb-p) 0, calc(100% - var(--gb-p)) 0, 100% 50%, calc(100% - var(--gb-p)) 100%, var(--gb-p) 100%, 0 50%);
+  background: var(--forest-deep);
+  transition: background .4s ease;
+}
+.btn-ghost.gb .gb-fundo{ background: rgba(255,253,248,.0); }
+/* trançado: trama de cestaria que atravessa o botão no hover */
+.gb-trama{
+  position: absolute; inset: 0; transform: translateX(-102%);
+  background:
+    repeating-linear-gradient(45deg, rgba(245,197,66,.26) 0 3px, transparent 3px 10px),
+    repeating-linear-gradient(-45deg, rgba(245,197,66,.14) 0 3px, transparent 3px 10px),
+    linear-gradient(90deg, var(--forest) 0%, var(--forest-deep) 100%);
+  transition: transform .7s cubic-bezier(.77,0,.18,1);
+}
+.btn.gb:hover .gb-trama, .btn.gb:focus-visible .gb-trama{ transform: translateX(0); }
+.btn-ghost.gb{ color: var(--forest-deep); }
+.btn-ghost.gb:hover, .btn-ghost.gb:focus-visible{ color: var(--cream); }
+.btn-primary.gb{ color: var(--cream); }
+
+/* contorno de contas (miçangas) */
+.gb-contorno{ position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.gb-contorno polygon{
+  fill: none; stroke: var(--gold-light); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 0 7.5; transition: stroke .35s ease;
+}
+.btn-ghost.gb .gb-contorno polygon{ stroke: var(--forest-deep); }
+.btn-ghost.gb:hover .gb-contorno polygon{ stroke: var(--gold); }
+.btn.gb:hover .gb-contorno polygon{ animation: gb-contas 1.2s linear infinite; }
+@keyframes gb-contas{ to{ stroke-dashoffset: -15; } }
+
+/* medalhão em losango com o ícone */
+.gb-icone{ position: relative; width: 30px; height: 30px; display: grid; place-items: center; flex: none; }
+.gb-icone::before{
+  content: ""; position: absolute; width: 22px; height: 22px; transform: rotate(45deg);
+  background: var(--gold); box-shadow: 0 0 0 3px rgba(232,163,23,.25);
+  transition: transform .6s cubic-bezier(.16,1,.3,1), background .35s;
+}
+.btn.gb:hover .gb-icone::before{ transform: rotate(225deg) scale(1.12); background: var(--gold-light); }
+.gb-icone svg{
+  position: relative; width: 18px; height: 18px; fill: none; stroke: var(--forest-deep);
+  stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; overflow: visible;
+}
+/* flecha: dispara */
+.btn.gb:hover .gb-ic-flecha svg{ animation: gb-dispara .9s cubic-bezier(.16,1,.3,1) infinite; }
+@keyframes gb-dispara{ 0%{ transform: translateX(0); } 45%{ transform: translateX(7px); opacity: 0; } 46%{ transform: translateX(-7px); opacity: 0; } 100%{ transform: translateX(0); opacity: 1; } }
+/* broto: as folhas crescem */
+.gb-ic-broto .f{ transform-box: fill-box; transition: transform .5s cubic-bezier(.3,1.6,.5,1); }
+.gb-ic-broto .f1{ transform-origin: 100% 100%; } .gb-ic-broto .f2{ transform-origin: 0 100%; }
+.btn.gb:hover .gb-ic-broto .f{ transform: scale(1.35) rotate(-6deg); }
+.btn.gb:hover .gb-ic-broto .f2{ transform: scale(1.35) rotate(6deg); }
+/* roda da aldeia: gira */
+.btn.gb:hover .gb-ic-roda svg{ animation: gb-gira 3s linear infinite; }
+@keyframes gb-gira{ to{ transform: rotate(360deg); } }
+
+/* franja de triângulos que cai sob o botão */
+.gb-franja{
+  position: absolute; left: 50%; top: calc(100% + 4px); transform: translateX(-50%);
+  display: flex; gap: 5px; pointer-events: none;
+}
+.gb-franja i{
+  width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent;
+  border-top: 8px solid var(--c, var(--gold)); opacity: 0; transform: translateY(-8px);
+  transition: opacity .3s ease, transform .45s cubic-bezier(.3,1.6,.5,1);
+}
+.btn.gb:hover .gb-franja i, .btn.gb:focus-visible .gb-franja i{ opacity: 1; transform: translateY(0); }
+.gb-franja i:nth-child(4n+1){ --c: var(--gold); } .gb-franja i:nth-child(4n+2){ --c: var(--forest-light); }
+.gb-franja i:nth-child(4n+3){ --c: var(--clay, #9A3A0F); } .gb-franja i:nth-child(4n){ --c: var(--river); }
+.btn.gb:focus-visible{ outline: none; }
+.btn.gb:focus-visible .gb-contorno polygon{ stroke: var(--gold); stroke-width: 4; }
+
+/* ---------- Filtros da legislação: franja em zigue-zague no filtro ativo ---------- */
+.leg-filtro{ position: relative; }
+.leg-filtro::after{
+  content: ""; position: absolute; left: 14px; right: 14px; bottom: -9px; height: 6px;
+  background:
+    linear-gradient(135deg, var(--dot-accent, var(--forest-deep)) 25%, transparent 25%) 0 0 / 8px 6px,
+    linear-gradient(225deg, var(--dot-accent, var(--forest-deep)) 25%, transparent 25%) 0 0 / 8px 6px;
+  transform: scaleX(0); transition: transform .45s cubic-bezier(.16,1,.3,1);
+}
+.leg-filtro.on::after, .leg-filtro:hover::after{ transform: scaleX(1); }
+.leg-filtro .leg-filtro-dot{ transition: transform .5s cubic-bezier(.16,1,.3,1); }
+.leg-filtro:hover .leg-filtro-dot{ transform: rotate(45deg) scale(1.15); border-radius: 4px; }
+
+/* ---------- Manifesto: a frase do Estatuto se acende com a rolagem ---------- */
+.mx-fill{
+  color: transparent;
+  background-image:
+    linear-gradient(90deg, var(--gold-light), var(--cream) 30%, var(--cream)),
+    linear-gradient(rgba(251,246,236,.16), rgba(251,246,236,.16));
+  background-repeat: no-repeat; background-size: 0% 100%, 100% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-box-decoration-break: slice; box-decoration-break: slice;
+}
+.mx-manifesto-anel{ display: none; }
+@supports (animation-timeline: view()){
+  .mx-manifesto{ height: 260vh; padding: 0 24px; view-timeline-name: --manifesto; overflow: clip; }
+  .mx-manifesto .band-inner{
+    position: sticky; top: 0; height: 100vh; max-width: 1040px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+  }
+  .mx-manifesto .quote-text{ font-size: clamp(1.7rem, 4.2vw, 3.3rem); line-height: 1.3; letter-spacing: -.01em; }
+  .mx-fill{ animation: mx-fill linear both; animation-timeline: --manifesto; animation-range: contain 0% contain 75%; }
+  @keyframes mx-fill{ to{ background-size: 100% 100%, 100% 100%; } }
+  .mx-manifesto .quote-mark{ animation: mx-aspas linear both; animation-timeline: --manifesto; animation-range: contain 0% contain 100%; }
+  @keyframes mx-aspas{ from{ transform: scale(.6) rotate(-20deg); opacity: .2; } 50%{ opacity: .9; } to{ transform: scale(1.4) rotate(8deg); opacity: .5; } }
+  .mx-manifesto .quote-source{ animation: mx-fonte linear both; animation-timeline: --manifesto; animation-range: contain 60% contain 85%; }
+  @keyframes mx-fonte{ from{ opacity: 0; transform: translateY(20px); letter-spacing: .4em; } to{ opacity: 1; transform: none; letter-spacing: .05em; } }
+  .mx-manifesto-anel{
+    display: block; position: absolute; left: 50%; top: 50%; z-index: -1; pointer-events: none;
+    width: min(92vh, 92vw); height: min(92vh, 92vw); margin: calc(min(92vh, 92vw) / -2) 0 0 calc(min(92vh, 92vw) / -2);
+    animation: mx-anel linear both; animation-timeline: --manifesto; animation-range: contain 0% contain 100%;
+  }
+  .mx-manifesto-anel svg{ width: 100%; height: 100%; }
+  @keyframes mx-anel{ from{ transform: rotate(-60deg) scale(.55); opacity: .12; } 50%{ opacity: .32; } to{ transform: rotate(120deg) scale(1.35); opacity: .08; } }
+}
+
+/* ---------- Shader de grafismo na seção escura ---------- */
+.gb-shader{ position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; display: block; }
+.gb-shader-host{ isolation: isolate; }
+
+@media (prefers-reduced-motion: reduce){
+  .gb-trama, .gb-icone::before, .gb-franja i{ transition: none; }
+  .btn.gb:hover .gb-contorno polygon, .btn.gb:hover .gb-ic-flecha svg, .btn.gb:hover .gb-ic-roda svg{ animation: none; }
+  .mx-manifesto{ height: auto; }
+  .mx-fill{ animation: none !important; background-size: 100% 100%, 100% 100%; }
+  .mx-manifesto .band-inner{ position: relative; height: auto; }
+  .mx-manifesto-anel, .mx-manifesto .quote-mark, .mx-manifesto .quote-source{ animation: none !important; }
+}
