@@ -13,12 +13,12 @@
 
   var VS = [
     'attribute vec2 aStart; attribute vec2 aTarget; attribute vec3 aColor; attribute vec2 aSeed;',
-    'uniform vec2 uRes; uniform vec4 uRect; uniform vec2 uMouse; uniform float uTime, uProg, uScatter, uDpr, uFade, uRep;',
+    'uniform vec2 uRes; uniform vec4 uRect; uniform vec2 uMouse; uniform float uTime, uProg, uScatter, uDpr, uFade, uRep, uOut, uSz;',
     'varying vec3 vColor; varying float vAlpha; varying float vShape; varying float vRot;',
     'void main(){',
     '  float s = aSeed.x; float amb = aSeed.y;',
     '  vec2 tgt = amb > .5 ? aTarget * uRes : uRect.xy + aTarget * uRect.zw;',
-    '  float d = clamp(uProg * 1.45 - s * .45, 0., 1.);',
+    '  float d = clamp(uProg * 1.7 - s * .55, 0., 1.);',
     '  float e = 1. - pow(1. - d, 3.);',
     '  vec2 p = mix(aStart, tgt, e);',
     '  float sw = 1. - e;',
@@ -30,12 +30,12 @@
     '  p += vec2((s - .5) * 900. + sin(s * 90. + uTime) * 40., -(260. + 520. * fract(s * 7.31))) * sc;',
     '  vec2 clip = (p / uRes) * 2. - 1.;',
     '  gl_Position = vec4(clip.x, -clip.y, 0., 1.);',
-    '  float sz = amb > .5 ? 3. + 4. * fract(s * 13.7) : 2.6 + 1.8 * fract(s * 5.3);',
-    '  gl_PointSize = sz * uDpr * (1. + sw * 1.6);',
+    '  float sz = amb > .5 ? 3. + 4. * fract(s * 13.7) : uSz + uSz * .8 * fract(s * 5.3);',
+    '  gl_PointSize = sz * uDpr * (1. + sw * 2.4);',
     '  vColor = aColor; vShape = fract(s * 3.7); vRot = sw;',
     '  float tw = .55 + .45 * sin(uTime * 2.2 + s * 60.);',
     '  vAlpha = amb > .5 ? (.22 + .4 * tw) * smoothstep(0., .4, uProg) : mix(.95, uFade * (.6 + .4 * tw), smoothstep(.86, 1., uProg));',
-    '  vAlpha *= 1. - sc * .7;',
+    '  vAlpha *= (1. - sc * .7) * uOut;',
     '}'].join('\n');
   // cada partícula é um losango ou um triângulo (o grafismo da logomarca)
   var FS = [
@@ -67,21 +67,26 @@
     host.classList.add('px-on');
 
     var U = {};
-    ['uRes','uRect','uMouse','uTime','uProg','uScatter','uDpr','uFade','uRep'].forEach(function(n){ U[n] = gl.getUniformLocation(pr, n); });
+    ['uRes','uRect','uMouse','uTime','uProg','uScatter','uDpr','uFade','uRep','uOut','uSz'].forEach(function(n){ U[n] = gl.getUniformLocation(pr, n); });
     var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), rect = [0, 0, 1, 1];
+    function alvo(){
+      // posição real da logo (acompanha a animação de entrada do bloco)
+      var hr = host.getBoundingClientRect(), er = img.getBoundingClientRect();
+      rect = [er.left - hr.left, er.top - hr.top, er.width, er.height];
+      return hr;
+    }
     function medir(){
-      var hr = host.getBoundingClientRect(); W = hr.width; H = hr.height;
+      var hr = alvo(); W = hr.width; H = hr.height;
       cv.width = Math.max(1, W * dpr); cv.height = Math.max(1, H * dpr);
       cv.style.width = W + 'px'; cv.style.height = H + 'px';
-      var er = img.getBoundingClientRect();
-      rect = [er.left - hr.left, er.top - hr.top, er.width, er.height];
       gl.viewport(0, 0, cv.width, cv.height);
     }
 
     var fonte = new Image();
     fonte.onload = function(){
       var asp = fonte.naturalWidth / fonte.naturalHeight;
-      var SW = asp >= 1 ? 300 : Math.round(300 * asp), SH = asp >= 1 ? Math.round(300 / asp) : 300;
+      var BASE = MOBILE ? 340 : 460;
+      var SW = asp >= 1 ? BASE : Math.round(BASE * asp), SH = asp >= 1 ? Math.round(BASE / asp) : BASE;
       var c = document.createElement('canvas'); c.width = SW; c.height = SH;
       var x = c.getContext('2d'); x.drawImage(fonte, 0, 0, SW, SH);
       var px;
@@ -129,21 +134,26 @@
       host.addEventListener('touchend', function(){ setTimeout(function(){ mouse = [-9999, -9999]; }, 500); });
       addEventListener('resize', medir);
       addEventListener('scroll', function(){
-        var hr = host.getBoundingClientRect();
-        scat = Math.min(1, Math.max(0, -hr.top / (hr.height * .9)));
+        // só se espalha quando a própria logo sai pelo topo da tela
+        var er = img.getBoundingClientRect();
+        scat = Math.min(1, Math.max(0, (140 - er.top) / (window.innerHeight * .7)));
       }, { passive: true });
 
       function frame(now){
         if (!vis) return;
         if (!iniciado){ iniciado = true; t0 = now; medir(); }
         var el = now - t0, prog = Math.min(1, el / DUR);
-        if (prog >= .9 && !revelado){ revelado = true; host.classList.add('px-revela'); medir(); }
+        alvo();
+        if (prog >= .97 && !revelado){ revelado = true; host.classList.add('px-revela'); }
+        // depois de formada, a logo fica limpa: as partículas se apagam
+        var sai = 1 - Math.min(1, Math.max(0, (el - DUR - 250) / 1100));
         gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
         gl.uniform2f(U.uRes, W, H); gl.uniform4f(U.uRect, rect[0], rect[1], rect[2], rect[3]);
         gl.uniform2f(U.uMouse, mouse[0], mouse[1]); gl.uniform1f(U.uTime, el / 1000);
         gl.uniform1f(U.uProg, prog); gl.uniform1f(U.uScatter, scat); gl.uniform1f(U.uDpr, dpr);
-        gl.uniform1f(U.uFade, cfg.fade); gl.uniform1f(U.uRep, MOBILE ? 90 : 140);
+        gl.uniform1f(U.uFade, cfg.fade); gl.uniform1f(U.uRep, MOBILE ? 90 : 140); gl.uniform1f(U.uOut, sai); gl.uniform1f(U.uSz, cfg.sz || 1.6);
         gl.drawArrays(gl.POINTS, 0, N);
+        if (sai <= 0){ gl.clear(gl.COLOR_BUFFER_BIT); cv.style.display = 'none'; return; }
         requestAnimationFrame(frame);
       }
       var espera = !!document.getElementById('un-ab');
@@ -164,10 +174,10 @@
   function iniciar(){
     // 1. Nossa marca: a logomarca oficial nasce das partículas
     var logo = document.querySelector('#marca .marca-logo-img');
-    if (logo) montar(document.querySelector('#marca'), logo, { n: 7000, nMob: 3200, fade: .18, dur: 3800, limiar: .3 });
+    if (logo) montar(document.querySelector('#marca'), logo, { n: 11000, nMob: 4200, fade: .5, dur: 3800, limiar: .3 });
     // 2. Rodapé: o selo se forma como assinatura final
     var pe = document.querySelector('.footer-brand img');
-    if (pe) montar(document.querySelector('.footer'), pe, { n: 2600, nMob: 1400, fade: .25, dur: 3000, limiar: .4 });
+    if (pe) montar(document.querySelector('.footer'), pe, { n: 3600, nMob: 1800, fade: .5, dur: 3000, limiar: .4 });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar); else iniciar();
 })();
