@@ -35,7 +35,7 @@
     atual = (i + itens.length) % itens.length;
     var it = itens[atual], img = it.querySelector('img');
     lbImg.style.animation = 'none'; void lbImg.offsetWidth; lbImg.style.animation = '';
-    lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt;
+    lbImg.src = img.getAttribute('data-full') || img.currentSrc || img.src; lbImg.alt = img.alt;
     lbB.textContent = it.querySelector('figcaption b').textContent;
     lbS.innerHTML = it.querySelector('figcaption small').innerHTML;
   }

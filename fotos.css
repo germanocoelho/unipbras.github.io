@@ -176,3 +176,21 @@
   .ft-item figcaption small{ font-size: .6rem; }
   .ft-mosaico .ft-item:nth-child(1) figcaption b{ font-size: 1rem; }
 }
+
+/* película mais leve: a foto aparece, o texto continua legível */
+.ft-banda::before{
+  background: linear-gradient(100deg, rgba(10,28,12,.80) 0%, rgba(15,51,18,.52) 36%, rgba(15,51,18,.08) 66%, rgba(15,51,18,0) 100%),
+              linear-gradient(180deg, rgba(10,28,12,.25) 0%, transparent 25%, transparent 78%, rgba(10,28,12,.45) 100%);
+}
+.ft-banda.dir::before{
+  background: linear-gradient(260deg, rgba(10,28,12,.80) 0%, rgba(42,22,8,.52) 36%, rgba(42,22,8,.08) 66%, rgba(42,22,8,0) 100%),
+              linear-gradient(180deg, rgba(10,28,12,.25) 0%, transparent 25%, transparent 78%, rgba(10,28,12,.45) 100%);
+}
+.ft-banda h2, .ft-banda p, .ft-banda-eyb{ text-shadow: 0 1px 2px rgba(0,0,0,.45), 0 4px 28px rgba(0,0,0,.45); }
+@media (max-width: 760px){
+  .ft-banda{ min-height: 92vh; align-items: end; }
+  .ft-banda::before, .ft-banda.dir::before{
+    background: linear-gradient(180deg, rgba(10,28,12,.08) 0%, rgba(10,28,12,.12) 30%, rgba(10,28,12,.62) 58%, rgba(10,28,12,.9) 100%);
+  }
+  .ft-banda-w{ padding: 46vh 20px 96px; }
+}
