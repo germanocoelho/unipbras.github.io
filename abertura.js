@@ -69,7 +69,7 @@
     '<path class="folha d" d="M1 -24 C24 -26 44 -44 48 -68 C22 -64 6 -48 1 -24Z"/>' +
     '<circle class="borda" r="156"/><circle class="borda" r="128" style="animation-delay:2.05s;stroke-width:2"/>' + tri +
     '<g clip-path="url(#unDisco)">' + ondas + '</g>' +
-    '<image class="selo" href="imgs/unipbras-emblema.webp" x="-157" y="-157" width="314" height="314"/></svg>' +
+    '<image class="selo" href="imgs/unipbras-emblema.webp?v=2" x="-157" y="-157" width="314" height="314"/></svg>' +
     '<div class="nome"><b><span class="u">UNIP</span><span class="b">BRAS</span></b><em>INDÍGENA</em>' +
     '<span>União Nacional dos Produtores e Agricultores Indígenas do Brasil</span></div></div>' +
     '<span class="pular">toque para entrar</span></div>';
