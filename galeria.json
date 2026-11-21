@@ -480,6 +480,46 @@
       "ocasiao_en": "2nd National Meeting of Indigenous Farmers · Brasília, November 25–26, 2025",
       "ocasiao_es": "II Encuentro Nacional de Agricultores Indígenas · Brasilia, 25 y 26 de noviembre de 2025",
       "ocasiao_fr": "IIe Rencontre nationale des agriculteurs autochtones · Brasília, 25 et 26 novembre 2025"
+    },
+    "k1795296074975_0": {
+      "src": "video/encontro-agricultores-2025-mesa-1.mp4",
+      "poster": "video/encontro-agricultores-2025-mesa-1.jpg",
+      "leg": "Vídeo: liderança indígena com cocar e maracá faz sua saudação à mesa do encontro.",
+      "album": "eventos",
+      "ocasiao": "II Encontro Nacional dos Agricultores Indígenas · Brasília, 25 e 26 de novembro de 2025",
+      "tipo": "video",
+      "visib": "publico",
+      "ts": 1795296074975,
+      "leg_en": "Video: an Indigenous leader with a headdress and maraca greets the meeting’s panel.",
+      "leg_es": "Video: un líder indígena con penacho y maraca saluda a la mesa del encuentro.",
+      "leg_fr": "Vidéo : un dirigeant autochtone portant une coiffe et un maraca salue la tribune de la rencontre.",
+      "trad_src": {
+        "leg": "Vídeo: liderança indígena com cocar e maracá faz sua saudação à mesa do encontro.",
+        "ocasiao": "II Encontro Nacional dos Agricultores Indígenas · Brasília, 25 e 26 de novembro de 2025"
+      },
+      "ocasiao_en": "2nd National Meeting of Indigenous Farmers · Brasília, November 25–26, 2025",
+      "ocasiao_es": "II Encuentro Nacional de Agricultores Indígenas · Brasilia, 25 y 26 de noviembre de 2025",
+      "ocasiao_fr": "IIe Rencontre nationale des agriculteurs autochtones · Brasília, 25 et 26 novembre 2025"
+    },
+    "k1795296074976_1": {
+      "src": "video/encontro-agricultores-2025-mesa-2.mp4",
+      "poster": "video/encontro-agricultores-2025-mesa-2.jpg",
+      "leg": "Vídeo: o auditório acompanha a saudação da liderança indígena à mesa do encontro.",
+      "album": "eventos",
+      "ocasiao": "II Encontro Nacional dos Agricultores Indígenas · Brasília, 25 e 26 de novembro de 2025",
+      "tipo": "video",
+      "visib": "publico",
+      "ts": 1795296074976,
+      "leg_en": "Video: the auditorium follows the Indigenous leader’s greeting to the meeting’s panel.",
+      "leg_es": "Video: el auditorio sigue el saludo del líder indígena a la mesa del encuentro.",
+      "leg_fr": "Vidéo : l’auditorium suit le salut du dirigeant autochtone à la tribune de la rencontre.",
+      "trad_src": {
+        "leg": "Vídeo: o auditório acompanha a saudação da liderança indígena à mesa do encontro.",
+        "ocasiao": "II Encontro Nacional dos Agricultores Indígenas · Brasília, 25 e 26 de novembro de 2025"
+      },
+      "ocasiao_en": "2nd National Meeting of Indigenous Farmers · Brasília, November 25–26, 2025",
+      "ocasiao_es": "II Encuentro Nacional de Agricultores Indígenas · Brasilia, 25 y 26 de noviembre de 2025",
+      "ocasiao_fr": "IIe Rencontre nationale des agriculteurs autochtones · Brasília, 25 et 26 novembre 2025"
     }
   }
 }
