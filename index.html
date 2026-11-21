@@ -638,6 +638,12 @@ a:focus-visible, button:focus-visible{
 .assoc-dados dt{ color: var(--ink-soft); }
 .assoc-dados dd{ margin:0; color: var(--ink); font-weight:500; overflow-wrap:anywhere; }
 .assoc-dados dd.pendente{ color: var(--ink-soft); font-weight:400; font-style:italic; }
+.assoc-logo.is-selo{ background: linear-gradient(135deg, var(--forest-deep), #123c16); flex-direction:column; gap:10px; }
+.assoc-selo{ width:64px; height:64px; transform:rotate(45deg); border:2px solid var(--gold); display:grid; place-items:center; }
+.assoc-selo::before{ content:""; width:22px; height:22px; background:var(--gold); }
+.assoc-selo-nome{ font-family: var(--font-display); font-weight:700; color: var(--cream-warm); font-size:1.25rem; letter-spacing:.06em; text-align:center; }
+.assoc-selo-aviso{ font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color: rgba(245,197,66,.75); }
+.assoc-logo.is-pequeno img{ max-height:120px; }
 .assoc-card-vazio{ border:2px dashed rgba(36,28,19,.18); background:transparent; align-items:center; justify-content:center; text-align:center; padding:36px 24px; min-height:220px; }
 .assoc-card-vazio:hover{ transform:none; box-shadow:none; }
 .assoc-card-vazio strong{ font-family: var(--font-display); color: var(--forest-deep); font-size:1.05rem; }
@@ -1959,6 +1965,72 @@ textarea.nt-in{resize:vertical;line-height:1.55}
             <dt>Sede</dt><dd>Rua Bandeirantes, 877, Jardim Planalto, Novo Progresso/PA, CEP 68193-000</dd>
             <dt>Povos</dt><dd class="pendente">A informar</dd>
             <dt>Presidência</dt><dd>Bepdjy Re Mekragnoti Re</dd>
+            <dt>Contato</dt><dd class="pendente">A informar</dd>
+          </dl>
+        </div>
+      </article>
+
+      <article class="assoc-card reveal">
+        <div class="assoc-logo is-selo" aria-hidden="true"><span class="assoc-selo"></span><span class="assoc-selo-nome">FFIKB</span><span class="assoc-selo-aviso">logomarca a enviar</span></div>
+        <div class="assoc-body">
+          <span class="assoc-uf">Porto Real do Colégio &middot; AL</span>
+          <h3>Fundação da Federação dos Índios Kariris do Brasil<span class="assoc-sigla">FFIKB</span></h3>
+          <p class="assoc-desc">Fundação indígena criada em 2009, com sede no território Kariri-Xocó. Articula comunidades indígenas de Alagoas em projetos de produção agrícola, segurança alimentar e geração de renda.</p>
+          <dl class="assoc-dados">
+            <dt>CNPJ</dt><dd>10.961.672/0001-17</dd>
+            <dt>Fundação</dt><dd>24/06/2009</dd>
+            <dt>Sede</dt><dd>Território Kariri-Xocó, zona rural, Porto Real do Colégio/AL</dd>
+            <dt>Povos</dt><dd>Kariri-Xocó, com atuação junto aos Jeripankó e Tingui-Botó</dd>
+            <dt>Presidência</dt><dd class="pendente">A informar</dd>
+            <dt>Contato</dt><dd>(82) 99631-3369</dd>
+          </dl>
+        </div>
+      </article>
+
+      <article class="assoc-card reveal">
+        <div class="assoc-logo is-pequeno"><img src="imgs/associadas/inteds.png" alt="Logomarca do INTEDS: letra i branca com ponto laranja sobre quadrado cinza" loading="lazy"></div>
+        <div class="assoc-body">
+          <span class="assoc-uf">UF a informar</span>
+          <h3>Instituto Nacional de Tecnologia e de Desenvolvimento Sustentável<span class="assoc-sigla">INTEDS</span></h3>
+          <p class="assoc-desc">Instituto de tecnologia e desenvolvimento sustentável, com coordenação indígena de etnodesenvolvimento.</p>
+          <dl class="assoc-dados">
+            <dt>CNPJ</dt><dd>08.986.668/0001-61</dd>
+            <dt>Sede</dt><dd class="pendente">A informar</dd>
+            <dt>Povos</dt><dd class="pendente">A informar</dd>
+            <dt>Presidência</dt><dd class="pendente">A informar</dd>
+            <dt>Contato</dt><dd class="pendente">A informar</dd>
+          </dl>
+        </div>
+      </article>
+
+      <article class="assoc-card reveal">
+        <div class="assoc-logo is-selo" aria-hidden="true"><span class="assoc-selo"></span><span class="assoc-selo-nome">Fwlatatha</span><span class="assoc-selo-aviso">logomarca a enviar</span></div>
+        <div class="assoc-body">
+          <span class="assoc-uf">Povo Fulni-ô</span>
+          <h3>Associação Indígena Fwlatatha Fulni-ô</h3>
+          <p class="assoc-desc">Associação indígena do povo Fulni-ô.</p>
+          <dl class="assoc-dados">
+            <dt>CNPJ</dt><dd>07.899.505/0001-89</dd>
+            <dt>Sede</dt><dd class="pendente">A informar</dd>
+            <dt>Povos</dt><dd>Fulni-ô</dd>
+            <dt>Presidência</dt><dd class="pendente">A informar</dd>
+            <dt>Contato</dt><dd class="pendente">A informar</dd>
+          </dl>
+        </div>
+      </article>
+
+      <article class="assoc-card reveal">
+        <div class="assoc-logo is-selo" aria-hidden="true"><span class="assoc-selo"></span><span class="assoc-selo-nome">Geripanco</span><span class="assoc-selo-aviso">logomarca a enviar</span></div>
+        <div class="assoc-body">
+          <span class="assoc-uf">Alagoas &middot; AL</span>
+          <h3>Associação Comunitária Indígena Panko da Aldeia Geripanco</h3>
+          <p class="assoc-desc">Associação comunitária da Aldeia Geripanco, em Alagoas.</p>
+          <dl class="assoc-dados">
+            <dt>CNPJ</dt><dd>64.991.100/0001-00</dd>
+            <dt>Situação</dt><dd>Ativa</dd>
+            <dt>Sede</dt><dd class="pendente">A informar</dd>
+            <dt>Povos</dt><dd>Geripanco</dd>
+            <dt>Presidência</dt><dd class="pendente">A informar</dd>
             <dt>Contato</dt><dd class="pendente">A informar</dd>
           </dl>
         </div>
