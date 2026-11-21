@@ -118,6 +118,44 @@ a:focus-visible, button:focus-visible{
 .footer-credit-logo:hover{ opacity: 1; }
 .footer-credit-logo-icet{ height: 40px; border-radius: 4px; background: rgba(255,255,255,.92); padding: 3px 6px; }
 .footer-credit p{ font-size:.78rem; line-height:1.6; max-width: 62ch; margin: 0 auto 4px; }
+
+/* ===== Área administrativa ===== */
+.nav-adm-btn{ font: 600 .78rem var(--font-body); letter-spacing:.04em; background: var(--forest-deep); color: var(--cream); border:0; border-radius:999px; padding:7px 13px; cursor:pointer; }
+.nav-adm-btn:hover{ background: var(--gold-deep); }
+body:not(.adm-ok) #nt-adm-link, body:not(.adm-ok) .vg-adm-link{ display:none !important; }
+.adm-area{ background: #1a2318; color: var(--cream); }
+.adm-topo{ display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap; margin-bottom:28px; }
+.adm-tit{ font-family: var(--font-display); font-size: clamp(1.8rem,4vw,2.6rem); margin:0 0 8px; color:#fff; }
+.adm-area .section-eyebrow{ color: var(--gold-light); }
+.adm-sub{ color: rgba(251,246,236,.75); margin:0; }
+.adm-sair{ font:600 .9rem var(--font-body); background:transparent; color:var(--gold-light); border:1.5px solid var(--gold-light); border-radius:999px; padding:9px 18px; cursor:pointer; }
+.adm-grade{ display:grid; grid-template-columns: 1fr 1fr; gap:18px; }
+.adm-cartao{ background:#243022; border:1px solid rgba(245,197,66,.25); border-radius:16px; padding:20px 22px; }
+.adm-largo{ grid-column: 1 / -1; }
+.adm-cartao h3{ font-family: var(--font-display); color: var(--gold-light); margin:0 0 6px; font-size:1.15rem; }
+.adm-nota{ font-size:.82rem; color: rgba(251,246,236,.65); margin:0 0 12px; }
+.adm-tabela{ overflow-x:auto; }
+.adm-tabela table{ width:100%; border-collapse:collapse; font-size:.9rem; }
+.adm-tabela th, .adm-tabela td{ text-align:left; padding:9px 10px; border-bottom:1px solid rgba(251,246,236,.1); vertical-align:top; }
+.adm-tabela th{ color: var(--gold-light); font-weight:600; }
+.adm-lista{ margin:0; padding-left:20px; font-size:.92rem; }
+.adm-lista li{ margin-bottom:8px; }
+.adm-ferr{ display:flex; flex-direction:column; gap:10px; margin-bottom:12px; }
+.adm-btn{ font:600 .9rem var(--font-body); background: var(--gold); color: var(--forest-deep); border:0; border-radius:10px; padding:11px 14px; cursor:pointer; text-align:left; text-decoration:none; }
+.adm-btn:hover{ background: var(--gold-light); }
+.adm-btn-claro{ background: transparent; color: var(--cream); border:1px solid rgba(251,246,236,.35); }
+.adm-modal{ position:fixed; inset:0; z-index:10090; background: rgba(10,20,10,.75); display:flex; align-items:center; justify-content:center; padding:20px; }
+.adm-modal[hidden]{ display:none; }
+.adm-caixa{ position:relative; background: var(--paper); color: var(--ink); border-radius:18px; padding:30px 26px 24px; width:min(380px,100%); box-shadow:0 30px 70px rgba(0,0,0,.45); }
+.adm-caixa h3{ font-family: var(--font-display); color: var(--forest-deep); margin:0 0 6px; }
+.adm-caixa p{ margin:0 0 14px; font-size:.9rem; color: var(--ink-soft); }
+.adm-fechar{ position:absolute; top:10px; right:12px; background:none; border:0; font-size:1.5rem; cursor:pointer; color: var(--ink-soft); }
+.adm-senha{ width:100%; box-sizing:border-box; padding:12px 14px; border-radius:10px; border:1.5px solid rgba(36,28,19,.2); font:inherit; margin-bottom:12px; }
+.adm-senha:focus{ outline:none; border-color: var(--forest-deep); }
+.adm-entrar{ width:100%; font:600 1rem var(--font-body); background: var(--forest-deep); color: var(--cream); border:0; border-radius:10px; padding:12px; cursor:pointer; }
+.adm-entrar[disabled]{ opacity:.6; cursor:wait; }
+.adm-erro{ color:#9a2a07 !important; font-weight:600; }
+@media (max-width:720px){ .adm-grade{ grid-template-columns:1fr; } }
 .marca-lgpd{ margin-top: 34px; text-align: center; }
 .marca-lgpd a{ display: inline-flex; align-items: center; gap: 10px; padding: 11px 22px; border-radius: 999px;
   border: 1.5px solid var(--forest-deep); color: var(--forest-deep); font-weight: 600; font-size: .95rem; text-decoration: none;
@@ -1577,6 +1615,7 @@ textarea.nt-in{resize:vertical;line-height:1.55}
       <a href="#associe">Associe-se</a>
       <a href="#legislacao">Legislação</a>
       <a href="#contato">Contato</a>
+      <button type="button" class="nav-adm-btn" id="navAdmBtn" aria-haspopup="dialog" title="Área administrativa">&#9881; ADM</button>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -1954,12 +1993,12 @@ textarea.nt-in{resize:vertical;line-height:1.55}
     <div class="founding-roster reveal">
       <h3>Diretoria Executiva <span>composição atual</span></h3>
       <div class="roster-grid">
-        <div class="roster-card"><span class="roster-role">Presidente</span><strong>Aguinaldo Arruda Areco</strong><span class="roster-eth">Terena &middot; MS</span></div>
+        <div class="roster-card"><span class="roster-role">Presidente</span><strong>Aguinaldo Arruda Areco</strong></div>
         <div class="roster-card"><span class="roster-role">Vice-Presidente</span><strong>Em definição</strong></div>
-        <div class="roster-card"><span class="roster-role">Secretário Geral</span><strong>Joccelio Leite Paulino</strong><span class="roster-eth">Xucuru &middot; PE</span></div>
-        <div class="roster-card"><span class="roster-role">Secretário Adjunto</span><strong>Paulo Pontes Lúcio</strong><span class="roster-eth">Fulni-ô &middot; PE</span></div>
-        <div class="roster-card"><span class="roster-role">Tesoureiro</span><strong>Lisio Lili</strong><span class="roster-eth">Terena &middot; MS</span></div>
-        <div class="roster-card"><span class="roster-role">2&ordm; Tesoureiro</span><strong>Antonio Matias da Silva</strong><span class="roster-eth">Cariri Xocó &middot; AL</span></div>
+        <div class="roster-card"><span class="roster-role">Secretário Geral</span><strong>Joccelio Leite Paulino</strong></div>
+        <div class="roster-card"><span class="roster-role">Secretário Adjunto</span><strong>Paulo Pontes Lúcio</strong></div>
+        <div class="roster-card"><span class="roster-role">Tesoureiro</span><strong>Lisio Lili</strong></div>
+        <div class="roster-card"><span class="roster-role">2&ordm; Tesoureiro</span><strong>Antonio Matias da Silva</strong></div>
       </div>
     </div>
 
@@ -2051,15 +2090,15 @@ textarea.nt-in{resize:vertical;line-height:1.55}
       <article class="assoc-card reveal">
         <div class="assoc-logo is-pequeno"><img src="imgs/associadas/inteds.png" alt="Logomarca do INTEDS: letra i branca com ponto laranja sobre quadrado cinza" loading="lazy"></div>
         <div class="assoc-body">
-          <span class="assoc-uf">UF a informar</span>
+          <span class="assoc-uf">Olinda &middot; PE</span>
           <h3>Instituto Nacional de Tecnologia e de Desenvolvimento Sustentável<span class="assoc-sigla">INTEDS</span></h3>
-          <p class="assoc-desc">Instituto de tecnologia e desenvolvimento sustentável, com coordenação indígena de etnodesenvolvimento.</p>
+          <p class="assoc-desc">Instituto de tecnologia e desenvolvimento sustentável, com coordenação indígena de etnodesenvolvimento, que atua junto a povos indígenas de Pernambuco e Alagoas.</p>
           <dl class="assoc-dados">
             <dt>CNPJ</dt><dd>08.986.668/0001-61</dd>
-            <dt>Sede</dt><dd class="pendente">A informar</dd>
-            <dt>Povos</dt><dd class="pendente">A informar</dd>
-            <dt>Presidência</dt><dd class="pendente">A informar</dd>
-            <dt>Contato</dt><dd class="pendente">A informar</dd>
+            <dt>Sede</dt><dd>Av. Presidente Getúlio Vargas, 930, Sala 06, Bairro Novo, Olinda/PE, CEP 53030-010</dd>
+            <dt>Povos</dt><dd>Karapotó (Terra Nova), Jeripankó, Xukuru-Kariri, Kariri-Xocó, Fulni-ô, Wassu, Atikum e Kambiwá (Inajá)</dd>
+            <dt>Presidência</dt><dd>Everton Luiz Alves</dd>
+            <dt>Contato</dt><dd>institutointeds@gmail.com</dd>
           </dl>
         </div>
       </article>
@@ -2515,6 +2554,57 @@ textarea.nt-in{resize:vertical;line-height:1.55}
     </div>
   </div>
 </section>
+
+
+<section class="section adm-area" id="adm" hidden aria-label="Área administrativa">
+  <div class="section-inner">
+    <div class="adm-topo">
+      <div>
+        <p class="section-eyebrow">Acesso restrito</p>
+        <h2 class="adm-tit">Área administrativa da UNIPBRAS</h2>
+        <p class="adm-sub">Dados sensíveis e informações internas. Nada desta área aparece para o público.</p>
+      </div>
+      <button type="button" class="adm-sair" id="admSair">Sair</button>
+    </div>
+    <div class="adm-grade">
+      <div class="adm-cartao adm-largo">
+        <h3>Diretoria Executiva: povo de cada dirigente</h3>
+        <p class="adm-nota">Dado sensível (origem étnica, art. 5º, II, da LGPD). Só volta ao site público com autorização por escrito de cada dirigente.</p>
+        <div class="adm-tabela" id="admDiretoria"></div>
+      </div>
+      <div class="adm-cartao adm-largo">
+        <h3>Contatos pessoais e não confirmados</h3>
+        <p class="adm-nota">Telefones e e-mails que não estão publicados no site. Use só para contato interno.</p>
+        <div class="adm-tabela" id="admContatos"></div>
+      </div>
+      <div class="adm-cartao">
+        <h3>Pendências</h3>
+        <ul id="admPendencias" class="adm-lista"></ul>
+      </div>
+      <div class="adm-cartao">
+        <h3>Ferramentas</h3>
+        <div class="adm-ferr">
+          <button type="button" class="adm-btn" data-adm-ir="noticias">Administrar notícias</button>
+          <button type="button" class="adm-btn" data-adm-ir="galeria">Administrar galeria</button>
+          <a class="adm-btn" href="privacidade.html#termo">Termo de autorização (LGPD)</a>
+          <button type="button" class="adm-btn adm-btn-claro" id="admExportar">Exportar dados (JSON)</button>
+        </div>
+        <p class="adm-nota">Atualizado em <span id="admData"></span>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="adm-modal" id="admModal" role="dialog" aria-modal="true" aria-labelledby="admModalTit" hidden>
+  <div class="adm-caixa">
+    <button type="button" class="adm-fechar" id="admFechar" aria-label="Fechar">&times;</button>
+    <h3 id="admModalTit">&#128274; Área administrativa</h3>
+    <p>UNIPBRAS: acesso restrito à equipe autorizada.</p>
+    <p class="adm-erro" id="admErro" hidden>Senha incorreta. Tente novamente.</p>
+    <input type="password" id="admSenha" class="adm-senha" placeholder="Digite a senha" autocomplete="current-password">
+    <button type="button" class="adm-entrar" id="admEntrar">&#128275; Entrar</button>
+  </div>
+</div>
 
 </main>
 
@@ -5027,7 +5117,7 @@ fetch(ARQ + '?t=' + Date.now(), {cache:'no-store'})
 window.I18N_SITE_CFG = {
   chave: 'unipbras_lang',
   // módulos que já se traduzem sozinhos (galeria e notícias) e áreas do ADM
-  ignorar: '[data-nt],#nt-grid,#nt-tabs,#nt-vazio,#nt-modal,#nt-lb,#nt-painel,#nt-adm-link,#vg-raiz,.vg-modal,.vg-lb,[id^=vg-],.vg-so-adm',
+  ignorar: '#adm,#admModal,#navAdmBtn,[data-nt],#nt-grid,#nt-tabs,#nt-vazio,#nt-modal,#nt-lb,#nt-painel,#nt-adm-link,#vg-raiz,.vg-modal,.vg-lb,[id^=vg-],.vg-so-adm',
   aoTrocar: function(l){
     if (window.NT_idioma) window.NT_idioma();
     if (window.VG_idioma) window.VG_idioma();
@@ -5393,6 +5483,55 @@ else setTimeout(iniciar, 0);
   });
   btn.addEventListener('mouseleave',function(){ clearTimeout(t); wrap.classList.remove('tocando'); setTimeout(function(){ if(!wrap.classList.contains('tocando')) v.pause(); },450); });
   btn.addEventListener('click',function(){ clearTimeout(t); wrap.classList.remove('tocando'); v.pause(); });
+})();
+</script>
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var modal=$('admModal'), area=$('adm'), senha=$('admSenha'), erro=$('admErro'), btn=$('admEntrar'), dados=null;
+  function b64(s){ return Uint8Array.from(atob(s), function(c){ return c.charCodeAt(0); }); }
+  function esc(t){ return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  async function decifra(pw){
+    var r=await fetch('restrito/dados.enc.json?t='+Date.now()); var f=await r.json();
+    var base=await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+    var chave=await crypto.subtle.deriveKey({name:'PBKDF2', salt:b64(f.sal), iterations:f.it, hash:'SHA-256'}, base, {name:'AES-GCM', length:256}, false, ['decrypt']);
+    var claro=await crypto.subtle.decrypt({name:'AES-GCM', iv:b64(f.iv)}, chave, b64(f.dados));
+    return JSON.parse(new TextDecoder().decode(claro));
+  }
+  function tabela(cab, linhas){
+    return '<table><thead><tr>'+cab.map(function(c){return '<th>'+esc(c)+'</th>';}).join('')+'</tr></thead><tbody>'+
+      linhas.map(function(l){return '<tr>'+l.map(function(c){return '<td>'+esc(c)+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table>';
+  }
+  function mostra(d, rola){
+    $('admDiretoria').innerHTML=tabela(['Cargo','Nome','Povo','UF'], d.diretoria.map(function(x){return [x.cargo,x.nome,x.povo,x.uf];}));
+    $('admContatos').innerHTML=tabela(['Entidade','Pessoa','Contato','Origem','Observação'], d.contatos.map(function(x){return [x.entidade,x.pessoa,x.contato,x.origem,x.obs];}));
+    $('admPendencias').innerHTML=d.pendencias.map(function(p){return '<li>'+esc(p)+'</li>';}).join('');
+    $('admData').textContent=d.atualizado||'';
+    document.body.classList.add('adm-ok'); area.hidden=false;
+    if(rola!==false) setTimeout(function(){ area.scrollIntoView({behavior:'smooth', block:'start'}); },150);
+  }
+  function abre(){ modal.hidden=false; erro.hidden=true; senha.value=''; setTimeout(function(){senha.focus();},50); }
+  function fecha(){ modal.hidden=true; }
+  async function entra(){
+    if(!senha.value) return; btn.disabled=true; btn.textContent='Verificando...';
+    try{ dados=await decifra(senha.value); fecha(); mostra(dados); try{ sessionStorage.setItem('unipbras_adm', senha.value); }catch(e){} }
+    catch(e){ erro.hidden=false; senha.value=''; senha.focus(); }
+    btn.disabled=false; btn.innerHTML='&#128275; Entrar';
+  }
+  function sai(){ dados=null; document.body.classList.remove('adm-ok'); area.hidden=true; ['admDiretoria','admContatos','admPendencias'].forEach(function(i){$(i).innerHTML='';}); try{ sessionStorage.removeItem('unipbras_adm'); }catch(e){} window.scrollTo({top:0,behavior:'smooth'}); }
+  $('navAdmBtn').addEventListener('click', function(e){ e.preventDefault(); if(document.body.classList.contains('adm-ok')) area.scrollIntoView({behavior:'smooth'}); else abre(); });
+  $('admFechar').addEventListener('click', fecha);
+  modal.addEventListener('click', function(e){ if(e.target===modal) fecha(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !modal.hidden) fecha(); });
+  btn.addEventListener('click', entra);
+  senha.addEventListener('keydown', function(e){ if(e.key==='Enter') entra(); });
+  $('admSair').addEventListener('click', sai);
+  $('admExportar').addEventListener('click', function(){ if(!dados) return; var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([JSON.stringify(dados,null,2)],{type:'application/json'})); a.download='unipbras-dados-restritos.json'; a.click(); });
+  document.querySelectorAll('[data-adm-ir]').forEach(function(b){ b.addEventListener('click', function(){
+    var alvo=b.getAttribute('data-adm-ir'), el=alvo==='noticias'?$('nt-adm-link'):document.querySelector('.vg-adm-link');
+    var sec=document.getElementById(alvo); if(sec) sec.scrollIntoView({behavior:'smooth'}); setTimeout(function(){ if(el) el.click(); },700);
+  }); });
+  try{ var s=sessionStorage.getItem('unipbras_adm'); if(s){ decifra(s).then(function(d){ dados=d; mostra(d,false); }).catch(function(){}); } }catch(e){}
 })();
 </script>
 </body>
