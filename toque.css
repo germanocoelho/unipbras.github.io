@@ -70,3 +70,8 @@
   .tq-fb .mx-manifesto .mx-fill{ background-size: 100% 100%, 100% 100%; }
   .btn.gb .gb-icone::before{ animation: none !important; }
 }
+
+/* ---------- Títulos que nascem de partículas ---------- */
+.pt-camada{ position: fixed; left: 0; top: 0; z-index: 99; pointer-events: none; display: none; }
+.section-title.pt-espera{ opacity: 0 !important; }
+.section-title.pt-pronto{ transition: opacity 1s ease !important; }

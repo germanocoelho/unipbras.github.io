@@ -88,7 +88,7 @@
       var BASE = MOBILE ? 340 : 460;
       var SW = asp >= 1 ? BASE : Math.round(BASE * asp), SH = asp >= 1 ? Math.round(BASE / asp) : BASE;
       var c = document.createElement('canvas'); c.width = SW; c.height = SH;
-      var x = c.getContext('2d'); x.drawImage(fonte, 0, 0, SW, SH);
+      var x = c.getContext('2d', { willReadFrequently: true }); x.drawImage(fonte, 0, 0, SW, SH);
       var px;
       try{ px = x.getImageData(0, 0, SW, SH).data; }catch(e){ cv.remove(); host.classList.remove('px-on'); return; }
       var cand = [];
