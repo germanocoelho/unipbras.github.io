@@ -1,0 +1,72 @@
+/* =====================================================================
+   UNIPBRAS · Pacote 5 (toque.css)
+   Partículas da logomarca + todos os efeitos funcionando no celular:
+   estados de toque (no lugar do "hover") e alternativa para navegadores
+   sem animações ligadas à rolagem (Safari do iPhone).
+   ===================================================================== */
+
+/* ---------- Partículas que viram a logomarca ---------- */
+.px-canvas{ position: absolute; left: 0; top: 0; z-index: 1; pointer-events: none; }
+#marca.px-on .marca-logo-img{ opacity: 0; transition: opacity 1.8s cubic-bezier(.16,1,.3,1); }
+#marca.px-on.px-revela .marca-logo-img{ opacity: 1; }
+.footer.px-on .footer-brand img{ opacity: 0; transition: opacity 1.6s ease; }
+.footer.px-on.px-revela .footer-brand img{ opacity: 1; }
+.footer.px-on .footer-inner, .footer.px-on .footer-credit{ position: relative; z-index: 2; }
+
+/* ---------- Botões: o toque faz o mesmo que o mouse ---------- */
+.btn.gb.gb-ativo .gb-trama{ transform: translateX(0); }
+.btn.gb.gb-ativo .gb-contorno polygon{ animation: gb-contas 1.2s linear infinite; }
+.btn-ghost.gb.gb-ativo{ color: var(--cream); }
+.btn-ghost.gb.gb-ativo .gb-contorno polygon{ stroke: var(--gold); }
+.btn.gb.gb-ativo .gb-icone::before{ transform: rotate(225deg) scale(1.12); background: var(--gold-light); }
+.btn.gb.gb-ativo .gb-ic-flecha svg{ animation: gb-dispara .9s cubic-bezier(.16,1,.3,1) infinite; }
+.btn.gb.gb-ativo .gb-ic-broto .f{ transform: scale(1.35) rotate(-6deg); }
+.btn.gb.gb-ativo .gb-ic-broto .f2{ transform: scale(1.35) rotate(6deg); }
+.btn.gb.gb-ativo .gb-ic-roda svg{ animation: gb-gira 3s linear infinite; }
+.btn.gb.gb-ativo .gb-franja i{ opacity: 1; transform: translateY(0); }
+.leg-filtro.lq-toque .leg-filtro-dot{ transform: rotate(45deg) scale(1.15); border-radius: 4px; }
+
+/* no celular, o ícone dos botões "respira" sozinho para convidar ao toque */
+@media (hover: none){
+  .btn.gb .gb-icone::before{ animation: tq-respira 2.6s ease-in-out infinite; }
+  @keyframes tq-respira{ 0%,100%{ transform: rotate(45deg) scale(1); } 50%{ transform: rotate(45deg) scale(1.14); box-shadow: 0 0 0 6px rgba(232,163,23,.18); } }
+  .btn.gb.gb-ativo .gb-icone::before{ animation: none; }
+}
+
+/* ---------- Alternativa às animações ligadas à rolagem ---------- */
+/* .tq-fb é posto no <html> quando o navegador não suporta animation-timeline */
+.tq-fb .hero-inner{
+  transform: translateY(calc(var(--tq-hero, 0) * -90px)) scale(calc(1 - var(--tq-hero, 0) * .14));
+  opacity: calc(1 - var(--tq-hero, 0)); filter: blur(calc(var(--tq-hero, 0) * 10px));
+}
+.tq-fb .section-dark{ clip-path: circle(calc(8% + var(--tq-c, 1) * 142%) at 50% 40%); }
+.tq-fb .mx-wm{
+  transform: translateX(calc(18vw - var(--tq-w, 0) * 32vw)) rotate(calc(-6deg + var(--tq-w, 0) * 10deg));
+  opacity: calc(.35 + var(--tq-w, 0) * .65);
+}
+.tq-fb .mx-manifesto{ height: 260vh; padding: 0 24px; overflow: clip; }
+.tq-fb .mx-manifesto .band-inner{
+  position: sticky; top: 0; height: 100vh; max-width: 1040px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+.tq-fb .mx-manifesto .quote-text{ font-size: clamp(1.7rem, 4.2vw, 3.3rem); line-height: 1.3; }
+.tq-fb .mx-manifesto .mx-fill{ background-size: calc(var(--tq-m, 0) * 100%) 100%, 100% 100%; }
+.tq-fb .mx-manifesto .quote-mark{ transform: scale(calc(.6 + var(--tq-m, 0) * .8)) rotate(calc(-20deg + var(--tq-m, 0) * 28deg)); }
+.tq-fb .mx-manifesto .quote-source{ opacity: calc((var(--tq-m, 0) - .6) * 4); }
+.tq-fb .mx-manifesto-anel{
+  display: block; position: absolute; left: 50%; top: 50%; z-index: -1; pointer-events: none;
+  width: min(92vh, 92vw); height: min(92vh, 92vw); margin: calc(min(92vh, 92vw) / -2) 0 0 calc(min(92vh, 92vw) / -2);
+  transform: rotate(calc(-60deg + var(--tq-m, 0) * 180deg)) scale(calc(.55 + var(--tq-m, 0) * .8)); opacity: .2;
+}
+.tq-fb .mx-manifesto-anel svg{ width: 100%; height: 100%; }
+
+@media (prefers-reduced-motion: reduce){
+  .px-canvas{ display: none; }
+  #marca.px-on .marca-logo-img, .footer.px-on .footer-brand img{ opacity: 1; }
+  .tq-fb .hero-inner, .tq-fb .mx-wm{ transform: none; opacity: 1; filter: none; }
+  .tq-fb .section-dark{ clip-path: none; }
+  .tq-fb .mx-manifesto{ height: auto; }
+  .tq-fb .mx-manifesto .band-inner{ position: relative; height: auto; }
+  .tq-fb .mx-manifesto .mx-fill{ background-size: 100% 100%, 100% 100%; }
+  .btn.gb .gb-icone::before{ animation: none !important; }
+}

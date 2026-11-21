@@ -92,9 +92,8 @@
   .mx-spot-glow, .mx-aura{ display: none; }
   ::view-transition-old(root), ::view-transition-new(root){ animation: none; }
 }
-@media (hover: none){
-  .mx-spot-glow, .mx-aura{ display: none; }
-}
+.mx-spot.mx-toque > .mx-spot-glow{ opacity: 1; }
+.mx-aura-host.mx-toque > .mx-aura{ opacity: 1; }
 
 /* =====================================================================
    PACOTE 2 · Efeitos arrojados, na linguagem da abertura

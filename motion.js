@@ -52,7 +52,7 @@
 
   /* 3. Holofote que segue o cursor */
   safe('spotlight', function(){
-    if (reduce || !canHover) return;
+    if (reduce) return;
     var cards = $$('.assoc-card:not(.assoc-card-vazio), .parceiro-card, .roster-card, .leg-card, .contact-card, .obj-card, .member-card');
     cards.forEach(function(card){
       if (card.querySelector(':scope > .mx-spot-glow')) return;
@@ -67,12 +67,20 @@
         card.style.setProperty('--mx-x', (e.clientX - r.left) + 'px');
         card.style.setProperty('--mx-y', (e.clientY - r.top) + 'px');
       }, { passive: true });
+      card.addEventListener('pointerdown', function(e){
+        if (e.pointerType === 'mouse') return;
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx-x', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--mx-y', (e.clientY - r.top) + 'px');
+        card.classList.add('mx-toque');
+        clearTimeout(card._mxT); card._mxT = setTimeout(function(){ card.classList.remove('mx-toque'); }, 1400);
+      }, { passive: true });
     });
   });
 
   /* 4. Aura de luz nas seções escuras */
   safe('aura', function(){
-    if (reduce || !canHover) return;
+    if (reduce) return;
     $$('.section-dark').forEach(function(sec){
       if (getComputedStyle(sec).position === 'static') sec.style.position = 'relative';
       sec.classList.add('mx-aura-host');
@@ -81,6 +89,14 @@
       aura.setAttribute('aria-hidden', 'true');
       sec.insertBefore(aura, sec.firstChild);
       var raf = 0, x = 0, y = 0;
+      sec.addEventListener('pointerdown', function(e){
+        if (e.pointerType === 'mouse') return;
+        var r = sec.getBoundingClientRect();
+        sec.style.setProperty('--mx-x', (e.clientX - r.left) + 'px');
+        sec.style.setProperty('--mx-y', (e.clientY - r.top) + 'px');
+        sec.classList.add('mx-toque');
+        clearTimeout(sec._mxT); sec._mxT = setTimeout(function(){ sec.classList.remove('mx-toque'); }, 1600);
+      }, { passive: true });
       sec.addEventListener('pointermove', function(e){
         var r = sec.getBoundingClientRect();
         x = e.clientX - r.left; y = e.clientY - r.top;
