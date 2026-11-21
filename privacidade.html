@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacidade e Proteção de Dados · UNIPBRAS</title>
+<meta name="description" content="Como a UNIPBRAS cuida dos dados das associações filiadas, das lideranças e das comunidades indígenas, conforme a Lei Geral de Proteção de Dados (LGPD).">
+<link rel="icon" type="image/webp" href="imgs/unipbras-emblema.webp?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#1B4D1F; --forest-deep:#0F3312; --forest-light:#4C7A2E;
+  --gold:#E8A317; --gold-light:#F5C542; --gold-deep:#B5790C;
+  --river:#0A3D6E; --clay:#9A3A0F;
+  --ink:#241C13; --ink-soft:#4A3F30; --paper:#FFFDF8; --cream:#FBF6EC; --cream-warm:#F3E7CC;
+  --font-display:"Fraunces", Georgia, serif; --font-body:"Work Sans", -apple-system, sans-serif;
+}
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{ margin:0; background:var(--cream); color:var(--ink); font-family:var(--font-body); font-size:1.06rem; line-height:1.75; }
+a{ color:var(--river); }
+.topo{ background:var(--paper); border-bottom:1px solid rgba(36,28,19,.08); }
+.topo-in{ max-width:960px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.topo img{ height:64px; width:auto; display:block; }
+.voltar{ font-weight:600; color:var(--forest-deep); text-decoration:none; border:1.5px solid var(--forest-deep); padding:8px 16px; border-radius:999px; font-size:.92rem; }
+.voltar:hover{ background:var(--forest-deep); color:var(--cream); }
+.capa{ background:var(--forest-deep); color:var(--cream); position:relative; overflow:hidden; }
+.capa::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:16px; opacity:.75;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='16'%3E%3Cpath d='M0 16 L8 3 L16 16 L24 3 L32 16' fill='none' stroke='%23E8A317' stroke-width='1.8'/%3E%3C/svg%3E") repeat-x; }
+.capa-in{ max-width:960px; margin:0 auto; padding:56px 20px 64px; }
+.rotulo{ text-transform:uppercase; letter-spacing:.16em; font-size:.8rem; font-weight:700; color:var(--gold-light); margin:0 0 12px; }
+h1{ font-family:var(--font-display); font-weight:900; font-size:clamp(2rem,5vw,3rem); line-height:1.12; margin:0 0 18px; }
+.capa p{ font-size:1.12rem; max-width:62ch; margin:0; color:rgba(251,246,236,.92); }
+main{ max-width:960px; margin:0 auto; padding:44px 20px 70px; }
+.indice{ background:var(--paper); border:1px solid rgba(36,28,19,.08); border-radius:18px; padding:20px 24px; margin-bottom:40px; }
+.indice strong{ font-family:var(--font-display); color:var(--forest-deep); }
+.indice ol{ margin:10px 0 0; padding-left:22px; columns:2; column-gap:30px; }
+.indice li{ break-inside:avoid; margin-bottom:4px; }
+section{ margin-bottom:44px; scroll-margin-top:20px; }
+h2{ font-family:var(--font-display); font-size:clamp(1.4rem,3vw,1.85rem); color:var(--forest-deep); margin:0 0 14px; line-height:1.25; display:flex; gap:12px; align-items:baseline; }
+h2 .num{ flex:none; display:inline-grid; place-items:center; width:36px; height:36px; transform:rotate(45deg); background:var(--gold); border-radius:4px; }
+h2 .num span{ transform:rotate(-45deg); font-family:var(--font-body); font-size:.95rem; font-weight:700; color:var(--forest-deep); }
+h3{ font-family:var(--font-display); color:var(--forest-deep); font-size:1.15rem; margin:22px 0 8px; }
+p{ margin:0 0 14px; }
+.destaque{ background:var(--cream-warm); border-left:5px solid var(--gold-deep); border-radius:0 14px 14px 0; padding:16px 20px; margin:18px 0; }
+.destaque p:last-child{ margin-bottom:0; }
+.grade{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0; }
+.caixa{ background:var(--paper); border:1px solid rgba(36,28,19,.1); border-radius:16px; padding:18px 20px; }
+.caixa h3{ margin-top:0; }
+.caixa.sim{ border-top:5px solid var(--forest-light); }
+.caixa.nao{ border-top:5px solid var(--clay); }
+.caixa ul{ margin:0; padding-left:20px; }
+.caixa li{ margin-bottom:6px; }
+ul.lista li{ margin-bottom:8px; }
+table{ width:100%; border-collapse:collapse; background:var(--paper); border-radius:14px; overflow:hidden; font-size:.98rem; }
+th, td{ text-align:left; padding:12px 14px; border-bottom:1px solid rgba(36,28,19,.08); vertical-align:top; }
+th{ background:var(--forest-deep); color:var(--cream); font-weight:600; }
+.selo{ display:inline-block; font-size:.78rem; font-weight:700; padding:3px 10px; border-radius:999px; white-space:nowrap; }
+.selo.ok{ background:#dfeedd; color:#1d4f20; } .selo.cuidado{ background:#fbecc8; color:#7a5106; } .selo.nunca{ background:#f6d9cc; color:#7a2a07; }
+.direitos{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:16px 0; }
+.direito{ background:var(--paper); border:1px solid rgba(36,28,19,.1); border-radius:14px; padding:16px; }
+.direito b{ display:block; font-family:var(--font-display); color:var(--forest-deep); margin-bottom:4px; }
+.contato{ background:var(--forest-deep); color:var(--cream); border-radius:20px; padding:26px 28px; }
+.contato h2{ color:var(--gold-light); }
+.contato a{ color:var(--gold-light); font-weight:600; }
+.termo{ background:#fff; border:2px dashed rgba(36,28,19,.25); border-radius:16px; padding:28px 30px; font-size:1rem; }
+.termo h3{ text-align:center; margin-top:0; font-size:1.2rem; }
+.linha{ display:inline-block; min-width:220px; border-bottom:1px solid var(--ink); }
+.marca{ display:inline-block; width:16px; height:16px; border:1.6px solid var(--ink); vertical-align:-2px; margin-right:8px; border-radius:3px; }
+.termo ul{ list-style:none; padding-left:0; }
+.termo li{ margin-bottom:10px; }
+.assinaturas{ display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-top:40px; text-align:center; font-size:.92rem; }
+.assinaturas div{ border-top:1px solid var(--ink); padding-top:6px; }
+.botoes{ display:flex; gap:12px; flex-wrap:wrap; margin:14px 0 18px; }
+.botao{ font:600 .95rem var(--font-body); background:var(--forest-deep); color:var(--cream); border:0; padding:12px 20px; border-radius:999px; cursor:pointer; text-decoration:none; }
+.botao:hover{ background:var(--forest); }
+.rodape{ text-align:center; font-size:.85rem; color:var(--ink-soft); padding:26px 20px 40px; border-top:1px solid rgba(36,28,19,.1); }
+@media (max-width:720px){
+  .indice ol{ columns:1; } .grade, .direitos, .assinaturas{ grid-template-columns:1fr; }
+  th, td{ padding:10px; font-size:.92rem; } .topo img{ height:50px; }
+}
+@media print{
+  body *{ visibility:hidden; } #termo, #termo *{ visibility:visible; }
+  #termo{ position:absolute; left:0; top:0; width:100%; border:0; padding:0; }
+  .botoes{ display:none; }
+}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-in">
+    <a href="./"><img src="imgs/unipbras-logo.webp?v=2" alt="UNIPBRAS Indígena: voltar para a página inicial"></a>
+    <a class="voltar" href="./">← Voltar ao site</a>
+  </div>
+</header>
+
+<div class="capa">
+  <div class="capa-in">
+    <p class="rotulo">Privacidade e proteção de dados</p>
+    <h1>Como a UNIPBRAS cuida dos dados das associações, das lideranças e das comunidades</h1>
+    <p>A UNIPBRAS respeita a Lei Geral de Proteção de Dados Pessoais, a LGPD (Lei nº 13.709/2018). Aqui explicamos, de forma simples, quais informações aparecem neste site, por que aparecem e como cada pessoa pode pedir correção ou retirada.</p>
+  </div>
+</div>
+
+<main>
+
+  <nav class="indice" aria-label="Nesta página">
+    <strong>Nesta página</strong>
+    <ol>
+      <li><a href="#lgpd">O que é a LGPD</a></li>
+      <li><a href="#associacoes">Dados das associações</a></li>
+      <li><a href="#pessoas">Dados das pessoas</a></li>
+      <li><a href="#etnia">Povo e etnia: cuidado especial</a></li>
+      <li><a href="#publico">"Está na Receita, então é livre?"</a></li>
+      <li><a href="#fotos">Fotos e imagens</a></li>
+      <li><a href="#direitos">Os direitos de cada pessoa</a></li>
+      <li><a href="#pedidos">Como fazer um pedido</a></li>
+      <li><a href="#termo">Termo de autorização</a></li>
+    </ol>
+  </nav>
+
+  <section id="lgpd">
+    <h2><span class="num"><span>1</span></span>O que é a LGPD</h2>
+    <p>A LGPD é a lei brasileira que protege as <strong>informações das pessoas</strong>: nome, CPF, telefone, e-mail, endereço, fotos e outros dados que identificam alguém. Ela diz quem pode usar essas informações, para quê e com quais cuidados.</p>
+    <p>A lei protege <strong>pessoas</strong>. Ela não protege da mesma forma os dados de uma <strong>associação</strong> (a pessoa jurídica), como o nome da entidade e o CNPJ. Por isso tratamos esses dois tipos de informação de forma diferente.</p>
+  </section>
+
+  <section id="associacoes">
+    <h2><span class="num"><span>2</span></span>Dados das associações filiadas</h2>
+    <p>Na seção <em>Associações filiadas</em>, publicamos informações das <strong>entidades</strong>, que não são dados pessoais e servem para dar transparência à rede da UNIPBRAS:</p>
+    <ul class="lista">
+      <li>nome da associação (razão social) e sigla;</li>
+      <li>número do CNPJ;</li>
+      <li>data de fundação e situação cadastral;</li>
+      <li>endereço da sede, município e estado;</li>
+      <li>povos atendidos pela associação;</li>
+      <li>logomarca, quando enviada pela própria entidade;</li>
+      <li>contato <strong>institucional</strong>, somente quando confirmado pela própria associação.</li>
+    </ul>
+    <p>Essas informações vêm do comprovante de CNPJ da Receita Federal e dos documentos enviados pelas próprias associações.</p>
+  </section>
+
+  <section id="pessoas">
+    <h2><span class="num"><span>3</span></span>Dados das pessoas: o que publicamos e o que nunca publicamos</h2>
+    <div class="grade">
+      <div class="caixa sim">
+        <h3>Podemos publicar</h3>
+        <ul>
+          <li><strong>Nome e cargo</strong> de quem dirige a associação (presidente, por exemplo), para mostrar quem a representa.</li>
+          <li><strong>Nome, cargo e povo</strong> dos dirigentes da UNIPBRAS, <strong>com autorização</strong> de cada um.</li>
+          <li>Contatos <strong>institucionais</strong> confirmados (e-mail ou telefone da associação).</li>
+        </ul>
+      </div>
+      <div class="caixa nao">
+        <h3>Nunca publicamos</h3>
+        <ul>
+          <li><strong>CPF</strong> de ninguém.</li>
+          <li><strong>Telefone ou e-mail pessoal</strong> de liderança, sem autorização.</li>
+          <li>Endereço residencial de pessoas.</li>
+          <li>Documentos pessoais (RG, título, certidões).</li>
+          <li>Contatos que não foram confirmados pela própria entidade.</li>
+        </ul>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>Informação</th><th>Situação no site</th><th>Por quê</th></tr></thead>
+      <tbody>
+        <tr><td>Nome da associação, CNPJ, sede</td><td><span class="selo ok">Publicado</span></td><td>É dado da entidade, não da pessoa.</td></tr>
+        <tr><td>Nome do(a) presidente</td><td><span class="selo cuidado">Com cuidado</span></td><td>Mostra quem representa a entidade. Retiramos se a pessoa pedir.</td></tr>
+        <tr><td>Povo ou etnia de uma pessoa</td><td><span class="selo cuidado">Só com autorização</span></td><td>É dado sensível pela lei (veja o item 4).</td></tr>
+        <tr><td>Contato da associação</td><td><span class="selo cuidado">Só se confirmado</span></td><td>Publicamos apenas o contato que a entidade indicar.</td></tr>
+        <tr><td>CPF, contato pessoal, endereço de casa</td><td><span class="selo nunca">Nunca</span></td><td>Não há motivo para expor e há risco à pessoa.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="etnia">
+    <h2><span class="num"><span>4</span></span>Povo e etnia: um cuidado especial</h2>
+    <p>Para a lei, a <strong>origem étnica de uma pessoa é um dado sensível</strong> (art. 5º, II, da LGPD). Isso quer dizer que informar que <em>uma pessoa determinada</em> pertence a um povo exige <strong>cuidado maior</strong> e, como regra, <strong>autorização dessa pessoa</strong>.</p>
+    <div class="destaque">
+      <p>Para a UNIPBRAS, dizer o povo de cada liderança é motivo de <strong>orgulho e de afirmação da identidade</strong>. Mesmo assim, só mostramos o povo de uma pessoa <strong>quando ela autoriza</strong>. Já o povo atendido por uma <strong>associação</strong> fala da coletividade, e não de uma pessoa, por isso pode ser publicado.</p>
+    </div>
+  </section>
+
+  <section id="publico">
+    <h2><span class="num"><span>5</span></span>"Se está na Receita Federal, posso publicar à vontade?"</h2>
+    <p><strong>Não exatamente.</strong> Mesmo quando uma informação já é pública, a LGPD continua valendo para os dados das pessoas (art. 7º, §§ 3º, 4º e 7º). O uso precisa respeitar o <strong>motivo</strong> pelo qual a informação foi tornada pública, a <strong>boa-fé</strong> e os <strong>direitos</strong> da pessoa.</p>
+    <p>Na prática:</p>
+    <ul class="lista">
+      <li>os dados da <strong>associação</strong> que estão no CNPJ podem ser publicados;</li>
+      <li>o <strong>nome do responsável</strong> pode aparecer para identificar quem representa a entidade;</li>
+      <li>o <strong>CPF</strong> e os contatos <strong>pessoais</strong> que aparecem no comprovante <strong>não</strong> são publicados, mesmo estando lá.</li>
+    </ul>
+  </section>
+
+  <section id="fotos">
+    <h2><span class="num"><span>6</span></span>Fotos e imagens</h2>
+    <p>Algumas fotos do site vêm de acervos públicos com licença livre (Wikimedia Commons), sempre com o nome do autor e a licença indicados. A <strong>imagem de cada pessoa</strong> também é protegida pela Constituição (art. 5º, X) e pelo Código Civil (art. 20).</p>
+    <p>Por isso:</p>
+    <ul class="lista">
+      <li>escolhemos apenas fotos em <strong>situações positivas</strong>, de produção, trabalho e cultura;</li>
+      <li>vamos substituir aos poucos essas fotos por <strong>fotos das próprias associações filiadas, com autorização</strong>;</li>
+      <li>se alguém se reconhecer em uma foto e não quiser aparecer, <strong>retiramos a foto</strong> assim que recebermos o pedido.</li>
+    </ul>
+  </section>
+
+  <section id="direitos">
+    <h2><span class="num"><span>7</span></span>Os direitos de cada pessoa</h2>
+    <p>Toda pessoa que aparece neste site tem direito de (art. 18 da LGPD):</p>
+    <div class="direitos">
+      <div class="direito"><b>Saber</b>quais informações sobre ela estão no site e de onde vieram.</div>
+      <div class="direito"><b>Corrigir</b>informações erradas, incompletas ou desatualizadas.</div>
+      <div class="direito"><b>Retirar</b>seu nome, foto, povo ou contato do site.</div>
+      <div class="direito"><b>Retirar a autorização</b>dada antes, a qualquer momento.</div>
+      <div class="direito"><b>Perguntar</b>como e para que seus dados são usados.</div>
+      <div class="direito"><b>Reclamar</b>à Autoridade Nacional de Proteção de Dados (ANPD), se não for atendida.</div>
+    </div>
+  </section>
+
+  <section id="pedidos">
+    <div class="contato">
+      <h2><span class="num"><span>8</span></span>Como fazer um pedido</h2>
+      <p>Qualquer liderança, associação ou pessoa pode pedir correção ou retirada de informações. Basta enviar uma mensagem para:</p>
+      <p><strong>E-mail:</strong> <a href="mailto:unipbras.indigena@gmail.com?subject=Pedido%20sobre%20dados%20(LGPD)">unipbras.indigena@gmail.com</a></p>
+      <p>Na mensagem, diga <strong>quem é você</strong>, <strong>qual informação</strong> quer corrigir ou retirar e <strong>em que parte do site</strong> ela está. O pedido também pode ser feito por uma liderança ou pela associação em nome da pessoa. Respondemos o mais rápido possível e, em pedidos de retirada, a informação sai do site enquanto o pedido é analisado.</p>
+    </div>
+  </section>
+
+  <section id="termo">
+    <h2><span class="num"><span>9</span></span>Termo de autorização para publicação</h2>
+    <p>Este modelo serve para as <strong>associações filiadas</strong> e para os <strong>dirigentes</strong> autorizarem a publicação de suas informações no site. É só imprimir, preencher, assinar e enviar uma foto ou cópia para o e-mail da UNIPBRAS.</p>
+    <div class="botoes">
+      <button class="botao" type="button" onclick="window.print()">Imprimir o termo</button>
+      <a class="botao" href="mailto:unipbras.indigena@gmail.com?subject=Termo%20de%20autoriza%C3%A7%C3%A3o%20assinado">Enviar termo assinado</a>
+    </div>
+    <div class="termo" id="termo">
+      <h3>TERMO DE AUTORIZAÇÃO PARA PUBLICAÇÃO DE INFORMAÇÕES NO SITE DA UNIPBRAS</h3>
+      <p>Eu, <span class="linha">&nbsp;</span>, <span class="marca"></span>em meu nome &nbsp; <span class="marca"></span>como representante da associação <span class="linha">&nbsp;</span>, CNPJ <span class="linha" style="min-width:160px">&nbsp;</span>, autorizo a União Nacional dos Produtores e Agricultores Indígenas do Brasil (UNIPBRAS) a publicar em seu site (www.unipbras.com.br) as informações marcadas abaixo:</p>
+      <ul>
+        <li><span class="marca"></span>Nome completo e cargo</li>
+        <li><span class="marca"></span>Povo / etnia: <span class="linha" style="min-width:180px">&nbsp;</span></li>
+        <li><span class="marca"></span>Município e estado</li>
+        <li><span class="marca"></span>Logomarca da associação</li>
+        <li><span class="marca"></span>Contato institucional (e-mail ou telefone da associação): <span class="linha" style="min-width:200px">&nbsp;</span></li>
+        <li><span class="marca"></span>Fotografias enviadas por mim ou pela associação</li>
+      </ul>
+      <p>Esta autorização tem a finalidade de apresentar a rede de associações e lideranças da UNIPBRAS e de dar transparência à sua atuação, nos termos da Lei nº 13.709/2018 (LGPD). Estou ciente de que posso pedir a correção ou a retirada destas informações, ou retirar esta autorização, a qualquer momento, pelo e-mail unipbras.indigena@gmail.com, e de que o CPF e os contatos pessoais não serão publicados.</p>
+      <p>Local e data: <span class="linha">&nbsp;</span></p>
+      <div class="assinaturas">
+        <div>Assinatura</div>
+        <div>Nome legível / CPF (uso interno, não será publicado)</div>
+      </div>
+    </div>
+  </section>
+
+  <p style="font-size:.9rem;color:var(--ink-soft)">Última atualização: 21 de novembro de 2026. Esta página pode ser atualizada sempre que a forma de cuidar dos dados mudar.</p>
+</main>
+
+<footer class="rodape">
+  UNIPBRAS · União Nacional dos Produtores e Agricultores Indígenas do Brasil · <a href="./">Voltar ao site</a>
+</footer>
+
+</body>
+</html>
