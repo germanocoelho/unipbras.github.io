@@ -120,7 +120,8 @@ a:focus-visible, button:focus-visible{
 .footer-credit p{ font-size:.78rem; line-height:1.6; max-width: 62ch; margin: 0 auto 4px; }
 
 /* ===== Área administrativa ===== */
-.nav-adm-btn{ font: 600 .78rem var(--font-body); letter-spacing:.04em; background: var(--forest-deep); color: var(--cream); border:0; border-radius:999px; padding:7px 13px; cursor:pointer; }
+.nav-dir{ display:flex; align-items:center; gap:12px; flex:none; }
+.nav-adm-btn{ white-space:nowrap; font: 600 .78rem var(--font-body); letter-spacing:.04em; background: var(--forest-deep); color: var(--cream); border:0; border-radius:999px; padding:7px 13px; cursor:pointer; }
 .nav-adm-btn:hover{ background: var(--gold-deep); }
 body:not(.adm-ok) #nt-adm-link, body:not(.adm-ok) .vg-adm-link{ display:none !important; }
 .adm-area{ background: #1a2318; color: var(--cream); }
@@ -1172,7 +1173,6 @@ body:not(.adm-ok) #nt-adm-link, body:not(.adm-ok) .vg-adm-link{ display:none !im
   }
   .nav-links.open{ transform: translateY(0); }
   .nav-toggle{ display:flex; }
-  .nav-adm-btn{ align-self:flex-start; }
 }
 @media (min-width: 1701px){ .nav-links{ gap: 22px; align-items:center; } .nav-links a{ font-size: .86rem; white-space: nowrap; } .nav-adm-btn{ white-space: nowrap; } }
 @media (max-width: 980px){
@@ -1619,11 +1619,13 @@ textarea.nt-in{resize:vertical;line-height:1.55}
       <a href="#legislacao">Legislação</a>
       <a href="#documentos">Documentos</a>
       <a href="#contato">Contato</a>
-      <button type="button" class="nav-adm-btn" id="navAdmBtn" aria-haspopup="dialog" title="Área administrativa">&#9881; ADM</button>
     </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-dir">
+      <button type="button" class="nav-adm-btn" id="navAdmBtn" aria-haspopup="dialog" title="Área administrativa">&#9881; ADM</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -5504,7 +5506,7 @@ else setTimeout(iniciar, 0);
   btn.addEventListener('click',function(){ clearTimeout(t); wrap.classList.remove('tocando'); v.pause(); });
 })();
 </script>
-<script src="adm.js?v=20261122" defer></script>
+<script src="adm.js?v=20261122b" defer></script>
 <script>
 (function(){
   var cb=document.querySelector('.credit-bar'); if(!cb) return;
