@@ -197,14 +197,6 @@
 }
 .js-ready .section-title.reveal.is-visible{ -webkit-mask-position: 0 0; mask-position: 0 0; }
 
-/* ---------- 14. Hero se afasta em profundidade ao rolar ---------- */
-@supports (animation-timeline: scroll()){
-  .hero-inner{ animation: mx-hero-sai linear both; animation-timeline: scroll(root); animation-range: 0 90vh; }
-  @keyframes mx-hero-sai{ to{ transform: translateY(-90px) scale(.86); opacity: 0; filter: blur(10px); } }
-  .hero-3d, .hero-beadwork{ animation: mx-hero-fundo linear both; animation-timeline: scroll(root); animation-range: 0 100vh; }
-  @keyframes mx-hero-fundo{ to{ transform: translate(-50%,-50%) scale(1.25) rotate(8deg); opacity: .25; } }
-}
-
 /* ---------- 15. Seção escura nasce de um círculo de luz ---------- */
 @supports (animation-timeline: view()){
   .section-dark{ animation: mx-circulo linear both; animation-timeline: view(); animation-range: entry 0% entry 85%; }
@@ -222,7 +214,7 @@
 
 @media (prefers-reduced-motion: reduce){
   .mx-fileiras, .mx-cursor, .mx-cursor-ponto, .mx-semente{ display: none !important; }
-  .mx-wm, .hero-inner, .hero-3d, .hero-beadwork, .section-dark{ animation: none !important; }
+  .mx-wm, .section-dark{ animation: none !important; }
   .js-ready .section-title.reveal{ -webkit-mask-image: none !important; mask-image: none !important; }
   .js-ready .reveal:not(.is-visible){ transform: none !important; }
 }

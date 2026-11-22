@@ -35,10 +35,7 @@
 
 /* ---------- Alternativa às animações ligadas à rolagem ---------- */
 /* .tq-fb é posto no <html> quando o navegador não suporta animation-timeline */
-.tq-fb .hero-inner{
-  transform: translateY(calc(var(--tq-hero, 0) * -90px)) scale(calc(1 - var(--tq-hero, 0) * .14));
-  opacity: calc(1 - var(--tq-hero, 0)); filter: blur(calc(var(--tq-hero, 0) * 10px));
-}
+
 .tq-fb .section-dark{ clip-path: circle(calc(8% + var(--tq-c, 1) * 142%) at 50% 40%); }
 .tq-fb .mx-wm{
   transform: translateX(calc(18vw - var(--tq-w, 0) * 32vw)) rotate(calc(-6deg + var(--tq-w, 0) * 10deg));
@@ -63,7 +60,7 @@
 @media (prefers-reduced-motion: reduce){
   .px-canvas{ display: none; }
   #marca.px-on .marca-logo-img, .footer.px-on .footer-brand img{ opacity: 1; }
-  .tq-fb .hero-inner, .tq-fb .mx-wm{ transform: none; opacity: 1; filter: none; }
+  .tq-fb .mx-wm{ transform: none; opacity: 1; filter: none; }
   .tq-fb .section-dark{ clip-path: none; }
   .tq-fb .mx-manifesto{ height: auto; }
   .tq-fb .mx-manifesto .band-inner{ position: relative; height: auto; }
