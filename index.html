@@ -2602,7 +2602,6 @@ textarea.nt-in{resize:vertical;line-height:1.55}
         <p class="adm-sub">Edite o conteúdo do site e consulte os dados sensíveis. Nada desta área aparece para o público.</p>
       </div>
       <div class="adm-topo-btns">
-        <button type="button" class="adm-sair adm-sair-claro" id="admEsquecer" title="Remove a chave do GitHub deste navegador">Esquecer chave</button>
         <button type="button" class="adm-sair" id="admSair">Sair</button>
       </div>
     </div>
@@ -2619,10 +2618,6 @@ textarea.nt-in{resize:vertical;line-height:1.55}
     <p>UNIPBRAS: acesso restrito à equipe autorizada.</p>
     <p class="adm-erro" id="admErro" hidden>Senha incorreta. Tente novamente.</p>
     <input type="password" id="admSenha" class="adm-senha" placeholder="Digite a senha" autocomplete="current-password">
-    <div id="admTokenCampo" hidden>
-      <label class="adm-tok-rot" for="admToken">Chave do GitHub <small>(só na primeira vez, para poder editar)</small></label>
-      <input type="password" id="admToken" class="adm-senha" placeholder="github_pat_... (opcional)" autocomplete="off">
-    </div>
     <button type="button" class="adm-entrar" id="admEntrar">&#128275; Entrar</button>
   </div>
 </div>
@@ -5509,7 +5504,7 @@ else setTimeout(iniciar, 0);
   btn.addEventListener('click',function(){ clearTimeout(t); wrap.classList.remove('tocando'); v.pause(); });
 })();
 </script>
-<script src="adm.js?v=20261121b" defer></script>
+<script src="adm.js?v=20261122" defer></script>
 <script>
 (function(){
   var cb=document.querySelector('.credit-bar'); if(!cb) return;

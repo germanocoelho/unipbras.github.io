@@ -181,7 +181,7 @@
     return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM', iv:b64u8(f.iv)}, k, b64u8(f.dados))));
   }
   async function cifra(pw, obj){
-    var sal = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12)), it = 310000;
+    var sal = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12)), it = 600000;
     var k = await chaveDe(pw, sal, it, 'encrypt');
     var c = new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM', iv:iv}, k, new TextEncoder().encode(JSON.stringify(obj, null, 1))));
     return JSON.stringify({v:1, alg:'AES-256-GCM', kdf:'PBKDF2-SHA256', it:it, sal:u8b64(sal), iv:u8b64(iv), dados:u8b64(c)});
@@ -242,7 +242,7 @@
     var c = $('admConexao'); if (!c) return;
     if (PODE === true){ c.className = 'adm-conexao ok'; c.innerHTML = '● Conectado ao GitHub: as alterações são publicadas no site.'; }
     else if (TOKEN && PODE === null){ c.className = 'adm-conexao erro'; c.innerHTML = '● Sem conexão com o GitHub agora. Verifique a internet e entre de novo.'; }
-    else { c.className = 'adm-conexao aviso'; c.innerHTML = '● Somente leitura: para editar, saia e entre de novo informando a chave do GitHub.'; }
+    else { c.className = 'adm-conexao aviso'; c.innerHTML = '● Somente leitura: a chave de publicação não respondeu. Tente sair e entrar de novo.'; }
   }
 
   /* --- formulários genéricos --- */
@@ -462,11 +462,11 @@
   var modal = $('admModal'), area = $('adm'), senha = $('admSenha'), erro = $('admErro'), btnE = $('admEntrar'), tokIn = $('admToken');
   function abreModal(){ modal.hidden = false; erro.hidden = true; senha.value = '';
     var tem = false; try{ tem = !!localStorage.getItem(CHAVE_TOKEN); }catch(e){}
-    $('admTokenCampo').hidden = tem; setTimeout(function(){ senha.focus(); }, 50); }
+    setTimeout(function(){ senha.focus(); }, 50); }
   function fechaModal(){ modal.hidden = true; }
   async function ativa(pw, rola){
     R = await decifra(pw); PW = pw;
-    try{ TOKEN = localStorage.getItem(CHAVE_TOKEN) || null; }catch(e){}
+    TOKEN = R.chaveGithub || null;
     PODE = TOKEN ? await podeEscrever(TOKEN) : false;
     document.body.classList.add('adm-ok'); area.hidden = false;
     if (PODE && window.VG_login) try{ window.VG_login(TOKEN); }catch(e){}
@@ -477,8 +477,6 @@
     if (!senha.value) return; btnE.disabled = true; btnE.textContent = 'Verificando...'; erro.hidden = true;
     try{
       await decifra(senha.value);
-      var tok = tokIn ? tokIn.value.trim() : '';
-      if (tok){ var ok = await podeEscrever(tok); if (!ok){ erro.textContent = 'A chave do GitHub não foi aceita (sem permissão de escrita).'; erro.hidden = false; btnE.disabled = false; btnE.innerHTML = '&#128275; Entrar'; return; } try{ localStorage.setItem(CHAVE_TOKEN, tok); }catch(e){} tokIn.value = ''; }
       try{ sessionStorage.setItem(CHAVE_SESSAO, senha.value); }catch(e){}
       var pw = senha.value; fechaModal(); await ativa(pw);
     }catch(e){ erro.textContent = 'Senha incorreta. Tente novamente.'; erro.hidden = false; senha.value = ''; senha.focus(); }
@@ -497,12 +495,11 @@
   btnE.addEventListener('click', entra);
   senha.addEventListener('keydown', function(e){ if (e.key === 'Enter') entra(); });
   $('admSair').addEventListener('click', sai);
-  $('admEsquecer').addEventListener('click', function(){ if (!confirm('Remover a chave do GitHub deste navegador? Será preciso informá-la de novo para editar.')) return; try{ localStorage.removeItem(CHAVE_TOKEN); }catch(e){} TOKEN = null; PODE = false; renderPainel(); });
   document.addEventListener('click', function(e){
     var b = e.target.closest && e.target.closest('#admPainel [data-a]'); if (b){ acao(b.getAttribute('data-a'), b); return; }
     var ir = e.target.closest && e.target.closest('[data-adm-ir]');
     if (ir){ var alvo = ir.getAttribute('data-adm-ir'), sec = $(alvo); if (sec) sec.scrollIntoView({behavior:'smooth'});
-      if (!PODE) aviso('aviso', 'Para administrar ' + alvo + ', entre com a chave do GitHub.'); }
+      if (!PODE) aviso('aviso', 'Sem conexão para publicar no momento.'); }
   });
   try{ var s = sessionStorage.getItem(CHAVE_SESSAO); if (s) ativa(s, false).catch(function(){ try{ sessionStorage.removeItem(CHAVE_SESSAO); }catch(e){} }); }catch(e){}
 })();
