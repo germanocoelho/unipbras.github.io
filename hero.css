@@ -51,3 +51,53 @@
 @media (prefers-reduced-motion: reduce){
   .hero-medalha, .hero-medalha-luz, .hero-medalha-anel, .hero-medalha-pontos, .hero-emblema{ animation:none !important; }
 }
+
+/* =====================================================================
+   Versão 3D (ativada por hero3d.js)
+   ===================================================================== */
+.hero-medalha.m3d{ perspective: 1200px; perspective-origin: 50% 45%; }
+.hero-medalha.m3d .hero-medalha-anel, .hero-medalha.m3d .hero-medalha-pontos, .hero-medalha.m3d .hero-emblema{ display:none; }
+.m3-cena{
+  position:absolute; inset:0; transform-style: preserve-3d;
+  transform: rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg));
+}
+.m3-orbita{ position:absolute; inset:0; transform-style: preserve-3d; }
+.m3-orbita > *{ position:absolute; left:50%; top:50%; transform-style: preserve-3d; }
+/* coroa: plano inclinado, girando */
+.m3-coroa{ inset: -8%; animation: m3-coroa 26s linear infinite; }
+@keyframes m3-coroa{ from{ transform: rotateX(64deg) rotateZ(0deg); } to{ transform: rotateX(64deg) rotateZ(360deg); } }
+.m3-tri{
+  width: 7.5%; height: 9%; margin: -9% 0 0 -3.75%;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%); transform-origin: 50% 100%;
+  backface-visibility: visible; box-shadow: inset 0 -6px 10px rgba(0,0,0,.25);
+}
+.m3-tri.inv{ clip-path: polygon(0 0, 100% 0, 50% 100%); }
+/* contas: outro plano, sentido contrário */
+.m3-contas{ inset: 4%; animation: m3-contas 34s linear infinite; }
+@keyframes m3-contas{ from{ transform: rotateX(-62deg) rotateY(18deg) rotateZ(0deg); } to{ transform: rotateX(-62deg) rotateY(18deg) rotateZ(-360deg); } }
+.m3-conta{ width: 2.2%; height: 2.2%; margin: -1.1% 0 0 -1.1%; border-radius: 50%; box-shadow: 0 0 8px rgba(245,197,66,.8); }
+/* moeda */
+.m3-moeda{
+  position:absolute; left:17%; top:17%; width:66%; height:66%; transform-style: preserve-3d;
+  animation: m3-moeda 9s ease-in-out infinite;
+}
+@keyframes m3-moeda{
+  0%,100%{ transform: translateZ(0) rotateY(-24deg) rotateX(6deg); }
+  50%{ transform: translateZ(30px) rotateY(24deg) rotateX(-6deg); }
+}
+.m3-borda{ position:absolute; inset:0; border-radius:50%; background: linear-gradient(135deg, #8a5a0a, #F5C542 45%, #B5790C 70%, #6b4307); }
+.m3-face{ position:absolute; inset:0; width:100%; height:100%; border-radius:50%; backface-visibility:hidden; }
+.m3-frente{ transform: translateZ(8px); }
+.m3-verso{ transform: rotateY(180deg) translateZ(8px); filter: sepia(.35) brightness(.9); }
+.m3-brilho{
+  position:absolute; inset:0; border-radius:50%; transform: translateZ(9px); pointer-events:none;
+  background: radial-gradient(circle at var(--bx, 50%) var(--by, 35%), rgba(255,255,255,.38), rgba(255,255,255,0) 45%);
+  mix-blend-mode: soft-light;
+}
+.hero-medalha.m3d::after{ /* sombra no "chão" */
+  content:""; position:absolute; left:20%; right:20%; bottom:-4%; height:9%; border-radius:50%;
+  background: radial-gradient(closest-side, rgba(36,28,19,.32), transparent); filter: blur(4px);
+  animation: m3-sombra 9s ease-in-out infinite;
+}
+@keyframes m3-sombra{ 0%,100%{ transform: scaleX(1); opacity:.9; } 50%{ transform: scaleX(.82); opacity:.6; } }
+.hero-medalha.m3-pausa .m3-coroa, .hero-medalha.m3-pausa .m3-contas, .hero-medalha.m3-pausa .m3-moeda{ animation-play-state: paused; }
