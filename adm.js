@@ -306,6 +306,14 @@
       c.map(function(x, i){ return '<tr>' + ['entidade','pessoa','contato','origem','obs'].map(function(k){ return '<td><input data-ct="' + k + '" data-i="' + i + '" value="' + esc(x[k]) + '"></td>'; }).join('') + '<td><button type="button" class="adm-mini perigo" data-a="ct:apaga:' + i + '">✕</button></td></tr>'; }).join('') +
       '</tbody></table></div><div class="adm-linha"><button type="button" class="adm-btn adm-btn-claro" data-a="ct:novo">+ Contato</button><button type="button" class="adm-btn" data-a="ct:salva">Salvar contatos</button></div>';
   }
+  var SC_COLS = [['nome','Nome'],['cargo','Cargo'],['nacionalidade','Nacionalidade'],['ocupacao','Ocupação'],['estadoCivil','Estado civil'],['domicilio','Domicílio'],['rg','RG'],['cpf','CPF'],['email','E-mail'],['obs','Observação']];
+  function formSocios(){
+    var s = (R.socios || []);
+    return '<p class="adm-nota">' + s.length + ' sócios fundadores. Dados pessoais protegidos pela LGPD: ficam criptografados e nunca aparecem no site.</p>' +
+      '<div class="adm-tabela adm-tabela-larga"><table><thead><tr>' + SC_COLS.map(function(c){ return '<th>' + c[1] + '</th>'; }).join('') + '<th></th></tr></thead><tbody>' +
+      s.map(function(x, i){ return '<tr>' + SC_COLS.map(function(c){ return '<td><input data-sc="' + c[0] + '" data-i="' + i + '" value="' + esc(x[c[0]]) + '"></td>'; }).join('') + '<td><button type="button" class="adm-mini perigo" data-a="sc:apaga:' + i + '">✕</button></td></tr>'; }).join('') +
+      '</tbody></table></div><div class="adm-linha"><button type="button" class="adm-btn adm-btn-claro" data-a="sc:novo">+ Sócio</button><button type="button" class="adm-btn" data-a="sc:salva">Salvar quadro social</button><button type="button" class="adm-btn adm-btn-claro" data-a="sc:csv">Baixar planilha (CSV)</button></div>';
+  }
   function formPend(){
     return '<ul class="adm-pend">' + (R.pendencias || []).map(function(p, i){ return '<li><span>' + esc(p) + '</span><button type="button" class="adm-mini" data-a="pd:feita:' + i + '" title="Marcar como resolvida">✓</button></li>'; }).join('') + '</ul>' +
       '<div class="adm-linha"><input id="pdNova" class="adm-in" placeholder="Nova pendência"><button type="button" class="adm-btn" data-a="pd:nova">Adicionar</button></div>';
@@ -324,10 +332,11 @@
       cartao('admCDoc', 'Documentos e publicações', 'Estatuto, atas, ofícios, certidões, artigos e estudos. PDF enviado aqui fica guardado no site.', lista(D.documentos, function(d){ return (CAT[d.cat] || d.cat) + ' · ' + tr(d.titulo); }, 'doc') + '<h4>' + (editando.doc != null ? 'Editar documento' : 'Novo documento') + '</h4>' + formDoc()) +
       cartao('admCYt', 'Vídeos do YouTube', 'Os vídeos aparecem na seção “Vídeos”, logo abaixo da galeria.', lista(D.videos, function(x){ return tr(x.titulo); }, 'yt') + formVideo()) +
       cartao('admCRel', 'Relatório mensal de atividades', 'Reúne eventos, notícias, fotos, vídeos e documentos do mês. Pode ser impresso, salvo em PDF ou enviado por e-mail.', formRelatorio(), true) +
+      cartao('admCSc', 'Quadro social: sócios fundadores e órgãos de direção', 'Relação de associados e diretores com dados pessoais. Restrito: criptografado e fora do site.', formSocios(), true) +
       cartao('admCCt', 'Contatos pessoais e não confirmados', 'Dados restritos: ficam criptografados e nunca aparecem no site.', formRestrito(), true) +
       cartao('admCPd', 'Pendências', '', formPend()) +
       cartao('admCFe', 'Ferramentas', '', '<div class="adm-ferr"><button type="button" class="adm-btn" data-adm-ir="noticias">Administrar notícias</button><button type="button" class="adm-btn" data-adm-ir="galeria">Administrar galeria</button><a class="adm-btn" href="privacidade.html#termo">Termo de autorização (LGPD)</a><button type="button" class="adm-btn adm-btn-claro" data-a="bk:baixa">Backup completo do site</button></div><p class="adm-nota">Dados restritos atualizados em ' + esc(R.atualizado || '') + '.</p>');
-    p.querySelectorAll('[data-a]').forEach(function(b){ if (!PODE && !/^(rel|bk)/.test(b.getAttribute('data-a'))) b.disabled = true; });
+    p.querySelectorAll('[data-a]').forEach(function(b){ if (!PODE && !/^(rel|bk|sc:csv)/.test(b.getAttribute('data-a'))) b.disabled = true; });
     conexao();
   }
 
@@ -347,6 +356,7 @@
       else if (k === 'yt' && op === 'salva') await salvaVideo(el);
       else if (k === 'dir') await acaoDiretoria(op, i);
       else if (k === 'ct') await acaoContatos(op, i);
+      else if (k === 'sc') await acaoSocios(op, i);
       else if (k === 'pd') await acaoPend(op, i);
       else if (k === 'rel') { gerarRelatorio(); return; }
       else if (k === 'bk') { await backup(); return; }
@@ -404,6 +414,19 @@
     D.diretoria = nova.map(function(m){ return {id: m.id, cargo: m.cargo, nome: m.nome}; });
     R.diretoria = nova.map(function(m){ return {cargo: m.cargo, nome: m.nome, povo: m.povo, uf: m.uf}; });
     if (op === 'salva'){ R.atualizado = new Date().toLocaleDateString('pt-BR'); await salvarSite('Diretoria atualizada'); await salvarRestrito('Povo dos dirigentes atualizado'); }
+  }
+  async function acaoSocios(op, i){
+    var t = lerTabela('sc'); R.socios = (R.socios || []).map(function(c, j){ return t[j] || c; });
+    if (op === 'novo') R.socios.push({nome:'', cargo:'Sócio fundador', nacionalidade:'', ocupacao:'', estadoCivil:'', domicilio:'', rg:'', cpf:'', email:'', obs:''});
+    if (op === 'apaga'){ if (!confirm('Excluir este sócio do quadro?')) return; R.socios.splice(i, 1); }
+    if (op === 'salva'){ R.atualizado = new Date().toLocaleDateString('pt-BR'); await salvarRestrito('Quadro social atualizado'); }
+    if (op === 'csv'){
+      var q = function(v){ return '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"'; };
+      var linhas = [SC_COLS.map(function(c){ return q(c[1]); }).join(';')].concat(R.socios.map(function(x){ return SC_COLS.map(function(c){ return q(x[c[0]]); }).join(';'); }));
+      var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['\ufeff' + linhas.join('\r\n')], {type:'text/csv;charset=utf-8'}));
+      a.download = 'unipbras-quadro-social.csv'; document.body.appendChild(a); a.click(); a.remove();
+      aviso('ok', '✓ Planilha baixada. Contém dados pessoais: guarde em local seguro.'); return;
+    }
   }
   async function acaoContatos(op, i){
     var t = lerTabela('ct'); R.contatos = (R.contatos || []).map(function(c, j){ return t[j] || c; });

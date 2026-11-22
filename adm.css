@@ -110,3 +110,6 @@
   .doc-item{ flex-wrap:wrap; }
   .doc-btn{ width:100%; text-align:center; }
 }
+.adm-tabela-larga{ overflow-x:auto; }
+.adm-tabela-larga table{ min-width:2100px; }
+.adm-tabela-larga input{ min-width:120px; }
