@@ -1,20 +1,53 @@
 {
   "versao": 1,
   "diretoria": [
-    {"id": "d1", "cargo": "Presidente", "nome": "Aguinaldo Arruda Areco"},
-    {"id": "d2", "cargo": "Vice-Presidente", "nome": "Em definição"},
-    {"id": "d3", "cargo": "Secretário Geral", "nome": "Joccelio Leite Paulino"},
-    {"id": "d4", "cargo": "Secretário Adjunto", "nome": "Paulo Pontes Lúcio"},
-    {"id": "d5", "cargo": "Tesoureiro", "nome": "Lisio Lili"},
-    {"id": "d6", "cargo": "2º Tesoureiro", "nome": "Antonio Matias da Silva"}
+    {
+      "id": "d1",
+      "cargo": "Presidente",
+      "nome": "Aguinaldo Arruda Areco"
+    },
+    {
+      "id": "d2",
+      "cargo": "Vice-Presidente",
+      "nome": "Em definição"
+    },
+    {
+      "id": "d3",
+      "cargo": "Secretário Geral",
+      "nome": "Joccelio Leite Paulino"
+    },
+    {
+      "id": "d4",
+      "cargo": "Secretário Adjunto",
+      "nome": "Paulo Pontes Lúcio"
+    },
+    {
+      "id": "d5",
+      "cargo": "Tesoureiro",
+      "nome": "Lisio Lili"
+    },
+    {
+      "id": "d6",
+      "cargo": "2º Tesoureiro",
+      "nome": "Antonio Matias da Silva"
+    }
   ],
   "filiadas": [
     {
-      "id": "sodiurr", "sigla": "SODIURR", "nome": "Sociedade de Defesa dos Índios Unidos de Roraima",
-      "razao": "Sociedade de Defesa dos Índios Unidos do Norte de Roraima", "local": "Boa Vista · RR",
-      "cnpj": "01.121.522/0001-04 (matriz)", "fundacao": "20/09/1993", "situacao": "",
-      "sede": "Vila Maloca do Contão, s/n, Zona Rural, Boa Vista/RR, CEP 69301-081", "povos": "",
-      "presidencia": "Irisnaide de Souza Silva", "contato": "", "logo": "imgs/associadas/sodiurr.png", "logoEstilo": "",
+      "id": "sodiurr",
+      "sigla": "SODIURR",
+      "nome": "Sociedade de Defesa dos Índios Unidos de Roraima",
+      "razao": "Sociedade de Defesa dos Índios Unidos do Norte de Roraima",
+      "local": "Boa Vista · RR",
+      "cnpj": "01.121.522/0001-04 (matriz)",
+      "fundacao": "20/09/1993",
+      "situacao": "",
+      "sede": "Vila Maloca do Contão, s/n, Zona Rural, Boa Vista/RR, CEP 69301-081",
+      "povos": "",
+      "presidencia": "Irisnaide de Souza Silva",
+      "contato": "",
+      "logo": "imgs/associadas/sodiurr.png",
+      "logoEstilo": "",
       "desc": {
         "pt": "Associação indígena fundada em 1993, com sede na Maloca do Contão, que reúne lideranças de comunidades indígenas de Roraima na defesa de direitos sociais e da cultura.",
         "en": "Indigenous association founded in 1993 and based in Maloca do Contão, bringing together leaders of Indigenous communities in Roraima to defend social rights and culture.",
@@ -23,10 +56,20 @@
       }
     },
     {
-      "id": "kenkre", "sigla": "", "nome": "Instituto Kenkre", "razao": "", "local": "Novo Progresso · PA",
-      "cnpj": "64.693.399/0001-16 (matriz)", "fundacao": "05/11/2025", "situacao": "",
-      "sede": "Rua Bandeirantes, 877, Jardim Planalto, Novo Progresso/PA, CEP 68193-000", "povos": "",
-      "presidencia": "Bepdjy Re Mekragnoti Re", "contato": "", "logo": "imgs/associadas/instituto-kenkre.webp", "logoEstilo": "escuro",
+      "id": "kenkre",
+      "sigla": "",
+      "nome": "Instituto Kenkre",
+      "razao": "",
+      "local": "Novo Progresso · PA",
+      "cnpj": "64.693.399/0001-16 (matriz)",
+      "fundacao": "05/11/2025",
+      "situacao": "",
+      "sede": "Rua Bandeirantes, 877, Jardim Planalto, Novo Progresso/PA, CEP 68193-000",
+      "povos": "",
+      "presidencia": "Bepdjy Re Mekragnoti Re",
+      "contato": "",
+      "logo": "imgs/associadas/instituto-kenkre.webp",
+      "logoEstilo": "escuro",
       "desc": {
         "pt": "Associação indígena de defesa de direitos sociais, com atuação em cultura e arte, artesanato, conservação de florestas nativas e produtos da sociobiodiversidade.",
         "en": "Indigenous association for the defense of social rights, working in culture and the arts, handicrafts, conservation of native forests and sociobiodiversity products.",
@@ -35,12 +78,20 @@
       }
     },
     {
-      "id": "ffikb", "sigla": "FFIKB", "nome": "Fundação da Federação dos Índios Kariris do Brasil",
-      "razao": "Fundação da Federação dos Índios Kariri do Brasil", "local": "Porto Real do Colégio · AL",
-      "cnpj": "10.961.672/0001-17 (matriz)", "fundacao": "24/06/2009", "situacao": "",
+      "id": "ffikb",
+      "sigla": "FFIKB",
+      "nome": "Fundação da Federação dos Índios Kariris do Brasil",
+      "razao": "Fundação da Federação dos Índios Kariri do Brasil",
+      "local": "Porto Real do Colégio · AL",
+      "cnpj": "10.961.672/0001-17 (matriz)",
+      "fundacao": "24/06/2009",
+      "situacao": "",
       "sede": "Aldeia Indígena Kariri-Xocó, s/n, Galpão, Zona Rural, Porto Real do Colégio/AL",
       "povos": "Kariri-Xocó, com atuação junto aos Jeripankó e Tingui-Botó",
-      "presidencia": "Julio Queiroz Suira", "contato": "", "logo": "", "logoEstilo": "",
+      "presidencia": "Julio Queiroz Suira",
+      "contato": "",
+      "logo": "",
+      "logoEstilo": "",
       "desc": {
         "pt": "Fundação indígena criada em 2009, com sede no território Kariri-Xocó. Articula comunidades indígenas de Alagoas em projetos de produção agrícola, segurança alimentar e geração de renda.",
         "en": "Indigenous foundation created in 2009 and based in Kariri-Xocó territory. It brings together Indigenous communities in Alagoas in projects for agricultural production, food security and income generation.",
@@ -49,11 +100,20 @@
       }
     },
     {
-      "id": "inteds", "sigla": "INTEDS", "nome": "Instituto Nacional de Tecnologia e de Desenvolvimento Sustentável",
-      "razao": "", "local": "Olinda · PE", "cnpj": "08.986.668/0001-61", "fundacao": "", "situacao": "",
+      "id": "inteds",
+      "sigla": "INTEDS",
+      "nome": "Instituto Nacional de Tecnologia e de Desenvolvimento Sustentável",
+      "razao": "",
+      "local": "Olinda · PE",
+      "cnpj": "08.986.668/0001-61",
+      "fundacao": "",
+      "situacao": "",
       "sede": "Av. Presidente Getúlio Vargas, 930, Sala 06, Bairro Novo, Olinda/PE, CEP 53030-010",
       "povos": "Karapotó (Terra Nova), Jeripankó, Xukuru-Kariri, Kariri-Xocó, Fulni-ô, Wassu, Atikum e Kambiwá (Inajá)",
-      "presidencia": "Everton Luiz Alves", "contato": "institutointeds@gmail.com", "logo": "imgs/associadas/inteds.png", "logoEstilo": "pequeno",
+      "presidencia": "Everton Luiz Alves",
+      "contato": "institutointeds@gmail.com",
+      "logo": "imgs/associadas/inteds.png",
+      "logoEstilo": "pequeno",
       "desc": {
         "pt": "Instituto de tecnologia e desenvolvimento sustentável, com coordenação indígena de etnodesenvolvimento, que atua junto a povos indígenas de Pernambuco e Alagoas.",
         "en": "Institute for technology and sustainable development, with an Indigenous ethnodevelopment coordination, working with Indigenous peoples in Pernambuco and Alagoas.",
@@ -62,10 +122,20 @@
       }
     },
     {
-      "id": "aiff", "sigla": "AIFF", "nome": "Associação Indígena Fwlatatha Fulni-ô", "razao": "", "local": "Águas Belas · PE",
-      "cnpj": "07.899.505/0001-89 (matriz)", "fundacao": "21/03/2006", "situacao": "Ativa",
-      "sede": "Aldeia Indígena Fulni-ô, s/n, Centro, Águas Belas/PE, CEP 55340-000", "povos": "Fulni-ô",
-      "presidencia": "", "contato": "", "logo": "", "logoEstilo": "",
+      "id": "aiff",
+      "sigla": "AIFF",
+      "nome": "Associação Indígena Fwlatatha Fulni-ô",
+      "razao": "",
+      "local": "Águas Belas · PE",
+      "cnpj": "07.899.505/0001-89 (matriz)",
+      "fundacao": "21/03/2006",
+      "situacao": "Ativa",
+      "sede": "Aldeia Indígena Fulni-ô, s/n, Centro, Águas Belas/PE, CEP 55340-000",
+      "povos": "Fulni-ô",
+      "presidencia": "",
+      "contato": "",
+      "logo": "",
+      "logoEstilo": "",
       "desc": {
         "pt": "Associação do povo Fulni-ô, fundada em 2006 e sediada na Aldeia Fulni-ô, em Águas Belas (PE), voltada à defesa de direitos sociais e à cultura.",
         "en": "Association of the Fulni-ô people, founded in 2006 and based in the Fulni-ô village in Águas Belas (PE), devoted to the defense of social rights and culture.",
@@ -74,42 +144,132 @@
       }
     },
     {
-      "id": "panko", "sigla": "PANKO", "nome": "Associação Comunitária Indígena Panko da Aldeia Geripanco", "razao": "", "local": "Pariconha · AL",
-      "cnpj": "64.991.100/0001-00 (matriz)", "fundacao": "04/06/2025", "situacao": "Ativa",
-      "sede": "Sítio Povoado Ouricuri, s/n, Zona Rural, Pariconha/AL, CEP 57475-000", "povos": "Geripanco",
-      "presidencia": "", "contato": "", "logo": "", "logoEstilo": "",
+      "id": "panko",
+      "sigla": "PANKO",
+      "nome": "Associação Comunitária Indígena Panko da Aldeia Geripanco",
+      "razao": "",
+      "local": "Pariconha · AL",
+      "cnpj": "64.991.100/0001-00 (matriz)",
+      "fundacao": "04/06/2025",
+      "situacao": "Ativa",
+      "sede": "Sítio Povoado Ouricuri, s/n, Zona Rural, Pariconha/AL, CEP 57475-000",
+      "povos": "Geripanco",
+      "presidencia": "",
+      "contato": "",
+      "logo": "",
+      "logoEstilo": "",
       "desc": {
         "pt": "Associação comunitária da Aldeia Geripanco, fundada em 2025 em Pariconha (AL), voltada à defesa de direitos sociais e à cultura.",
         "en": "Community association of the Geripanco village, founded in 2025 in Pariconha (AL), devoted to the defense of social rights and culture.",
         "es": "Asociación comunitaria de la Aldea Geripanco, fundada en 2025 en Pariconha (AL), dedicada a la defensa de los derechos sociales y de la cultura.",
         "fr": "Association communautaire du village Geripanco, fondée en 2025 à Pariconha (AL), consacrée à la défense des droits sociaux et de la culture."
       }
+    },
+    {
+      "id": "atikum",
+      "sigla": "",
+      "nome": "Associação Indígena dos Agricultores Familiares da Aldeia Boqueirão e Região",
+      "razao": "",
+      "local": "Salgueiro · PE",
+      "cnpj": "59.670.230/0001-00 (matriz)",
+      "fundacao": "23/01/2025",
+      "situacao": "Ativa",
+      "sede": "Sítio Aldeia Boqueirão, Zona Rural, Salgueiro/PE, CEP 56000-000",
+      "povos": "Atikum",
+      "presidencia": "Sidinaldo Cícero da Silva",
+      "contato": "",
+      "logo": "",
+      "logoEstilo": "",
+      "desc": {
+        "pt": "Associação do povo Atikum da Aldeia Boqueirão, fundada em 2025 em Salgueiro (PE), que reúne agricultores familiares indígenas da aldeia e da região.",
+        "en": "Association of the Atikum people of the Boqueirão village, founded in 2025 in Salgueiro (PE), bringing together Indigenous family farmers of the village and the region.",
+        "es": "Asociación del pueblo Atikum de la Aldea Boqueirão, fundada en 2025 en Salgueiro (PE), que reúne a agricultores familiares indígenas de la aldea y de la región.",
+        "fr": "Association du peuple Atikum du village de Boqueirão, fondée en 2025 à Salgueiro (PE), qui réunit des agriculteurs familiaux autochtones du village et de la région."
+      }
     }
   ],
   "eventos": [
     {
-      "id": "ev-ii-encontro-2025", "ini": "2025-11-25", "fim": "2025-11-26", "hora": "", "tipo": "encontro", "local": "Brasília/DF",
-      "titulo": {"pt": "II Encontro Nacional dos Agricultores Indígenas", "en": "2nd National Meeting of Indigenous Farmers", "es": "II Encuentro Nacional de Agricultores Indígenas", "fr": "IIe Rencontre nationale des agriculteurs autochtones"},
-      "desc": {"pt": "Encontro com lideranças e agricultores indígenas de todo o Brasil, no Ministério da Agricultura e Pecuária.", "en": "Meeting with Indigenous leaders and farmers from all over Brazil, at the Ministry of Agriculture and Livestock.", "es": "Encuentro con líderes y agricultores indígenas de todo Brasil, en el Ministerio de Agricultura y Ganadería.", "fr": "Rencontre avec des dirigeants et agriculteurs autochtones de tout le Brésil, au ministère de l’Agriculture et de l’Élevage."},
+      "id": "ev-ii-encontro-2025",
+      "ini": "2025-11-25",
+      "fim": "2025-11-26",
+      "hora": "",
+      "tipo": "encontro",
+      "local": "Brasília/DF",
+      "titulo": {
+        "pt": "II Encontro Nacional dos Agricultores Indígenas",
+        "en": "2nd National Meeting of Indigenous Farmers",
+        "es": "II Encuentro Nacional de Agricultores Indígenas",
+        "fr": "IIe Rencontre nationale des agriculteurs autochtones"
+      },
+      "desc": {
+        "pt": "Encontro com lideranças e agricultores indígenas de todo o Brasil, no Ministério da Agricultura e Pecuária.",
+        "en": "Meeting with Indigenous leaders and farmers from all over Brazil, at the Ministry of Agriculture and Livestock.",
+        "es": "Encuentro con líderes y agricultores indígenas de todo Brasil, en el Ministerio de Agricultura y Ganadería.",
+        "fr": "Rencontre avec des dirigeants et agriculteurs autochtones de tout le Brésil, au ministère de l’Agriculture et de l’Élevage."
+      },
       "link": "#galeria"
     },
     {
-      "id": "ev-assembleia-2025", "ini": "2025-12-11", "fim": "", "hora": "", "tipo": "assembleia", "local": "Brasília/DF",
-      "titulo": {"pt": "Assembleia Geral de Constituição da UNIPBRAS", "en": "General Assembly founding UNIPBRAS", "es": "Asamblea General de Constitución de la UNIPBRAS", "fr": "Assemblée générale constitutive de l’UNIPBRAS"},
-      "desc": {"pt": "Assembleia que constituiu a União Nacional dos Produtores e Agricultores Indígenas do Brasil.", "en": "Assembly that founded the National Union of Indigenous Producers and Farmers of Brazil.", "es": "Asamblea que constituyó la Unión Nacional de los Productores y Agricultores Indígenas de Brasil.", "fr": "Assemblée qui a constitué l’Union nationale des producteurs et agriculteurs autochtones du Brésil."},
+      "id": "ev-assembleia-2025",
+      "ini": "2025-12-11",
+      "fim": "",
+      "hora": "",
+      "tipo": "assembleia",
+      "local": "Brasília/DF",
+      "titulo": {
+        "pt": "Assembleia Geral de Constituição da UNIPBRAS",
+        "en": "General Assembly founding UNIPBRAS",
+        "es": "Asamblea General de Constitución de la UNIPBRAS",
+        "fr": "Assemblée générale constitutive de l’UNIPBRAS"
+      },
+      "desc": {
+        "pt": "Assembleia que constituiu a União Nacional dos Produtores e Agricultores Indígenas do Brasil.",
+        "en": "Assembly that founded the National Union of Indigenous Producers and Farmers of Brazil.",
+        "es": "Asamblea que constituyó la Unión Nacional de los Productores y Agricultores Indígenas de Brasil.",
+        "fr": "Assemblée qui a constitué l’Union nationale des producteurs et agriculteurs autochtones du Brésil."
+      },
       "link": ""
     }
   ],
   "documentos": [
     {
-      "id": "doc-logomarca", "cat": "marca", "data": "2026-11-21", "arquivo": "imgs/marca/Logomarca_UNIPBRAS_Indigena.pdf", "link": "",
-      "titulo": {"pt": "Logomarca oficial da UNIPBRAS (PDF)", "en": "UNIPBRAS official logo (PDF)", "es": "Logotipo oficial de la UNIPBRAS (PDF)", "fr": "Logo officiel de l’UNIPBRAS (PDF)"},
-      "desc": {"pt": "Arquivo da logomarca para uso em materiais institucionais.", "en": "Logo file for use in institutional materials.", "es": "Archivo del logotipo para uso en materiales institucionales.", "fr": "Fichier du logo à utiliser dans les supports institutionnels."}
+      "id": "doc-logomarca",
+      "cat": "marca",
+      "data": "2026-11-21",
+      "arquivo": "imgs/marca/Logomarca_UNIPBRAS_Indigena.pdf",
+      "link": "",
+      "titulo": {
+        "pt": "Logomarca oficial da UNIPBRAS (PDF)",
+        "en": "UNIPBRAS official logo (PDF)",
+        "es": "Logotipo oficial de la UNIPBRAS (PDF)",
+        "fr": "Logo officiel de l’UNIPBRAS (PDF)"
+      },
+      "desc": {
+        "pt": "Arquivo da logomarca para uso em materiais institucionais.",
+        "en": "Logo file for use in institutional materials.",
+        "es": "Archivo del logotipo para uso en materiales institucionales.",
+        "fr": "Fichier du logo à utiliser dans les supports institutionnels."
+      }
     },
     {
-      "id": "doc-privacidade", "cat": "institucional", "data": "2026-11-21", "arquivo": "", "link": "privacidade.html",
-      "titulo": {"pt": "Privacidade e proteção de dados (LGPD)", "en": "Privacy and data protection (LGPD)", "es": "Privacidad y protección de datos (LGPD)", "fr": "Confidentialité et protection des données (LGPD)"},
-      "desc": {"pt": "Como a UNIPBRAS cuida dos dados das associações, das lideranças e das comunidades, com o termo de autorização.", "en": "How UNIPBRAS handles the data of associations, leaders and communities, including the authorization form.", "es": "Cómo la UNIPBRAS cuida los datos de las asociaciones, los líderes y las comunidades, con el término de autorización.", "fr": "Comment l’UNIPBRAS protège les données des associations, des dirigeants et des communautés, avec le formulaire d’autorisation."}
+      "id": "doc-privacidade",
+      "cat": "institucional",
+      "data": "2026-11-21",
+      "arquivo": "",
+      "link": "privacidade.html",
+      "titulo": {
+        "pt": "Privacidade e proteção de dados (LGPD)",
+        "en": "Privacy and data protection (LGPD)",
+        "es": "Privacidad y protección de datos (LGPD)",
+        "fr": "Confidentialité et protection des données (LGPD)"
+      },
+      "desc": {
+        "pt": "Como a UNIPBRAS cuida dos dados das associações, das lideranças e das comunidades, com o termo de autorização.",
+        "en": "How UNIPBRAS handles the data of associations, leaders and communities, including the authorization form.",
+        "es": "Cómo la UNIPBRAS cuida los datos de las asociaciones, los líderes y las comunidades, con el término de autorización.",
+        "fr": "Comment l’UNIPBRAS protège les données des associations, des dirigeants et des communautés, avec le formulaire d’autorisation."
+      }
     }
   ],
   "videos": []
