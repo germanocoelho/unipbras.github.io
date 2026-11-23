@@ -192,21 +192,21 @@
       "sigla": "IEJAC",
       "nome": "Associação Indígena dos Jovens e Adultos para Cidadania",
       "razao": "IEJAC Associação Indígena dos Jovens e Adultos para Cidadania",
-      "local": "Rondônia · RO",
+      "local": "Cacoal · RO",
       "cnpj": "11.597.030/0001-43",
-      "fundacao": "",
+      "fundacao": "05/02/2010",
       "situacao": "Ativa",
-      "sede": "",
+      "sede": "Av. Geraldo Cardoso Campos, 4343, Josino Brito, Cacoal/RO, CEP 76.960-970",
       "povos": "Suruí Paiter (Rondônia)",
       "presidencia": "Oypakob Sandro Surui",
       "contato": "Oypakob Sandro Surui (Presidente)",
       "logo": "",
       "logoEstilo": "",
       "desc": {
-        "pt": "Associação do povo Suruí Paiter, de Rondônia, voltada a jovens e adultos indígenas em ações de cidadania.",
-        "en": "Association of the Suruí Paiter people, from Rondônia, dedicated to Indigenous youth and adults in citizenship initiatives.",
-        "es": "Asociación del pueblo Suruí Paiter, de Rondônia, dedicada a jóvenes y adultos indígenas en acciones de ciudadanía.",
-        "fr": "Association du peuple Suruí Paiter, du Rondônia, consacrée aux jeunes et adultes autochtones dans des actions de citoyenneté."
+        "pt": "Associação indígena do povo Suruí Paiter, sediada em Cacoal (RO), voltada à defesa de direitos sociais de jovens e adultos indígenas.",
+        "en": "Indigenous association of the Suruí Paiter people, based in Cacoal (RO), dedicated to defending the social rights of Indigenous youth and adults.",
+        "es": "Asociación indígena del pueblo Suruí Paiter, con sede en Cacoal (RO), dedicada a la defensa de los derechos sociales de jóvenes y adultos indígenas.",
+        "fr": "Association autochtone du peuple Suruí Paiter, basée à Cacoal (RO), consacrée à la défense des droits sociaux des jeunes et adultes autochtones."
       }
     }
   ],
