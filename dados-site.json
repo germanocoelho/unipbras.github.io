@@ -186,6 +186,28 @@
         "es": "Asociación del pueblo Atikum de la Aldea Boqueirão, fundada en 2025 en Salgueiro (PE), que reúne a agricultores familiares indígenas de la aldea y de la región.",
         "fr": "Association du peuple Atikum du village de Boqueirão, fondée en 2025 à Salgueiro (PE), qui réunit des agriculteurs familiaux autochtones du village et de la région."
       }
+    },
+    {
+      "id": "iejac",
+      "sigla": "IEJAC",
+      "nome": "Associação Indígena dos Jovens e Adultos para Cidadania",
+      "razao": "IEJAC Associação Indígena dos Jovens e Adultos para Cidadania",
+      "local": "Rondônia · RO",
+      "cnpj": "11.597.030/0001-43",
+      "fundacao": "",
+      "situacao": "Ativa",
+      "sede": "",
+      "povos": "Suruí Paiter (Rondônia)",
+      "presidencia": "Oypakob Sandro Surui",
+      "contato": "Oypakob Sandro Surui (Presidente)",
+      "logo": "",
+      "logoEstilo": "",
+      "desc": {
+        "pt": "Associação do povo Suruí Paiter, de Rondônia, voltada a jovens e adultos indígenas em ações de cidadania.",
+        "en": "Association of the Suruí Paiter people, from Rondônia, dedicated to Indigenous youth and adults in citizenship initiatives.",
+        "es": "Asociación del pueblo Suruí Paiter, de Rondônia, dedicada a jóvenes y adultos indígenas en acciones de ciudadanía.",
+        "fr": "Association du peuple Suruí Paiter, du Rondônia, consacrée aux jeunes et adultes autochtones dans des actions de citoyenneté."
+      }
     }
   ],
   "eventos": [
